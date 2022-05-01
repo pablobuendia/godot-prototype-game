@@ -1,0 +1,75 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Proyecto.gd" type="Script" id=4]
+[ext_resource path="res://assets/img/yellow-right.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/yellow-left.png" type="Texture" id=7]
+
+[sub_resource type="StreamTexture" id=1]
+flags = 4
+
+[sub_resource type="StreamTexture" id=2]
+flags = 4
+
+[sub_resource type="StreamTexture" id=3]
+flags = 4
+
+[sub_resource type="StreamTexture" id=4]
+flags = 4
+
+[node name="Node2D" type="Node2D"]
+position = Vector2( 346, 195 )
+script = ExtResource( 4 )
+
+[node name="Bote" type="Node2D" parent="."]
+
+[node name="Bote_Izq" type="Sprite" parent="Bote"]
+visible = false
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 7 )
+
+[node name="Bote_Der" type="Sprite" parent="Bote"]
+scale = Vector2( 0.1, 0.1 )
+texture = ExtResource( 5 )
+
+[node name="Bar_Der" type="Sprite" parent="."]
+position = Vector2( 334, 70 )
+scale = Vector2( 3, 3 )
+texture = SubResource( 1 )
+
+[node name="Bar_Izq" type="Sprite" parent="."]
+position = Vector2( -167, 101 )
+scale = Vector2( 3, 3 )
+texture = SubResource( 2 )
+
+[node name="Pelota" type="Sprite" parent="."]
+position = Vector2( 81, 33 )
+scale = Vector2( 3, 3 )
+texture = SubResource( 3 )
+
+[node name="Cancha" type="Sprite" parent="."]
+
+[node name="Puntaje" type="Label" parent="."]
+margin_left = 264.0
+margin_top = 18.0
+margin_right = 304.0
+margin_bottom = 32.0
+rect_scale = Vector2( 3, 3 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 174, 108 )
+
+[node name="Separador" type="Sprite" parent="."]
+position = Vector2( 679, 104.5 )
+scale = Vector2( 5.00001, 1.4725 )
+texture = SubResource( 4 )
+
+[node name="Separador3" type="Sprite" parent="."]
+position = Vector2( 171.388, -188.931 )
+rotation = 1.5708
+scale = Vector2( 4.5, 2.54018 )
+texture = SubResource( 4 )
+
+[node name="Separador4" type="Sprite" parent="."]
+position = Vector2( -329.15, 112 )
+scale = Vector2( -6.84961, 1.475 )
+texture = SubResource( 4 )

@@ -16,14 +16,14 @@
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "swim_right",
-"speed": 3.0
-}, {
 "frames": [ ExtResource( 8 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 2 ), ExtResource( 5 ), ExtResource( 7 ) ],
 "loop": true,
 "name": "swim_left",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 10 ), ExtResource( 11 ), ExtResource( 12 ), ExtResource( 13 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "swim_right",
 "speed": 3.0
 } ]
 
@@ -35,7 +35,7 @@ script = ExtResource( 1 )
 position = Vector2( 539, 386 )
 frames = SubResource( 1 )
 animation = "swim_right"
-frame = 3
+frame = 4
 
 [node name="Area2D" type="Area2D" parent="."]
 collision_mask = 0

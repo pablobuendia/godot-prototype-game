@@ -15,6 +15,10 @@ onready var BOTE_WOBBLING_DIRECTION = 1
 func _ready():
 	screen_size = get_viewport_rect().size
 
+func start(pos):
+	position = pos
+	show()
+	$CollisionShape2D.disabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -48,3 +52,10 @@ func _process(delta):
 	if FRAME_COUNTER == 1000:
 		FRAME_COUNTER = 0
 	position=bote_pos
+
+
+func _on_Jugador_body_entered(body):
+	hide() # Player disappears after being hit.
+	emit_signal("hit")
+	# Must be deferred as we can't change physics properties on a physics callback.
+	$CollisionShape2D.set_deferred("disabled", true)

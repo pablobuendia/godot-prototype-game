@@ -30,9 +30,9 @@ animations = [ {
 [sub_resource type="CircleShape2D" id=2]
 radius = 89.5817
 
-[node name="RigidBody2D" type="RigidBody2D"]
+[node name="Fish" type="RigidBody2D"]
 position = Vector2( 467, 262 )
-scale = Vector2( 0.75, 0.75 )
+scale = Vector2( 0.25, 0.25 )
 gravity_scale = 0.0
 script = ExtResource( 13 )
 __meta__ = {
@@ -40,13 +40,15 @@ __meta__ = {
 }
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
 frames = SubResource( 1 )
 animation = "move_right"
-frame = 1
-playing = true
+frame = 2
+offset = Vector2( 0.5, 0.5 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 0
+scale = Vector2( 0.25, 0.25 )
 shape = SubResource( 2 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]

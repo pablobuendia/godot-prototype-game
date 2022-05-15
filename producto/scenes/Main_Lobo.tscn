@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Player_Lobo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Enemigo_Lobo.tscn" type="PackedScene" id=2]
@@ -9,7 +9,12 @@
 
 [sub_resource type="Curve2D" id=1]
 _data = {
-"points": PoolVector2Array( 0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1024, 600, 0, 0, 0, 0, 0, 600, 0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 0, -8, 0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1016, 592, 0, 0, 0, 0, 1024, 600, 0, 0, 0, 0, -8, 600, 0, 0, 0, 0, 0, 600, 0, 0, 0, 0, -8, -8, 0, 0, 0, 0, -8, -8 )
+"points": PoolVector2Array( 0, 0, 0, 0, -1, 600, 0, 0, 0, 0, -1, 200 )
+}
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1024, 192, 0, 0, 0, 0, 1024, 600 )
 }
 
 [node name="Main" type="Node2D"]
@@ -33,27 +38,39 @@ texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 position = Vector2( 248, 480 )
+scale = Vector2( 0.5, 0.5 )
 
-[node name="FishTimer" type="Timer" parent="."]
-wait_time = 0.5
-one_shot = true
+[node name="FishTimer_Left" type="Timer" parent="."]
+
+[node name="FishTimer_Right" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="ScoreTimer" type="Timer" parent="."]
-one_shot = true
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
 
 [node name="StartPosition" type="Position2D" parent="."]
-position = Vector2( 250, 450 )
+position = Vector2( 248, 480 )
 
-[node name="FishPath" type="Path2D" parent="."]
-position = Vector2( 8, 8 )
+[node name="FishPath_Left" type="Path2D" parent="."]
+position = Vector2( 1, 0 )
 curve = SubResource( 1 )
 
-[node name="FishSpawnLocation" type="PathFollow2D" parent="FishPath"]
-position = Vector2( 0, -8 )
-rotation = 0.00781252
+[node name="FishSpawnLocation" type="PathFollow2D" parent="FishPath_Left"]
+position = Vector2( -1, 600 )
+rotation = -1.5708
 
-[connection signal="hit" from="Player" to="." method="_on_Player_hit"]
+[node name="FishPath_Right" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="FishSpawnLocation" type="PathFollow2D" parent="FishPath_Right"]
+position = Vector2( 1024, 192 )
+rotation = 1.57081
+
+[connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="timeout" from="FishTimer_Left" to="." method="_on_FishTimer_Left_timeout"]
+[connection signal="timeout" from="FishTimer_Right" to="." method="_on_FishTimer_Right_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]

@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/m_LoboSwim.png-d0f7a3af242eb003facc66df31498af8.stex"
+path="res://.import/LoboEfectoParpadeo_4.png-d7e9f595157bc0fd9357fb03d4de299d.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/iloveimg-resized/m_LoboSwim.png"
-dest_files=[ "res://.import/m_LoboSwim.png-d0f7a3af242eb003facc66df31498af8.stex" ]
+source_file="res://assets/img/LoboEfectoParpadeo_4.png"
+dest_files=[ "res://.import/LoboEfectoParpadeo_4.png-d7e9f595157bc0fd9357fb03d4de299d.stex" ]
 
 [params]
 

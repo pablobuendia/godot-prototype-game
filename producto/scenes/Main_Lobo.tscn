@@ -41,9 +41,10 @@ position = Vector2( 248, 480 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="FishTimer_Left" type="Timer" parent="."]
+wait_time = 5.0
 
 [node name="FishTimer_Right" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 10.0
 
 [node name="ScoreTimer" type="Timer" parent="."]
 

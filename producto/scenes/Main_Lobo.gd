@@ -4,7 +4,6 @@ extends Node2D
 export(PackedScene) var fish_scene
 var score
 
-
 func _ready():
 	randomize()
 	new_game()

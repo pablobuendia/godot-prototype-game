@@ -3,7 +3,7 @@ signal hit
 
 export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
-
+var vida = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -32,8 +32,11 @@ func _process(delta):
 
 
 func _on_Player_body_entered(body):
-	hide() 
-	emit_signal("hit")
+	vida -= 1
+	print("Entra aca")
+	$AnimatedSpriteEffect.play()
+	if vida == 0:
+		emit_signal("hit")
 	$CollisionShape2D.set_deferred("disabled", true)
 
 func start(pos):

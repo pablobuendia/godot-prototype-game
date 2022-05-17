@@ -1,0 +1,31 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://scenes/Moneda_Lobo.gd" type="Script" id=1]
+[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_5.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_6.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_3.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_4.png" type="Texture" id=7]
+
+[sub_resource type="SpriteFrames" id=1]
+animations = [ {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ), ExtResource( 4 ), ExtResource( 7 ), ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "move_coin",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=2]
+radius = 24.0
+
+[node name="Moneda" type="Area2D"]
+position = Vector2( 96, 96 )
+script = ExtResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 1 )
+animation = "move_coin"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 2 )

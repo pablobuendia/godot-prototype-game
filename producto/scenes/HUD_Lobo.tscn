@@ -2,7 +2,7 @@
 
 [ext_resource path="res://scenes/HUD_Lobo.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
-[ext_resource path="res://assets/img/Bonus/object_06_coin.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/Bonus/object_05_heart.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
@@ -30,8 +30,7 @@ custom_fonts/font = SubResource( 1 )
 text = "0"
 
 [node name="Coin" type="Sprite" parent="ScoreLabel"]
-position = Vector2( -25, 31 )
-scale = Vector2( 0.15, 0.15 )
+position = Vector2( -32, 34 )
 texture = ExtResource( 3 )
 
 [node name="VidaLabel" type="Label" parent="."]

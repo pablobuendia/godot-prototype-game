@@ -1,3 +1,4 @@
+class_name Enemigo_Lobo
 extends RigidBody2D
 
 func _ready():

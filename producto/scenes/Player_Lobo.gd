@@ -1,6 +1,9 @@
+class_name Player_Lobo
 extends Area2D
+
 signal hit
 signal update_vida #señal para que se actualice el valor de vida en el main
+signal update_score #señal para la moneda
 
 export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
@@ -33,11 +36,14 @@ func _process(delta):
 
 
 func _on_Player_body_entered(body):
-	vida -= 1
-	$AnimatedSpriteEffect.play()
-	emit_signal("update_vida")
+	if body is Enemigo_Lobo:
+		vida -= 1
+		$AnimatedSpriteEffect.play()
+		emit_signal("update_vida")
 	if vida == 0:
 		emit_signal("hit")
+	if body is Moneda_Lobo:
+		emit_signal("update_score")
 	$CollisionShape2D.set_deferred("disabled", true)
 
 func start(pos):

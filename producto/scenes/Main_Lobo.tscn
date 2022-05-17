@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=11 format=2]
 
 [ext_resource path="res://scenes/Player_Lobo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Enemigo_Lobo.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/img/Fondos/sea.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/Fondos/algas.png" type="Texture" id=6]
 [ext_resource path="res://scenes/HUD_Lobo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/Moneda_Lobo.tscn" type="PackedScene" id=8]
 
 [sub_resource type="Curve2D" id=1]
 _data = {
@@ -73,7 +74,13 @@ rotation = 1.57081
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
 
+[node name="Monedas" type="Node2D" parent="."]
+
+[node name="Moneda" parent="Monedas" instance=ExtResource( 8 )]
+position = Vector2( 776, 464 )
+
 [connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="update_score" from="Player" to="." method="_on_Player_update_score"]
 [connection signal="update_vida" from="Player" to="." method="_on_Player_update_vida"]
 [connection signal="timeout" from="FishTimer_Left" to="." method="_on_FishTimer_Left_timeout"]
 [connection signal="timeout" from="FishTimer_Right" to="." method="_on_FishTimer_Right_timeout"]

@@ -24,7 +24,7 @@ func new_game():
 	
 func _on_ScoreTimer_timeout():
 	score += 1
-	$HUD.update_score(score)
+	
 
 func _on_Player_update_vida():
 	vida -= 1
@@ -71,5 +71,6 @@ func _on_FishTimer_Right_timeout(): #Anda bien
 	# Spawn the fish by adding it to the Main scene.
 	add_child(fish)
 
-
-
+func _on_Player_update_score():
+	score +=1
+	$HUD.update_score(score)

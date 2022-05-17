@@ -8,6 +8,28 @@
 
 config_version=4
 
+_global_script_classes=[ {
+"base": "RigidBody2D",
+"class": "Enemigo_Lobo",
+"language": "GDScript",
+"path": "res://scenes/Enemigo_Lobo.gd"
+}, {
+"base": "Area2D",
+"class": "Moneda_Lobo",
+"language": "GDScript",
+"path": "res://scenes/Moneda_Lobo.gd"
+}, {
+"base": "Area2D",
+"class": "Player_Lobo",
+"language": "GDScript",
+"path": "res://scenes/Player_Lobo.gd"
+} ]
+_global_script_class_icons={
+"Enemigo_Lobo": "",
+"Moneda_Lobo": "",
+"Player_Lobo": ""
+}
+
 [application]
 
 config/name="Mardel-game"

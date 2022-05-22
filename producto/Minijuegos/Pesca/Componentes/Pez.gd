@@ -1,4 +1,4 @@
-extends Node2D
+extends RigidBody2D
 
 
 # Declare member variables here. Examples:
@@ -14,3 +14,8 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 #func _process(delta):
 #	pass
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	queue_free()
+

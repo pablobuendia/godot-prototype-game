@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/sea.mp3-4ad38615f9c32fb4825b43df869e845b.mp3str"
+
+[deps]
+
+source_file="res://assets/sounds/sea.mp3"
+dest_files=[ "res://.import/sea.mp3-4ad38615f9c32fb4825b43df869e845b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

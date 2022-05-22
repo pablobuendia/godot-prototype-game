@@ -1,0 +1,72 @@
+[gd_scene load_steps=2 format=2]
+
+[sub_resource type="GDScript" id=1]
+script/source = "extends Control
+
+
+# Declare member variables here. Examples:
+# var a = 2
+# var b = \"text\"
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready():
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+#func _process(delta):
+#	pass
+
+
+func _on_StartGame1Button_pressed():
+	get_tree().change_scene(\"res://Minijuegos/Pesca/Pesca-Main.tscn\")
+"
+
+[node name="Main-Menu" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = SubResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+margin_left = 7.0
+margin_top = 437.0
+margin_right = 262.0
+margin_bottom = 597.0
+
+[node name="StartGame1Button" type="Button" parent="VBoxContainer"]
+margin_right = 255.0
+margin_bottom = 20.0
+text = "Comenzar minjuego pesca"
+
+[node name="StartGame2Button" type="Button" parent="VBoxContainer"]
+margin_top = 24.0
+margin_right = 255.0
+margin_bottom = 44.0
+text = "Comenzar minjuego obstáculos"
+
+[node name="StartGame3Button" type="Button" parent="VBoxContainer"]
+margin_top = 48.0
+margin_right = 255.0
+margin_bottom = 68.0
+text = "Comenzar minijuego escape de lobo"
+
+[node name="StartGame4Button" type="Button" parent="VBoxContainer"]
+margin_top = 72.0
+margin_right = 255.0
+margin_bottom = 92.0
+text = "Comenzar minijuego restaurante"
+
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
+margin_top = 96.0
+margin_right = 255.0
+margin_bottom = 116.0
+text = "Opciones"
+
+[node name="QuitButton" type="Button" parent="VBoxContainer"]
+margin_top = 120.0
+margin_right = 255.0
+margin_bottom = 140.0
+text = "Salir del juego"
+
+[connection signal="pressed" from="VBoxContainer/StartGame1Button" to="." method="_on_StartGame1Button_pressed"]

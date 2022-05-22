@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Minijuegos/Pesca/Componentes/Bote.gd" type="Script" id=1]
+[ext_resource path="res://assets/img/yellow-right.png" type="Texture" id=2]
+[ext_resource path="res://Minijuegos/Pesca/Componentes/Anzuelo.tscn" type="PackedScene" id=3]
+
+[node name="Bote" type="Node2D"]
+script = ExtResource( 1 )
+anzuelo_scene = ExtResource( 3 )
+
+[node name="Bote_sprite" type="Sprite" parent="."]
+position = Vector2( 1.95002, -3.02501 )
+scale = Vector2( 0.15, 0.15 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}

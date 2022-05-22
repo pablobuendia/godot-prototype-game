@@ -1,11 +1,9 @@
-extends Area2D
+extends Node2D
 signal hit
 
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 var screen_size
-onready var bote_pos = position
+export(PackedScene) var anzuelo_scene
+onready var bote_pos = Vector2(000, 000)
 onready var BOTE_SPEED = 100
 onready var BOTE_WOBBLING = 0
 onready var FRAME_COUNTER = 0
@@ -16,9 +14,8 @@ func _ready():
 	screen_size = get_viewport_rect().size
 
 func start(pos):
-	position = pos
+	bote_pos = pos
 	show()
-	$CollisionShape2D.disabled = false
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -34,7 +31,7 @@ func _process(delta):
 			else:
 				bote_pos.y -= change
 				BOTE_WOBBLING -= change
-		$Bote.flip_h = false
+		$Bote_sprite.flip_h = false
 	if Input.is_action_pressed("Boat_left"):
 		bote_pos.x -= BOTE_SPEED * delta		
 		if (FRAME_COUNTER % 10 == 0):
@@ -44,7 +41,7 @@ func _process(delta):
 			else:
 				bote_pos.y -= change
 				BOTE_WOBBLING -= change
-		$Bote.flip_h = true
+		$Bote_sprite.flip_h = true
 	if BOTE_WOBBLING > 5:
 		BOTE_WOBBLING_DIRECTION = -1
 	elif BOTE_WOBBLING < -5:
@@ -52,10 +49,16 @@ func _process(delta):
 	if FRAME_COUNTER == 1000:
 		FRAME_COUNTER = 0
 	position=bote_pos
+	if Input.is_action_just_released("Boat_rod"):
+		var anzuelo = anzuelo_scene.instance()
+		anzuelo.gravity_scale = 1
+		anzuelo.scale = Vector2(0.3, 0.3)
+		anzuelo.get_child(1).visible = true
+		add_child(anzuelo)
 
 
-func _on_Jugador_body_entered(body):
-	hide() # Player disappears after being hit.
-	emit_signal("hit")
-	# Must be deferred as we can't change physics properties on a physics callback.
-	$CollisionShape2D.set_deferred("disabled", true)
+#func _on_Bote_body_entered(body):
+#	hide() # Player disappears after being hit.
+#	emit_signal("hit")
+#	# Must be deferred as we can't change physics properties on a physics callback.
+#	$CollisionShape2D.set_deferred("disabled", true)

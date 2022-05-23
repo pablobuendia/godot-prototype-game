@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/Player_Lobo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Minijuegos/Lobo/Pez.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Minijuegos/Lobo/Main_Lobo.gd" type="Script" id=3]
+[ext_resource path="res://Minijuegos/Lobo/Red.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/img/craftpix-561109-free-underwater-world-parallax-game-backgrounds/PNG/1_game_background/layers/7.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/Fondos/algas.png" type="Texture" id=6]
 [ext_resource path="res://Minijuegos/Lobo/HUD_Lobo.tscn" type="PackedScene" id=7]
@@ -20,9 +21,15 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1022, 450 )
 }
 
+[sub_resource type="Curve2D" id=7]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 1022, 0 )
+}
+
 [node name="Main" type="Node2D"]
 script = ExtResource( 3 )
 pez_scene = ExtResource( 2 )
+red_scene = ExtResource( 4 )
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
@@ -41,12 +48,16 @@ scale = Vector2( 0.533333, 0.560185 )
 texture = ExtResource( 5 )
 
 [node name="Algas" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 728, 456 )
+position = Vector2( 113, 502 )
+scale = Vector2( 0.0906918, 0.068696 )
+texture = ExtResource( 6 )
+
+[node name="Algas2" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 724, 427 )
 scale = Vector2( 0.0906918, 0.068696 )
 texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
-position = Vector2( 228, 274 )
 scale = Vector2( 0.5, 0.5 )
 
 [node name="FishTimer_Left" type="Timer" parent="."]
@@ -54,6 +65,8 @@ wait_time = 5.0
 
 [node name="FishTimer_Right" type="Timer" parent="."]
 wait_time = 10.0
+
+[node name="RedTimer" type="Timer" parent="."]
 
 [node name="ScoreTimer" type="Timer" parent="."]
 
@@ -87,8 +100,15 @@ visible = false
 [node name="Moneda" parent="Monedas" instance=ExtResource( 8 )]
 position = Vector2( 776, 464 )
 
+[node name="RedPath" type="Path2D" parent="."]
+curve = SubResource( 7 )
+
+[node name="RedSpawnLocation" type="PathFollow2D" parent="RedPath"]
+position = Vector2( -2, 0 )
+
 [connection signal="timeout" from="FishTimer_Left" to="." method="_on_FishTimer_Left_timeout"]
 [connection signal="timeout" from="FishTimer_Right" to="." method="_on_FishTimer_Right_timeout"]
+[connection signal="timeout" from="RedTimer" to="." method="_on_RedTimer_timeout"]
 [connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

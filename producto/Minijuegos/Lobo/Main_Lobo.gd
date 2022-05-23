@@ -14,6 +14,7 @@ func game_over():
 	$FishTimer_Left.stop()
 	$FishTimer_Right.stop()
 	$RedTimer.stop()
+	$ContenedorMonedas/TiempoDeGeneracion.stop()
 	$HUD.show_game_over()
 
 func new_game():
@@ -28,7 +29,7 @@ func _on_ScoreTimer_timeout():
 	score += 1
 	
 func _on_Player_update_vida():
-	vida -= 1
+	vida -=1
 	$HUD.update_vida(vida)
 	
 func _on_StartTimer_timeout():
@@ -36,6 +37,7 @@ func _on_StartTimer_timeout():
 	$FishTimer_Right.start()
 	$RedTimer.start()
 	$ScoreTimer.start()
+	$ContenedorMonedas/TiempoDeGeneracion.start()
 	
 func _on_FishTimer_Left_timeout(): 
 	spawn_pez("FishPath_Left/FishSpawnLocation", true)
@@ -51,7 +53,7 @@ func spawn_pez(spawnLocation, flip_h):
 	pez.get_child(pezTipo).visible = true
 	pez.get_child(pezTipo).flip_h = flip_h
 	pez.get_child(pezTipo).scale = Vector2(scaleMultiplier, scaleMultiplier)
-	pez.get_child(6).scale = Vector2(scaleMultiplier, scaleMultiplier)
+	pez.get_child(4).scale = Vector2(scaleMultiplier, scaleMultiplier)
 	pez.scale = Vector2(scaleMultiplier, scaleMultiplier)
 	var pez_spawn_location = get_node(spawnLocation)
 	pez_spawn_location.offset = randi()
@@ -73,12 +75,12 @@ func _on_Player_update_score():
 func _on_RedTimer_timeout():
 	var red = red_scene.instance()
 	var redTipo = randi() % 4
-	var scaleMultiplier = ((randi() % 7) + 3) / 100.0
-
+	#var scaleMultiplier = ((randi() % 7) + 3) / 100.0
+	
 	red.get_child(redTipo).visible = true
-	red.get_child(redTipo).scale = Vector2(scaleMultiplier, scaleMultiplier)
-	red.get_child(4).scale = Vector2(scaleMultiplier, scaleMultiplier)
-	red.scale = Vector2(scaleMultiplier, scaleMultiplier)
+	#red.get_child(redTipo).scale = Vector2(scaleMultiplier, scaleMultiplier)
+	#red.get_child(4).scale = Vector2(scaleMultiplier, scaleMultiplier)
+	#red.scale = Vector2(scaleMultiplier, scaleMultiplier)
 	var red_spawn_location = get_node("RedPath/RedSpawnLocation")
 	red_spawn_location.offset = randi()
 	
@@ -90,3 +92,4 @@ func _on_RedTimer_timeout():
 	red.linear_velocity = velocity.rotated(direction)
 	add_child(red)
 	
+

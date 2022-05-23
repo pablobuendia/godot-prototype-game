@@ -7,11 +7,12 @@ signal update_score #señal para la moneda
 
 export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
-var vida = 3
+var vida
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	screen_size = get_viewport_rect().size
+	vida =3
 	hide()
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -36,10 +37,17 @@ func _process(delta):
 
 
 func _on_Player_body_entered(body):
-	if body is Moneda_Lobo:
-		emit_signal("update_score")
+	vida -=1
+	emit_signal("update_vida")
+	if vida==0:
+		emit_signal("hit")
 
 func start(pos):
 	position = pos
 	show()
 	$CollisionShape2D.disabled = false
+	
+
+
+func _on_Player_area_entered(area):
+	emit_signal("update_score")

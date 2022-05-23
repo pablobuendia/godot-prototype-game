@@ -1,0 +1,94 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://Minijuegos/Lobo/Player_Lobo.tscn" type="PackedScene" id=1]
+[ext_resource path="res://Minijuegos/Lobo/Pez.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Minijuegos/Lobo/Main_Lobo.gd" type="Script" id=3]
+[ext_resource path="res://assets/img/craftpix-561109-free-underwater-world-parallax-game-backgrounds/PNG/1_game_background/layers/7.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Fondos/algas.png" type="Texture" id=6]
+[ext_resource path="res://Minijuegos/Lobo/HUD_Lobo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Minijuegos/Lobo/Moneda_Lobo.tscn" type="PackedScene" id=8]
+[ext_resource path="res://Minijuegos/Lobo/Pantalla.gd" type="Script" id=9]
+[ext_resource path="res://assets/img/underwater tileable.png" type="Texture" id=10]
+
+[sub_resource type="Curve2D" id=5]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 0, 449, 0, 0, 0, 0, 0, -2, 0, 0, 0, 0, -1, 200 )
+}
+
+[sub_resource type="Curve2D" id=6]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 1024, 0, 0, 0, 0, 0, 1022, 450 )
+}
+
+[node name="Main" type="Node2D"]
+script = ExtResource( 3 )
+pez_scene = ExtResource( 2 )
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_mirroring = Vector2( 1024, 0 )
+script = ExtResource( 9 )
+
+[node name="Mar" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 512, 276 )
+scale = Vector2( 1, 0.71875 )
+texture = ExtResource( 10 )
+
+[node name="Suelo" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 512, 297.5 )
+scale = Vector2( 0.533333, 0.560185 )
+texture = ExtResource( 5 )
+
+[node name="Algas" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
+position = Vector2( 728, 456 )
+scale = Vector2( 0.0906918, 0.068696 )
+texture = ExtResource( 6 )
+
+[node name="Player" parent="." instance=ExtResource( 1 )]
+position = Vector2( 228, 274 )
+scale = Vector2( 0.5, 0.5 )
+
+[node name="FishTimer_Left" type="Timer" parent="."]
+wait_time = 5.0
+
+[node name="FishTimer_Right" type="Timer" parent="."]
+wait_time = 10.0
+
+[node name="ScoreTimer" type="Timer" parent="."]
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="StartPosition" type="Position2D" parent="."]
+position = Vector2( 248, 480 )
+
+[node name="FishPath_Left" type="Path2D" parent="."]
+position = Vector2( 1, 4 )
+curve = SubResource( 5 )
+
+[node name="FishSpawnLocation" type="PathFollow2D" parent="FishPath_Left"]
+position = Vector2( 0, 449 )
+rotation = -1.5708
+
+[node name="FishPath_Right" type="Path2D" parent="."]
+curve = SubResource( 6 )
+
+[node name="FishSpawnLocation" type="PathFollow2D" parent="FishPath_Right"]
+position = Vector2( 1024, 0 )
+rotation = 1.57527
+
+[node name="HUD" parent="." instance=ExtResource( 7 )]
+
+[node name="Monedas" type="Node2D" parent="."]
+visible = false
+
+[node name="Moneda" parent="Monedas" instance=ExtResource( 8 )]
+position = Vector2( 776, 464 )
+
+[connection signal="timeout" from="FishTimer_Left" to="." method="_on_FishTimer_Left_timeout"]
+[connection signal="timeout" from="FishTimer_Right" to="." method="_on_FishTimer_Right_timeout"]
+[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="start_game" from="HUD" to="." method="new_game"]

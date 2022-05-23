@@ -110,10 +110,10 @@ volume_db = 1.0
 autoplay = true
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezTimerIzq_timeout"]
-[connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezTimer_timeout"]
 [connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezSpawnTimerIzq_timeout"]
+[connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezTimer_timeout"]
+[connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezTimerIzq_timeout"]
+[connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezSpawnTimerDer_timeout"]
 [connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezTimerDer_timeout"]
 [connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezTimer_timeout"]
-[connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezSpawnTimerDer_timeout"]
 [connection signal="pressed" from="Button_left" to="." method="_on_Button_left_pressed"]

@@ -21,6 +21,10 @@ func _ready():
 
 func _on_StartGame1Button_pressed():
 	get_tree().change_scene(\"res://Minijuegos/Pesca/Pesca-Main.tscn\")
+
+
+func _on_StartGame2Button_pressed():
+	get_tree().change_scene(\"res://Minijuegos/Lobo/Main_Lobo.tscn\")
 "
 
 [node name="Main-Menu" type="Control"]
@@ -70,3 +74,4 @@ margin_bottom = 140.0
 text = "Salir del juego"
 
 [connection signal="pressed" from="VBoxContainer/StartGame1Button" to="." method="_on_StartGame1Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartGame2Button" to="." method="_on_StartGame2Button_pressed"]

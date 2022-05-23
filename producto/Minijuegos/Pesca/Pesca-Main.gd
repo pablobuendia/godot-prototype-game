@@ -44,7 +44,7 @@ func _on_PezSpawnTimerDer_timeout():
 	
 func spawn_pez(spawnLocation, flip_h):
 	var pez = pez_scene.instance()
-	var pezTipo = randi() % 4
+	var pezTipo = randi() % 6
 	var scaleMultiplier = ((randi() % 7) + 3) / 100.0
 	print(scaleMultiplier)
 	print("------")

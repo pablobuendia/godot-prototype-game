@@ -15,3 +15,8 @@ func _on_StartButton_pressed():
 	$StartButton.hide()
 	emit_signal("start_game")
 
+func _pause_pressed():
+	if get_tree().paused == false:
+		get_tree().paused = true
+	else:
+		get_tree().paused = false

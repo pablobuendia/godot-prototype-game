@@ -7,7 +7,7 @@
 [ext_resource path="res://Minijuegos/Lobo/Red.gd" type="Script" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 193, 128.5 )
+extents = Vector2( 79, 60 )
 
 [node name="Red" type="RigidBody2D"]
 position = Vector2( 640, 339 )
@@ -37,9 +37,10 @@ scale = Vector2( 0.1, 0.1 )
 texture = ExtResource( 4 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 3, -7.5 )
+position = Vector2( 0, -5 )
 shape = SubResource( 1 )
 
 [node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( 8, 0 )
 
 [connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

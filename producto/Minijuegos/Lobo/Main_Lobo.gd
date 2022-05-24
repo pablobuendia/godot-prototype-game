@@ -10,11 +10,9 @@ func _ready():
 	randomize()
 	
 func game_over():
-	$ScoreTimer.stop()
 	$FishTimer_Left.stop()
 	$FishTimer_Right.stop()
 	$RedTimer.stop()
-	$ContenedorMonedas/TiempoDeGeneracion.stop()
 	$HUD.show_game_over()
 
 func new_game():
@@ -25,8 +23,6 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.update_vida(vida)
 	
-func _on_ScoreTimer_timeout():
-	score += 1
 	
 func _on_Player_update_vida():
 	vida -=1
@@ -36,8 +32,6 @@ func _on_StartTimer_timeout():
 	$FishTimer_Left.start()
 	$FishTimer_Right.start()
 	$RedTimer.start()
-	$ScoreTimer.start()
-	$ContenedorMonedas/TiempoDeGeneracion.start()
 	
 func _on_FishTimer_Left_timeout(): 
 	spawn_pez("FishPath_Left/FishSpawnLocation", true)
@@ -75,12 +69,8 @@ func _on_Player_update_score():
 func _on_RedTimer_timeout():
 	var red = red_scene.instance()
 	var redTipo = randi() % 4
-	#var scaleMultiplier = ((randi() % 7) + 3) / 100.0
-	
+
 	red.get_child(redTipo).visible = true
-	#red.get_child(redTipo).scale = Vector2(scaleMultiplier, scaleMultiplier)
-	#red.get_child(4).scale = Vector2(scaleMultiplier, scaleMultiplier)
-	#red.scale = Vector2(scaleMultiplier, scaleMultiplier)
 	var red_spawn_location = get_node("RedPath/RedSpawnLocation")
 	red_spawn_location.offset = randi()
 	
@@ -91,5 +81,6 @@ func _on_RedTimer_timeout():
 	var velocity = Vector2(0.0,rand_range(0, 100))
 	red.linear_velocity = velocity.rotated(direction)
 	add_child(red)
-	
 
+func _on_Player_red(): #Desaparece la red cuando toca al lobo
+	$Red.queue_free()

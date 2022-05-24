@@ -78,8 +78,6 @@ wait_time = 10.0
 [node name="RedTimer" type="Timer" parent="."]
 wait_time = 5.0
 
-[node name="ScoreTimer" type="Timer" parent="."]
-
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
 one_shot = true
@@ -121,11 +119,11 @@ autostart = true
 [connection signal="area_entered" from="Player" to="Player" method="_on_Player_area_entered"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="hit" from="Player" to="." method="game_over"]
+[connection signal="red" from="Player" to="." method="_on_Player_red"]
 [connection signal="update_score" from="Player" to="." method="_on_Player_update_score"]
 [connection signal="update_vida" from="Player" to="." method="_on_Player_update_vida"]
 [connection signal="timeout" from="FishTimer_Left" to="." method="_on_FishTimer_Left_timeout"]
 [connection signal="timeout" from="FishTimer_Right" to="." method="_on_FishTimer_Right_timeout"]
 [connection signal="timeout" from="RedTimer" to="." method="_on_RedTimer_timeout"]
-[connection signal="timeout" from="ScoreTimer" to="." method="_on_ScoreTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]

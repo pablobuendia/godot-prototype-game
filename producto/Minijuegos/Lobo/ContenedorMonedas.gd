@@ -2,6 +2,7 @@ extends Node2D
 
 var moneda = load("res://Minijuegos/Lobo/Moneda_Lobo.tscn")
 
+
 func _process(delta):
 	if $TiempoDeGeneracion.is_stopped():
 		crear_monedas()

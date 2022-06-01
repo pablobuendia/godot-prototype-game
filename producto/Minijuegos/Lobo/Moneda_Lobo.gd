@@ -7,7 +7,5 @@ func _ready():
 func _process(delta):
 	move_local_x(-300*delta)
 
-
-func _on_Moneda_area_entered(area):
-	print(area)
+func _desaparecer():
 	queue_free()

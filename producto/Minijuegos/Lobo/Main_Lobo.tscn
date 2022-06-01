@@ -48,7 +48,7 @@ texture = ExtResource( 10 )
 
 [node name="SueloArea" type="StaticBody2D" parent="ParallaxBackground/ParallaxLayer"]
 
-[node name="Suelo" type="Sprite" parent="ParallaxBackground/ParallaxLayer/SueloArea"]
+[node name="Suelo" type="Sprite" parent="ParallaxBackground/ParallaxLayer/SueloArea" groups=["suelo"]]
 position = Vector2( 512, 297.5 )
 scale = Vector2( 0.533333, 0.560185 )
 texture = ExtResource( 5 )
@@ -68,6 +68,8 @@ texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 0.5, 0.5 )
+monitoring = false
+monitorable = false
 
 [node name="FishTimer_Left" type="Timer" parent="."]
 wait_time = 5.0
@@ -113,7 +115,6 @@ rotation = -0.00382164
 script = ExtResource( 11 )
 
 [node name="TiempoDeGeneracion" type="Timer" parent="ContenedorMonedas"]
-one_shot = true
 autostart = true
 
 [connection signal="area_entered" from="Player" to="Player" method="_on_Player_area_entered"]
@@ -127,3 +128,4 @@ autostart = true
 [connection signal="timeout" from="RedTimer" to="." method="_on_RedTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="timeout" from="ContenedorMonedas/TiempoDeGeneracion" to="ContenedorMonedas" method="_on_TiempoDeGeneracion_timeout"]

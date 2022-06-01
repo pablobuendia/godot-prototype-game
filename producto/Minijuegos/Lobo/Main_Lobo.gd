@@ -3,26 +3,34 @@ extends Node2D
 
 export(PackedScene) var pez_scene
 export(PackedScene) var red_scene
-var score
-var vida
+var score = 0
+var vida = 3
 
 func _ready():
 	randomize()
-	
+
 func game_over():
+	get_tree().paused = true
+	$Player.monitoring = false
+	$Player.monitorable= false
+	$Player.hide()
 	$FishTimer_Left.stop()
 	$FishTimer_Right.stop()
 	$RedTimer.stop()
 	$HUD.show_game_over()
+	$ContenedorMonedas/TiempoDeGeneracion.stop()
 
 func new_game():
+	get_tree().paused = false
 	score = 0
 	vida = 3
 	$Player.start($StartPosition.position)
+	$Player.monitoring = true
+	$Player.monitorable = true
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.update_vida(vida)
-	
+	$ContenedorMonedas/TiempoDeGeneracion.start()
 	
 func _on_Player_update_vida():
 	vida -=1

@@ -8,12 +8,12 @@ signal red #señal para que la red desaparezca
 
 export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
-var vida
+var vida = 3
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	vida = 3
 	screen_size = get_viewport_rect().size
-	vida =3
 	hide()
 func _process(delta):
 	var velocity = Vector2.ZERO # The player's movement vector.
@@ -40,7 +40,8 @@ func _process(delta):
 func _on_Player_body_entered(body):
 	vida -=1
 	emit_signal("update_vida")
-	emit_signal("red")
+	if body is RigidBody2D: #Sé que tiene que ser en grupo pero me salio mal
+	 emit_signal("red")
 	if vida==0:
 		emit_signal("hit")
 
@@ -51,3 +52,4 @@ func start(pos):
 	
 func _on_Player_area_entered(area):
 	emit_signal("update_score")
+	area._desaparecer()

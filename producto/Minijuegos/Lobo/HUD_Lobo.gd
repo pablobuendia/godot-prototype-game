@@ -12,6 +12,7 @@ func update_vida(vida):
 	$VidaLabel.text = str(vida)
 
 func _on_StartButton_pressed():
+	get_tree().paused = false
 	$StartButton.hide()
 	emit_signal("start_game")
 

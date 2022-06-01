@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/Player_Lobo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Minijuegos/Lobo/Pez.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://assets/img/craftpix-561109-free-underwater-world-parallax-game-backgrounds/PNG/1_game_background/layers/7.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/Fondos/algas.png" type="Texture" id=6]
 [ext_resource path="res://Minijuegos/Lobo/HUD_Lobo.tscn" type="PackedScene" id=7]
+[ext_resource path="res://Minijuegos/Lobo/ContenedorSalud.gd" type="Script" id=8]
 [ext_resource path="res://Minijuegos/Lobo/Pantalla.gd" type="Script" id=9]
 [ext_resource path="res://assets/img/underwater tileable.png" type="Texture" id=10]
 [ext_resource path="res://Minijuegos/Lobo/ContenedorMonedas.gd" type="Script" id=11]
@@ -30,7 +31,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 783, -3 )
 }
 
-[node name="Main" type="Node2D"]
+[node name="Main" type="Node2D" groups=["red", "salud"]]
 script = ExtResource( 3 )
 pez_scene = ExtResource( 2 )
 red_scene = ExtResource( 4 )
@@ -48,7 +49,7 @@ texture = ExtResource( 10 )
 
 [node name="SueloArea" type="StaticBody2D" parent="ParallaxBackground/ParallaxLayer"]
 
-[node name="Suelo" type="Sprite" parent="ParallaxBackground/ParallaxLayer/SueloArea" groups=["suelo"]]
+[node name="Suelo" type="Sprite" parent="ParallaxBackground/ParallaxLayer/SueloArea"]
 position = Vector2( 512, 297.5 )
 scale = Vector2( 0.533333, 0.560185 )
 texture = ExtResource( 5 )
@@ -117,15 +118,22 @@ script = ExtResource( 11 )
 [node name="TiempoDeGeneracion" type="Timer" parent="ContenedorMonedas"]
 autostart = true
 
+[node name="ContenedorSalud" type="Node2D" parent="."]
+script = ExtResource( 8 )
+
+[node name="TiempoDeGeneracion" type="Timer" parent="ContenedorSalud"]
+wait_time = 30.0
+
 [connection signal="area_entered" from="Player" to="Player" method="_on_Player_area_entered"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="hit" from="Player" to="." method="game_over"]
-[connection signal="red" from="Player" to="." method="_on_Player_red"]
+[connection signal="miss_vida" from="Player" to="." method="_on_Player_miss_vida"]
 [connection signal="update_score" from="Player" to="." method="_on_Player_update_score"]
-[connection signal="update_vida" from="Player" to="." method="_on_Player_update_vida"]
+[connection signal="win_vida" from="Player" to="." method="_on_Player_win_vida"]
 [connection signal="timeout" from="FishTimer_Left" to="." method="_on_FishTimer_Left_timeout"]
 [connection signal="timeout" from="FishTimer_Right" to="." method="_on_FishTimer_Right_timeout"]
 [connection signal="timeout" from="RedTimer" to="." method="_on_RedTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="ContenedorMonedas/TiempoDeGeneracion" to="ContenedorMonedas" method="_on_TiempoDeGeneracion_timeout"]
+[connection signal="timeout" from="ContenedorSalud/TiempoDeGeneracion" to="ContenedorSalud" method="_on_TiempoDeGeneracion_timeout"]

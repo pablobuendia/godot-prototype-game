@@ -10,7 +10,6 @@ func _ready():
 	randomize()
 
 func game_over():
-	get_tree().paused = true
 	$Player.monitoring = false
 	$Player.monitorable= false
 	$Player.hide()
@@ -19,9 +18,9 @@ func game_over():
 	$RedTimer.stop()
 	$HUD.show_game_over()
 	$ContenedorMonedas/TiempoDeGeneracion.stop()
+	$ContenedorSalud/TiempoDeGeneracion.stop()
 
 func new_game():
-	get_tree().paused = false
 	score = 0
 	vida = 3
 	$Player.start($StartPosition.position)
@@ -31,10 +30,7 @@ func new_game():
 	$HUD.update_score(score)
 	$HUD.update_vida(vida)
 	$ContenedorMonedas/TiempoDeGeneracion.start()
-	
-func _on_Player_update_vida():
-	vida -=1
-	$HUD.update_vida(vida)
+	$ContenedorSalud/TiempoDeGeneracion.start()
 	
 func _on_StartTimer_timeout():
 	$FishTimer_Left.start()
@@ -90,5 +86,11 @@ func _on_RedTimer_timeout():
 	red.linear_velocity = velocity.rotated(direction)
 	add_child(red)
 
-func _on_Player_red(): #Desaparece la red cuando toca al lobo
-	$Red.queue_free()
+func _on_Player_miss_vida():
+	vida -=1
+	$HUD.update_vida(vida)
+
+
+func _on_Player_win_vida():
+	vida +=1
+	$HUD.update_vida(vida)

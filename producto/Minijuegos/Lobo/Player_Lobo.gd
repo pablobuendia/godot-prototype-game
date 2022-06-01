@@ -2,9 +2,9 @@ class_name Player_Lobo
 extends Area2D
 
 signal hit #señal para terminar el juego
-signal update_vida #señal para que se actualice el valor de vida en el main
+signal miss_vida #señal para que se actualice el valor de vida en el main
+signal win_vida
 signal update_score #señal para la moneda
-signal red #señal para que la red desaparezca
 
 export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
@@ -39,9 +39,10 @@ func _process(delta):
 
 func _on_Player_body_entered(body):
 	vida -=1
-	emit_signal("update_vida")
-	if body is RigidBody2D: #Sé que tiene que ser en grupo pero me salio mal
-	 emit_signal("red")
+	emit_signal("miss_vida")
+	if body.is_in_group("red"): 
+		emit_signal("red")
+		body._desaparecer()
 	if vida==0:
 		emit_signal("hit")
 
@@ -51,5 +52,10 @@ func start(pos):
 	$CollisionShape2D.disabled = false
 	
 func _on_Player_area_entered(area):
-	emit_signal("update_score")
+	if area.is_in_group("salud"):
+		print("Entra")
+		vida += 1
+		emit_signal("win_vida")
+	else:
+		emit_signal("update_score")
 	area._desaparecer()

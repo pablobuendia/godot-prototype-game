@@ -2,7 +2,7 @@
 
 [ext_resource path="res://Minijuegos/Pesca/Componentes/Bote.gd" type="Script" id=1]
 [ext_resource path="res://assets/img/yellow-right.png" type="Texture" id=2]
-[ext_resource path="res://Minijuegos/Pesca/Componentes/Anzuelo.tscn" type="PackedScene" id=3]
+[ext_resource path="res://assets/fonts/Anzuelo.tscn" type="PackedScene" id=3]
 
 [node name="Bote" type="Node2D"]
 script = ExtResource( 1 )

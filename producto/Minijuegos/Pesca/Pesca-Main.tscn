@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://assets/img/Fondos/fondo_marino.png" type="Texture" id=1]
 [ext_resource path="res://assets/img/Fondos/sea.png" type="Texture" id=2]
@@ -8,6 +8,7 @@
 [ext_resource path="res://Minijuegos/Pesca/Componentes/Bote.tscn" type="PackedScene" id=6]
 [ext_resource path="res://assets/img/Idle.png" type="Texture" id=7]
 [ext_resource path="res://assets/sounds/sea.mp3" type="AudioStream" id=8]
+[ext_resource path="res://assets/sounds/victory.wav" type="AudioStream" id=9]
 
 [sub_resource type="Curve2D" id=2]
 _data = {
@@ -28,22 +29,33 @@ script = ExtResource( 5 )
 pez_scene = ExtResource( 4 )
 
 [node name="PosicionComienzo" type="Position2D" parent="."]
-position = Vector2( 0, -80 )
+position = Vector2( 150, -80 )
 
 [node name="Jugador" parent="." instance=ExtResource( 6 )]
-position = Vector2( 0, -80 )
+position = Vector2( 150, -80 )
 
 [node name="Mar" type="Sprite" parent="."]
 position = Vector2( 178, -75 )
 scale = Vector2( 0.707, 0.493 )
 texture = ExtResource( 2 )
 
-[node name="Puntaje" type="Label" parent="."]
+[node name="Puntaje_leyenda" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
 margin_left = -324.0
-margin_top = -174.0
-margin_right = -284.0
-margin_bottom = -160.0
+margin_top = -180.0
+margin_right = -268.0
+margin_bottom = -165.0
 rect_scale = Vector2( 3, 3 )
+text = "Puntaje: "
+
+[node name="Puntaje_valor" type="Label" parent="."]
+modulate = Color( 0, 0, 0, 1 )
+margin_left = -152.0
+margin_top = -180.0
+margin_right = -95.0
+margin_bottom = -165.0
+rect_scale = Vector2( 3, 3 )
+text = "0"
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2( 174, 108 )
@@ -63,10 +75,9 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PezSpawnTimerIzq" type="Timer" parent="."]
-wait_time = 7.0
+wait_time = 2.0
 
 [node name="PezSpawnTimerDer" type="Timer" parent="."]
-wait_time = 10.0
 
 [node name="PezPathIzq" type="Path2D" parent="."]
 curve = SubResource( 2 )
@@ -107,13 +118,27 @@ visibility_mode = 1
 [node name="Musica_fondo" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
 volume_db = 1.0
-autoplay = true
+
+[node name="Label_victoria" type="Label" parent="."]
+visible = false
+modulate = Color( 0, 0, 0, 1 )
+margin_left = 21.0
+margin_top = 86.0
+margin_right = 118.0
+margin_bottom = 100.0
+rect_scale = Vector2( 3, 3 )
+text = "¡HAS GANADO!"
+align = 2
+
+[node name="Musica_victoria" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
 
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezSpawnTimerIzq_timeout"]
 [connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezTimer_timeout"]
 [connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezTimerIzq_timeout"]
-[connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezSpawnTimerIzq_timeout"]
-[connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezTimerDer_timeout"]
-[connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezTimer_timeout"]
 [connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezSpawnTimerDer_timeout"]
+[connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezTimer_timeout"]
+[connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezTimerDer_timeout"]
 [connection signal="pressed" from="Button_left" to="." method="_on_Button_left_pressed"]
+[connection signal="finished" from="Musica_victoria" to="." method="_on_Musica_victoria_finished"]

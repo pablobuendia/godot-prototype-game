@@ -1,4 +1,10 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Minijuegos/Lanchas/etc/LevelButton.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/img/Fondos/sea.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Fondos/mar.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/underwater tileable.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/Fondos/Puerto-mar-del-plata.jpg" type="Texture" id=5]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -11,7 +17,7 @@ script/source = "extends Control
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	pass # Replace with function body.
+	OS.center_window()
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -24,19 +30,62 @@ func _on_StartGame1Button_pressed():
 
 
 func _on_StartGame2Button_pressed():
+	get_tree().change_scene(\"res://Minijuegos/Lanchas/scenes/main.tscn\")
+	
+func _on_StartGame3Button_pressed():
+	get_tree().change_scene(\"res://Minijuegos/Lobo/Main_Lobo.tscn\")
+
+
+func _on_LevelButton_on_press():
+	get_tree().change_scene(\"res://Minijuegos/Pesca/Pesca-Main.tscn\")
+
+
+func _on_LevelButton2_on_press():
+	get_tree().change_scene(\"res://Minijuegos/Lanchas/scenes/main.tscn\")
+
+
+func _on_LevelButton3_on_press():
 	get_tree().change_scene(\"res://Minijuegos/Lobo/Main_Lobo.tscn\")
 "
 
 [node name="Main-Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -2.11902
+margin_right = -2.11902
 script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1029.0
+margin_bottom = 600.0
+texture = ExtResource( 5 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="BackShadow" type="ColorRect" parent="."]
+margin_left = -1446.0
+margin_top = -1995.0
+margin_right = 2204.0
+margin_bottom = 3117.0
+focus_previous = NodePath("../Popup")
+color = Color( 0.054902, 0.054902, 0.172549, 0.423529 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 7.0
 margin_top = 437.0
 margin_right = 262.0
 margin_bottom = 597.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="StartGame1Button" type="Button" parent="VBoxContainer"]
 margin_right = 255.0
@@ -73,5 +122,33 @@ margin_right = 255.0
 margin_bottom = 140.0
 text = "Salir del juego"
 
+[node name="BtnPesca" parent="." instance=ExtResource( 1 )]
+margin_left = 66.1554
+margin_top = 149.194
+margin_right = 106.155
+margin_bottom = 189.194
+label = "PESCA"
+img = ExtResource( 3 )
+
+[node name="BtnLancha" parent="." instance=ExtResource( 1 )]
+margin_left = 381.113
+margin_top = 149.075
+margin_right = 421.113
+margin_bottom = 189.075
+label = "OBSTACULOS"
+img = ExtResource( 2 )
+
+[node name="BtnLobo" parent="." instance=ExtResource( 1 )]
+margin_left = 697.298
+margin_top = 150.016
+margin_right = 737.298
+margin_bottom = 190.016
+img = ExtResource( 4 )
+
 [connection signal="pressed" from="VBoxContainer/StartGame1Button" to="." method="_on_StartGame1Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartGame2Button" to="." method="_on_StartGame2Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartGame3Button" to="." method="_on_StartGame3Button_pressed"]
+[connection signal="mouse_entered" from="BtnPesca" to="." method="_on_BtnPesca_mouse_entered"]
+[connection signal="on_press" from="BtnPesca" to="." method="_on_LevelButton_on_press"]
+[connection signal="on_press" from="BtnLancha" to="." method="_on_LevelButton2_on_press"]
+[connection signal="on_press" from="BtnLobo" to="." method="_on_LevelButton3_on_press"]

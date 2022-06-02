@@ -1,0 +1,123 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://Minijuegos/Lanchas/assets/dialog.png" type="Texture" id=1]
+[ext_resource path="res://Minijuegos/Lanchas/assets/fonts/CelticSea-8MLXz.ttf" type="DynamicFontData" id=2]
+[ext_resource path="res://Minijuegos/Lanchas/etc/DialogScript.gd" type="Script" id=3]
+[ext_resource path="res://Minijuegos/Lanchas/assets/fc96e3af6cdbeb035e72df54427fb01c.png" type="Texture" id=4]
+
+[sub_resource type="DynamicFont" id=1]
+size = 35
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="AtlasTexture" id=2]
+atlas = ExtResource( 1 )
+region = Rect2( 480, 10, 130, 200 )
+
+[sub_resource type="Animation" id=3]
+resource_name = "AnchorIdle"
+loop = true
+tracks/0/type = "bezier"
+tracks/0/path = NodePath("TextureRect:rect_position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"points": PoolRealArray( 812.159, -0.25, 0, 0.25, 0, 812.159, -0.25, 0, 0.25, 0, 812.159, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+tracks/1/type = "bezier"
+tracks/1/path = NodePath("TextureRect:rect_position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"points": PoolRealArray( 512.936, -0.25, 0, 0.25, 0, 522.936, -0.25, 0, 0.25, 0, 512.936, -0.25, 0, 0.25, 0 ),
+"times": PoolRealArray( 0, 0.5, 1 )
+}
+
+[node name="Control" type="Control"]
+pause_mode = 2
+margin_right = 321.0
+margin_bottom = 320.0
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Panel" type="TextureButton" parent="."]
+margin_left = 385.0
+margin_top = 344.0
+margin_right = 1014.0
+margin_bottom = 589.0
+expand = true
+stretch_mode = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+margin_right = 629.0
+margin_bottom = 246.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect2" type="ColorRect" parent="Panel"]
+margin_left = 10.0
+margin_top = 9.0
+margin_right = 619.0
+margin_bottom = 237.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ColorRect3" type="ColorRect" parent="Panel"]
+margin_left = 17.0
+margin_top = 17.0
+margin_right = 613.0
+margin_bottom = 229.0
+color = Color( 0, 0, 0, 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
+margin_left = 42.3393
+margin_top = 43.3353
+margin_right = 449.339
+margin_bottom = 210.335
+mouse_filter = 1
+custom_fonts/normal_font = SubResource( 1 )
+text = "Bienvenido al Puerto de Mar del Plata, hoy te tengo preparada una expedicion muy divertida!"
+fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 931.948, 465.986 )
+texture = SubResource( 2 )
+flip_h = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+pause_mode = 2
+margin_left = 812.159
+margin_top = 513.133
+margin_right = 852.159
+margin_bottom = 553.133
+texture = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+pause_mode = 2
+method_call_mode = 1
+anims/AnchorIdle = SubResource( 3 )
+[connection signal="pressed" from="Panel" to="." method="_on_Panel_pressed"]

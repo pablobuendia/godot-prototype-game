@@ -16,7 +16,7 @@ func game_over():
 	$FishTimer_Left.stop()
 	$FishTimer_Right.stop()
 	$RedTimer.stop()
-	$HUD.show_game_over()
+	$HUD.show_game_over(score)
 	$ContenedorMonedas/TiempoDeGeneracion.stop()
 	$ContenedorSalud/TiempoDeGeneracion.stop()
 
@@ -31,6 +31,7 @@ func new_game():
 	$HUD.update_vida(vida)
 	$ContenedorMonedas/TiempoDeGeneracion.start()
 	$ContenedorSalud/TiempoDeGeneracion.start()
+	$AreaLineaFinish/TiempoDeFinalizacion.start()
 	
 func _on_StartTimer_timeout():
 	$FishTimer_Left.start()
@@ -94,3 +95,14 @@ func _on_Player_miss_vida():
 func _on_Player_win_vida():
 	vida +=1
 	$HUD.update_vida(vida)
+
+func _game_win():
+	$HUD.show_game_win(score)
+	$Player.monitoring = false
+	$Player.monitorable= false
+	$Player.hide()
+	$FishTimer_Left.stop()
+	$FishTimer_Right.stop()
+	$RedTimer.stop()
+	$ContenedorMonedas/TiempoDeGeneracion.stop()
+	$ContenedorSalud/TiempoDeGeneracion.stop()

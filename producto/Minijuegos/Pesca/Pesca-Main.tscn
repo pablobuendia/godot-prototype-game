@@ -138,7 +138,7 @@ stream = ExtResource( 9 )
 [connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezTimer_timeout"]
 [connection signal="timeout" from="PezSpawnTimerIzq" to="." method="_on_PezTimerIzq_timeout"]
 [connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezSpawnTimerDer_timeout"]
-[connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezTimer_timeout"]
 [connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezTimerDer_timeout"]
+[connection signal="timeout" from="PezSpawnTimerDer" to="." method="_on_PezTimer_timeout"]
 [connection signal="pressed" from="Button_left" to="." method="_on_Button_left_pressed"]
 [connection signal="finished" from="Musica_victoria" to="." method="_on_Musica_victoria_finished"]

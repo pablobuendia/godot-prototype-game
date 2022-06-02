@@ -3,27 +3,13 @@
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
-
-# Declare member variables here. Examples:
-# var a = 2
-# var b = \"text\"
-
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 
 func _on_StartGame1Button_pressed():
 	get_tree().change_scene(\"res://Minijuegos/Pesca/Pesca-Main.tscn\")
 
-
-func _on_StartGame2Button_pressed():
+func _on_StartGame3Button_pressed():
 	get_tree().change_scene(\"res://Minijuegos/Lobo/Main_Lobo.tscn\")
 "
 
@@ -55,23 +41,17 @@ margin_right = 255.0
 margin_bottom = 68.0
 text = "Comenzar minijuego escape de lobo"
 
-[node name="StartGame4Button" type="Button" parent="VBoxContainer"]
+[node name="OptionsButton" type="Button" parent="VBoxContainer"]
 margin_top = 72.0
 margin_right = 255.0
 margin_bottom = 92.0
-text = "Comenzar minijuego restaurante"
-
-[node name="OptionsButton" type="Button" parent="VBoxContainer"]
-margin_top = 96.0
-margin_right = 255.0
-margin_bottom = 116.0
 text = "Opciones"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer"]
-margin_top = 120.0
+margin_top = 96.0
 margin_right = 255.0
-margin_bottom = 140.0
+margin_bottom = 116.0
 text = "Salir del juego"
 
 [connection signal="pressed" from="VBoxContainer/StartGame1Button" to="." method="_on_StartGame1Button_pressed"]
-[connection signal="pressed" from="VBoxContainer/StartGame2Button" to="." method="_on_StartGame2Button_pressed"]
+[connection signal="pressed" from="VBoxContainer/StartGame3Button" to="." method="_on_StartGame3Button_pressed"]

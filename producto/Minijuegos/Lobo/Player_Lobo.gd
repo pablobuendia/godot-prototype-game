@@ -1,10 +1,11 @@
 class_name Player_Lobo
 extends Area2D
 
-signal hit #señal para terminar el juego
+signal hit #señal para el juego perdido
 signal miss_vida #señal para que se actualice el valor de vida en el main
 signal win_vida
 signal update_score #señal para la moneda
+signal win #señal para el juego ganado
 
 export var speed = 400 # How fast the player will move (pixels/sec).
 var screen_size # Size of the game window.
@@ -45,6 +46,7 @@ func _on_Player_body_entered(body):
 		body._desaparecer()
 	if vida==0:
 		emit_signal("hit")
+		hide()
 
 func start(pos):
 	position = pos
@@ -53,9 +55,11 @@ func start(pos):
 	
 func _on_Player_area_entered(area):
 	if area.is_in_group("salud"):
-		print("Entra")
 		vida += 1
 		emit_signal("win_vida")
 	else:
 		emit_signal("update_score")
+	if area.is_in_group("linea"):
+		emit_signal("win")
+		hide()
 	area._desaparecer()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/HUD_Lobo.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -15,7 +15,24 @@ size = 55
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 64
+size = 25
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 60
+outline_color = Color( 0.113725, 0.101961, 0.101961, 1 )
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 42
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 52
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 30
 font_data = ExtResource( 2 )
 
 [node name="HUD" type="CanvasLayer"]
@@ -59,6 +76,19 @@ custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Jugar"
 
+[node name="JugarDeNuevo" type="Button" parent="."]
+visible = false
+anchor_left = 0.352539
+anchor_top = 0.625
+anchor_right = 0.636719
+anchor_bottom = 0.713333
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "Jugar de nuevo"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
 [node name="TextureButton" type="TextureButton" parent="."]
 pause_mode = 2
 margin_left = 136.0
@@ -66,5 +96,115 @@ margin_right = 186.0
 margin_bottom = 50.0
 texture_normal = ExtResource( 5 )
 
+[node name="Juego_Ganado" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 356.0
+margin_top = 153.0
+margin_right = 687.0
+margin_bottom = 383.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/selection_color = Color( 0.0156863, 0.00784314, 0.00784314, 1 )
+custom_colors/font_color_selected = Color( 0.0352941, 0.00784314, 0.00784314, 1 )
+custom_colors/font_color_shadow = Color( 0.054902, 0.0117647, 0.0117647, 1 )
+custom_fonts/normal_font = SubResource( 4 )
+text = "Ganaste!"
+
+[node name="ColorRect" type="ColorRect" parent="Juego_Ganado"]
+show_behind_parent = true
+margin_left = -2.0
+margin_top = -1.0
+margin_right = 334.0
+margin_bottom = 159.0
+color = Color( 0.0235294, 1, 0.792157, 1 )
+
+[node name="ScoreFinish" type="Label" parent="Juego_Ganado"]
+margin_left = 172.0
+margin_top = 99.0
+margin_right = 234.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 5 )
+text = "0"
+
+[node name="Coin" type="Sprite" parent="Juego_Ganado/ScoreFinish"]
+position = Vector2( -31, 26 )
+texture = ExtResource( 3 )
+
+[node name="Juego_Perdido" type="RichTextLabel" parent="."]
+visible = false
+margin_left = 356.0
+margin_top = 153.0
+margin_right = 687.0
+margin_bottom = 383.0
+custom_colors/default_color = Color( 1, 1, 1, 1 )
+custom_colors/selection_color = Color( 0.0156863, 0.00784314, 0.00784314, 1 )
+custom_colors/font_color_selected = Color( 0.0352941, 0.00784314, 0.00784314, 1 )
+custom_colors/font_color_shadow = Color( 0.054902, 0.0117647, 0.0117647, 1 )
+custom_fonts/normal_font = SubResource( 4 )
+text = "Perdiste :("
+
+[node name="ColorRect" type="ColorRect" parent="Juego_Perdido"]
+show_behind_parent = true
+margin_left = -2.0
+margin_top = -1.0
+margin_right = 334.0
+margin_bottom = 159.0
+color = Color( 1, 0.482353, 0.0235294, 1 )
+
+[node name="ScoreFinish" type="Label" parent="Juego_Perdido"]
+margin_left = 172.0
+margin_top = 99.0
+margin_right = 234.0
+margin_bottom = 170.0
+custom_fonts/font = SubResource( 5 )
+text = "0"
+
+[node name="Coin" type="Sprite" parent="Juego_Perdido/ScoreFinish"]
+position = Vector2( -31, 26 )
+texture = ExtResource( 3 )
+
+[node name="Nivel" type="RichTextLabel" parent="."]
+visible = false
+anchor_bottom = 0.134
+margin_left = 372.0
+margin_top = 147.0
+margin_right = 631.0
+margin_bottom = 318.0
+custom_fonts/normal_font = SubResource( 6 )
+text = "    Nivel"
+
+[node name="ColorRect" type="ColorRect" parent="Nivel"]
+show_behind_parent = true
+margin_right = 268.0
+margin_bottom = 247.0
+color = Color( 0.278431, 0.772549, 0.760784, 1 )
+
+[node name="Facil" type="Button" parent="Nivel"]
+margin_left = 88.0
+margin_top = 68.0
+margin_right = 178.0
+margin_bottom = 111.0
+custom_fonts/font = SubResource( 7 )
+text = "Fácil"
+
+[node name="Medio" type="Button" parent="Nivel"]
+margin_left = 79.0
+margin_top = 124.0
+margin_right = 188.0
+margin_bottom = 167.0
+custom_fonts/font = SubResource( 7 )
+text = "Medio"
+
+[node name="Dificil" type="Button" parent="Nivel"]
+margin_left = 87.0
+margin_top = 180.0
+margin_right = 184.0
+margin_bottom = 223.0
+custom_fonts/font = SubResource( 7 )
+text = "Dificil"
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
+[connection signal="pressed" from="JugarDeNuevo" to="." method="_on_JugarDeNuevo_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_pause_pressed"]
+[connection signal="pressed" from="Nivel/Facil" to="." method="_on_Facil_pressed"]
+[connection signal="pressed" from="Nivel/Medio" to="." method="_on_Medio_pressed"]
+[connection signal="pressed" from="Nivel/Dificil" to="." method="_on_Dificil_pressed"]

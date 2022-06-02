@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/Player_Lobo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Minijuegos/Lobo/Pez.tscn" type="PackedScene" id=2]
@@ -11,6 +11,9 @@
 [ext_resource path="res://Minijuegos/Lobo/Pantalla.gd" type="Script" id=9]
 [ext_resource path="res://assets/img/underwater tileable.png" type="Texture" id=10]
 [ext_resource path="res://Minijuegos/Lobo/ContenedorMonedas.gd" type="Script" id=11]
+[ext_resource path="res://Minijuegos/Lobo/joystick/joystick.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Minijuegos/Lobo/AreaLineaFinish.gd" type="Script" id=13]
+[ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=14]
 
 [sub_resource type="SegmentShape2D" id=8]
 a = Vector2( 1010, 468 )
@@ -31,7 +34,15 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 783, -3 )
 }
 
-[node name="Main" type="Node2D" groups=["red", "salud"]]
+[sub_resource type="DynamicFont" id=9]
+size = 25
+font_data = ExtResource( 14 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 22, 231.647 )
+
+[node name="Main" type="Node2D" groups=["linea", "red", "salud"]]
+position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 pez_scene = ExtResource( 2 )
 red_scene = ExtResource( 4 )
@@ -105,6 +116,14 @@ rotation = 1.57527
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
 
+[node name="Control" type="Control" parent="HUD"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="Joystick" parent="HUD/Control" instance=ExtResource( 12 )]
+position = Vector2( 197, 473 )
+_isDynamicallyShowing = true
+
 [node name="RedPath" type="Path2D" parent="."]
 curve = SubResource( 7 )
 
@@ -124,11 +143,46 @@ script = ExtResource( 8 )
 [node name="TiempoDeGeneracion" type="Timer" parent="ContenedorSalud"]
 wait_time = 30.0
 
+[node name="AreaLineaFinish" type="Area2D" parent="."]
+position = Vector2( -51, -7 )
+scale = Vector2( 1, 1.01663 )
+script = ExtResource( 13 )
+
+[node name="LineaFinish" type="Line2D" parent="AreaLineaFinish"]
+points = PoolVector2Array( 971, 9, 971, 126, 971, 467.213 )
+width = 5.0
+default_color = Color( 0.556863, 1, 0.937255, 1 )
+
+[node name="LineaFinish2" type="Line2D" parent="AreaLineaFinish/LineaFinish"]
+position = Vector2( 40, 1.95092 )
+points = PoolVector2Array( 971, 9, 971, 126, 971, 467.213 )
+width = 5.0
+default_color = Color( 0.4, 1, 0.913725, 1 )
+
+[node name="Finish" type="Label" parent="AreaLineaFinish/LineaFinish"]
+margin_left = 1003.0
+margin_top = 32.0
+margin_right = 1423.0
+margin_bottom = 60.0
+rect_rotation = 90.0
+custom_fonts/font = SubResource( 9 )
+text = "FINISH"
+align = 1
+
+[node name="Collision" type="CollisionShape2D" parent="AreaLineaFinish"]
+position = Vector2( 990, 237.549 )
+shape = SubResource( 10 )
+
+[node name="TiempoDeFinalizacion" type="Timer" parent="AreaLineaFinish"]
+wait_time = 60.0
+one_shot = true
+
 [connection signal="area_entered" from="Player" to="Player" method="_on_Player_area_entered"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="hit" from="Player" to="." method="game_over"]
 [connection signal="miss_vida" from="Player" to="." method="_on_Player_miss_vida"]
 [connection signal="update_score" from="Player" to="." method="_on_Player_update_score"]
+[connection signal="win" from="Player" to="." method="_game_win"]
 [connection signal="win_vida" from="Player" to="." method="_on_Player_win_vida"]
 [connection signal="timeout" from="FishTimer_Left" to="." method="_on_FishTimer_Left_timeout"]
 [connection signal="timeout" from="FishTimer_Right" to="." method="_on_FishTimer_Right_timeout"]
@@ -137,3 +191,4 @@ wait_time = 30.0
 [connection signal="start_game" from="HUD" to="." method="new_game"]
 [connection signal="timeout" from="ContenedorMonedas/TiempoDeGeneracion" to="ContenedorMonedas" method="_on_TiempoDeGeneracion_timeout"]
 [connection signal="timeout" from="ContenedorSalud/TiempoDeGeneracion" to="ContenedorSalud" method="_on_TiempoDeGeneracion_timeout"]
+[connection signal="timeout" from="AreaLineaFinish/TiempoDeFinalizacion" to="AreaLineaFinish" method="_on_TiempoDeFinalizacion_timeout"]

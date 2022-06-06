@@ -1,0 +1,357 @@
+[gd_scene load_steps=25 format=2]
+
+[ext_resource path="res://assets/img/Fondos/water2.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/Fondos/sky2.jpg" type="Texture" id=2]
+[ext_resource path="res://assets/img/left_button.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/Fondos/water3.png" type="Texture" id=4]
+[ext_resource path="res://assets/sounds/victory.wav" type="AudioStream" id=5]
+[ext_resource path="res://assets/img/Fondos/water4.png" type="Texture" id=6]
+[ext_resource path="res://Minijuegos/Pesca/Componentes/Pez.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/img/Fondos/fondo_marino1.png" type="Texture" id=8]
+[ext_resource path="res://assets/sounds/sea.mp3" type="AudioStream" id=9]
+[ext_resource path="res://assets/img/Fondos/water1.png" type="Texture" id=10]
+[ext_resource path="res://assets/img/Fondos/fondo_marino.png" type="Texture" id=11]
+[ext_resource path="res://Minijuegos/Pesca/Componentes/Bote.tscn" type="PackedScene" id=12]
+[ext_resource path="res://Minijuegos/Pesca/Pesca-Nivel.gd" type="Script" id=13]
+[ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=14]
+[ext_resource path="res://assets/sounds/game_over.wav" type="AudioStream" id=16]
+[ext_resource path="res://assets/img/action_button.png" type="Texture" id=17]
+[ext_resource path="res://assets/img/right_button.png" type="Texture" id=18]
+[ext_resource path="res://Minijuegos/Pesca/Button_rod.gd" type="Script" id=19]
+
+[sub_resource type="DynamicFont" id=6]
+size = 20
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 14 )
+
+[sub_resource type="SpriteFrames" id=5]
+animations = [ {
+"frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 10 ) ],
+"loop": true,
+"name": "default",
+"speed": 1.45
+} ]
+
+[sub_resource type="Curve2D" id=2]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, -338, 397, 0, 0, 0, 0, -338, 53 )
+}
+
+[sub_resource type="Curve2D" id=3]
+_data = {
+"points": PoolVector2Array( 0, 0, 0, 0, 686, 53, 0, 0, 0, 0, 686, 397 )
+}
+
+[sub_resource type="DynamicFont" id=7]
+font_data = ExtResource( 14 )
+
+[sub_resource type="DynamicFont" id=8]
+font_data = ExtResource( 14 )
+
+[node name="Pesca-Main" type="Node2D"]
+position = Vector2( 346, 195 )
+script = ExtResource( 13 )
+pez_scene = ExtResource( 7 )
+
+[node name="info_victoria" type="TextureButton" parent="."]
+visible = false
+margin_left = 45.0
+margin_top = 138.0
+margin_right = 264.0
+margin_bottom = 174.0
+expand = true
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="info_victoria"]
+margin_right = 219.0
+margin_bottom = 34.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="info_victoria"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 217.0
+margin_bottom = 32.0
+
+[node name="ColorRect3" type="ColorRect" parent="info_victoria"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 216.0
+margin_bottom = 31.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="victoria_label" type="RichTextLabel" parent="info_victoria"]
+margin_left = 38.0
+margin_top = 3.0
+margin_right = 187.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 32, 53 )
+mouse_filter = 1
+custom_fonts/normal_font = SubResource( 6 )
+text = "¡Has ganado!"
+fit_content_height = true
+
+[node name="Info_panel" type="TextureButton" parent="."]
+margin_left = 457.0
+margin_top = -195.0
+margin_right = 676.0
+margin_bottom = -159.0
+expand = true
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Info_panel"]
+margin_left = -59.0
+margin_right = 219.0
+margin_bottom = 34.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Info_panel"]
+margin_left = -57.0
+margin_top = 2.0
+margin_right = 217.0
+margin_bottom = 32.0
+
+[node name="ColorRect3" type="ColorRect" parent="Info_panel"]
+margin_left = -56.0
+margin_top = 3.0
+margin_right = 216.0
+margin_bottom = 31.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="info_label" type="RichTextLabel" parent="Info_panel"]
+margin_left = -52.0
+margin_top = 5.0
+margin_right = 214.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 32, 53 )
+mouse_filter = 1
+custom_fonts/normal_font = SubResource( 6 )
+fit_content_height = true
+
+[node name="Info_vidas" type="TextureButton" parent="."]
+margin_left = -63.0
+margin_top = -195.0
+margin_right = 58.0
+margin_bottom = -159.0
+expand = true
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Info_vidas"]
+margin_left = -59.0
+margin_right = 110.0
+margin_bottom = 34.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Info_vidas"]
+margin_left = -57.0
+margin_top = 2.0
+margin_right = 108.0
+margin_bottom = 32.0
+
+[node name="ColorRect3" type="ColorRect" parent="Info_vidas"]
+margin_left = -56.0
+margin_top = 3.0
+margin_right = 107.0
+margin_bottom = 31.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="Vidas_label" type="RichTextLabel" parent="Info_vidas"]
+margin_left = -52.0
+margin_top = 5.0
+margin_right = 105.0
+margin_bottom = 31.0
+rect_pivot_offset = Vector2( 32, 53 )
+mouse_filter = 1
+custom_fonts/normal_font = SubResource( 6 )
+fit_content_height = true
+
+[node name="Button_left" type="TouchScreenButton" parent="."]
+position = Vector2( -299, 230 )
+scale = Vector2( 0.6, 0.5 )
+normal = ExtResource( 3 )
+action = "Boat_left"
+visibility_mode = 1
+
+[node name="Button_right" type="TouchScreenButton" parent="."]
+position = Vector2( 537, 230 )
+scale = Vector2( 0.6, 0.5 )
+normal = ExtResource( 18 )
+action = "Boat_right"
+visibility_mode = 1
+
+[node name="Button_rod" type="TouchScreenButton" parent="."]
+position = Vector2( 537, 105 )
+scale = Vector2( 0.44, 0.6 )
+normal = ExtResource( 17 )
+action = "Boat_rod"
+visibility_mode = 1
+script = ExtResource( 19 )
+
+[node name="AnzueloTimer" type="Timer" parent="Button_rod"]
+one_shot = true
+
+[node name="FondoMar" type="AnimatedSprite" parent="."]
+position = Vector2( 170.5, 188 )
+scale = Vector2( 0.767936, 0.570312 )
+z_index = -1
+frames = SubResource( 5 )
+frame = 1
+playing = true
+
+[node name="FondoMarino1" type="Sprite" parent="FondoMar"]
+position = Vector2( 587.94, 254.247 )
+scale = Vector2( 0.338407, 0.39211 )
+texture = ExtResource( 11 )
+
+[node name="FondoMarino2" type="Sprite" parent="FondoMar"]
+position = Vector2( -168.634, 170.082 )
+scale = Vector2( 0.826892, 0.817952 )
+texture = ExtResource( 8 )
+
+[node name="FondoCielo" type="Sprite" parent="."]
+position = Vector2( 165, -17 )
+scale = Vector2( 0.508789, 0.357422 )
+z_index = -2
+texture = ExtResource( 2 )
+
+[node name="Jugador" parent="." instance=ExtResource( 12 )]
+position = Vector2( 150, -65 )
+scale = Vector2( 0.7, 0.7 )
+
+[node name="PosicionComienzo" type="Position2D" parent="Jugador"]
+position = Vector2( 150, -65 )
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2( 174, 108 )
+
+[node name="StartTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="PezPathIzq" type="Path2D" parent="."]
+curve = SubResource( 2 )
+
+[node name="PezSpawnLocation" type="PathFollow2D" parent="PezPathIzq"]
+position = Vector2( -338, 397 )
+rotation = -1.5708
+
+[node name="PezSpawnTimerIzq" type="Timer" parent="PezPathIzq"]
+wait_time = 3.0
+
+[node name="PezPathDer" type="Path2D" parent="."]
+curve = SubResource( 3 )
+
+[node name="PezSpawnLocation" type="PathFollow2D" parent="PezPathDer"]
+position = Vector2( 686, 53 )
+rotation = 1.57077
+
+[node name="PezSpawnTimerDer" type="Timer" parent="PezPathDer"]
+wait_time = 2.0
+
+[node name="Musica_fondo" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+volume_db = 1.0
+
+[node name="Musica_victoria" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+
+[node name="Musica_derrota" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 16 )
+
+[node name="Pausar" type="Button" parent="."]
+pause_mode = 2
+margin_left = 556.0
+margin_top = -158.0
+margin_right = 674.0
+margin_bottom = -124.0
+custom_fonts/font = SubResource( 7 )
+text = "Pausar"
+
+[node name="Volver" type="Button" parent="."]
+pause_mode = 2
+margin_left = 400.0
+margin_top = -158.0
+margin_right = 551.0
+margin_bottom = -124.0
+custom_fonts/font = SubResource( 8 )
+text = "Volver al menú"
+
+[node name="Panel" type="TextureButton" parent="."]
+margin_left = -344.0
+margin_top = -195.0
+margin_right = -124.0
+margin_bottom = -123.0
+expand = true
+stretch_mode = 1
+
+[node name="ColorRect" type="ColorRect" parent="Panel"]
+margin_right = 221.0
+margin_bottom = 75.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="ColorRect2" type="ColorRect" parent="Panel"]
+margin_left = 2.0
+margin_top = 2.0
+margin_right = 219.0
+margin_bottom = 73.0
+
+[node name="ColorRect3" type="ColorRect" parent="Panel"]
+margin_left = 3.0
+margin_top = 3.0
+margin_right = 218.0
+margin_bottom = 72.0
+color = Color( 0, 0, 0, 1 )
+
+[node name="cantidad_label1" type="RichTextLabel" parent="Panel"]
+margin_left = 91.0
+margin_top = 12.0
+margin_right = 161.0
+margin_bottom = 36.0
+rect_pivot_offset = Vector2( 32, 53 )
+mouse_filter = 1
+custom_fonts/normal_font = SubResource( 6 )
+text = "x"
+fit_content_height = true
+
+[node name="cantidad_label2" type="RichTextLabel" parent="Panel"]
+margin_left = 92.0
+margin_top = 43.0
+margin_right = 162.0
+margin_bottom = 67.0
+rect_pivot_offset = Vector2( 32, 53 )
+mouse_filter = 1
+custom_fonts/normal_font = SubResource( 6 )
+text = "x"
+fit_content_height = true
+
+[node name="Pez_objetivo1" parent="Panel" instance=ExtResource( 7 )]
+position = Vector2( 46, 22 )
+z_index = 2
+collision_layer = 0
+collision_mask = 0
+contacts_reported = 0
+contact_monitor = false
+
+[node name="Pez_objetivo2" parent="Panel" instance=ExtResource( 7 )]
+position = Vector2( 47, 56 )
+z_index = 2
+collision_layer = 0
+collision_mask = 0
+contacts_reported = 0
+contact_monitor = false
+
+[connection signal="pressed" from="Button_left" to="." method="_on_Button_left_pressed"]
+[connection signal="timeout" from="Button_rod/AnzueloTimer" to="Button_rod" method="_on_AnzueloTimer_timeout"]
+[connection signal="boton_anzuelo_pressed" from="Jugador" to="Button_rod" method="_on_Jugador_boton_anzuelo_pressed"]
+[connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezSpawnTimerIzq_timeout"]
+[connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezTimer_timeout"]
+[connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezTimerIzq_timeout"]
+[connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezSpawnTimerDer_timeout"]
+[connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezTimer_timeout"]
+[connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezTimerDer_timeout"]
+[connection signal="finished" from="Musica_victoria" to="." method="_on_Musica_victoria_finished"]
+[connection signal="finished" from="Musica_derrota" to="." method="_on_Musica_derrota_finished"]
+[connection signal="pressed" from="Pausar" to="." method="_on_Pausar_pressed"]
+[connection signal="pressed" from="Volver" to="." method="_on_Volver_pressed"]

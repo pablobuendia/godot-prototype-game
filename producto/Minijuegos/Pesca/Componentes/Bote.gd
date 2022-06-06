@@ -1,10 +1,10 @@
 extends Node2D
-signal hit
+signal boton_anzuelo_pressed
 
 var screen_size
 export(PackedScene) var anzuelo_scene
-onready var bote_pos = Vector2(000, 000)
-onready var BOTE_SPEED = 150
+onready var bote_pos = Vector2(0, 0)
+onready var BOTE_SPEED = 200
 onready var BOTE_WOBBLING = 0
 onready var FRAME_COUNTER = 0
 onready var BOTE_WOBBLING_DIRECTION = 1
@@ -19,8 +19,7 @@ func start(pos):
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-# Muevo pad izquierdo
-	var change = 1 * BOTE_WOBBLING_DIRECTION
+	var change = BOTE_WOBBLING_DIRECTION
 	FRAME_COUNTER += 1
 	if (FRAME_COUNTER % 10 == 0):
 		if (randi() % 10 > 1):
@@ -42,7 +41,7 @@ func _process(delta):
 		BOTE_WOBBLING_DIRECTION = 1
 	if FRAME_COUNTER == 1000:
 		FRAME_COUNTER = 0
-		
+	
 	if Input.is_action_pressed("Boat_right"):
 		bote_pos.x += BOTE_SPEED * delta
 		$Bote_sprite.flip_h = false
@@ -54,13 +53,7 @@ func _process(delta):
 	if Input.is_action_just_released("Boat_rod"):
 		var anzuelo = anzuelo_scene.instance()
 		anzuelo.position = Vector2(0, 50)
-		anzuelo.gravity_scale = 3
+		anzuelo.gravity_scale = 2
 		anzuelo.get_child(1).visible = true
 		add_child(anzuelo)
-
-
-#func _on_Bote_body_entered(body):
-#	hide() # Player disappears after being hit.
-#	emit_signal("hit")
-#	# Must be deferred as we can't change physics properties on a physics callback.
-#	$CollisionShape2D.set_deferred("disabled", true)
+		emit_signal("boton_anzuelo_pressed")

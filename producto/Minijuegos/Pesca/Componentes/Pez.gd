@@ -14,13 +14,16 @@ const animation_event_frame_5 = animation_event_frame_1 * 5
 func _ready():
 	pass 
 
-func start(texture, escalaPez, flip_h):
+func start(texture, escalaPez, flip_h, spawn_location, velocidad_pez):
+	self.position = spawn_location
+	self.linear_velocity = velocidad_pez
+	self.scale = Vector2(escalaPez, escalaPez)
+	
 	CURRENT_TEXTURE = texture
 	self.get_child(CURRENT_TEXTURE).visible = true
 	self.get_child(CURRENT_TEXTURE).flip_h = flip_h
 	self.get_child(CURRENT_TEXTURE).scale = Vector2(escalaPez, escalaPez)
 	self.get_child(posicionNodoCollisionShape).scale = Vector2(escalaPez * 10, escalaPez * 10)
-	self.scale = Vector2(escalaPez, escalaPez)
 	show()
 
 func _process(delta):
@@ -59,7 +62,7 @@ func _on_Pez_body_entered(body):
 	$Tween.start()
 	
 	var nodo_padre = get_parent()
-	nodo_padre.set_puntaje(nodo_padre.get_puntaje() + 100)
+	nodo_padre.set_puntaje(CURRENT_TEXTURE - 3)
 
 func _on_Tween_tween_completed(object, key):
 	queue_free()

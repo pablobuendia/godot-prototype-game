@@ -1,8 +1,9 @@
 extends RigidBody2D
 
 func _ready():
-	gravity_scale = 5
+	gravity_scale = 20
 func _process(delta):
+	linear_velocity = Vector2(0,0)
 	if Input.is_action_pressed("move_up"):
 		linear_velocity = Vector2(0,-100)
 	if Input.is_action_pressed("move_right"):

@@ -5,7 +5,7 @@ signal start_game
 func show_game_over(score):
 	$Juego_Perdido.show()
 	$JugarDeNuevo.show()
-	#$ScoreFinish.text = str(score)
+	$Juego_Perdido/ScoreFinish.text = str(score)
 	
 func update_score(score):
 	$ScoreLabel.text = str(score)
@@ -25,7 +25,7 @@ func _pause_pressed():
 
 func show_game_win(score):
 	$Juego_Ganado.show()
-	#$ScoreFinish.text = str(score)
+	$Juego_Ganado/ScoreFinish.text = str(score)
 	$JugarDeNuevo.show()
 
 

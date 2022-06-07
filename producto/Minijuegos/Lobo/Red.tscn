@@ -11,6 +11,7 @@ extents = Vector2( 79, 60 )
 
 [node name="Red" type="RigidBody2D"]
 position = Vector2( 640, 339 )
+collision_layer = 16
 collision_mask = 0
 script = ExtResource( 5 )
 

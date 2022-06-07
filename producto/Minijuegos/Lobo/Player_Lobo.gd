@@ -1,7 +1,6 @@
 class_name Player_Lobo
 extends Area2D
 
-signal hit #señal para el juego perdido
 signal miss_vida #señal para que se actualice el valor de vida en el main
 signal win_vida
 signal update_score #señal para la moneda
@@ -44,9 +43,6 @@ func _on_Player_body_entered(body):
 	if body.is_in_group("red"): 
 		emit_signal("red")
 		body._desaparecer()
-	if vida==0:
-		emit_signal("hit")
-		hide()
 
 func start(pos):
 	position = pos

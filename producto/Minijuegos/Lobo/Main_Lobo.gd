@@ -16,9 +16,10 @@ func game_over():
 	$FishTimer_Left.stop()
 	$FishTimer_Right.stop()
 	$RedTimer.stop()
-	$HUD.show_game_over(score)
 	$ContenedorMonedas/TiempoDeGeneracion.stop()
 	$ContenedorSalud/TiempoDeGeneracion.stop()
+	$AreaLineaFinish/TiempoDeFinalizacion.stop()
+	$HUD.show_game_over(score)
 
 func new_game():
 	score = 0
@@ -61,7 +62,7 @@ func spawn_pez(spawnLocation, flip_h):
 	
 	pez.position = pez_spawn_location.position
 	
-	var velocity = Vector2(rand_range(250, 350), 0.0)
+	var velocity = Vector2(rand_range(300, 350), 0.0) #Analizar si es lado derecho, aumentar el rango de velocidad 
 	pez.linear_velocity = velocity.rotated(direction)
 	
 	add_child(pez)
@@ -89,6 +90,8 @@ func _on_RedTimer_timeout():
 
 func _on_Player_miss_vida():
 	vida -=1
+	if vida<=0:
+		game_over()
 	$HUD.update_vida(vida)
 
 
@@ -97,7 +100,6 @@ func _on_Player_win_vida():
 	$HUD.update_vida(vida)
 
 func _game_win():
-	$HUD.show_game_win(score)
 	$Player.monitoring = false
 	$Player.monitorable= false
 	$Player.hide()
@@ -106,3 +108,5 @@ func _game_win():
 	$RedTimer.stop()
 	$ContenedorMonedas/TiempoDeGeneracion.stop()
 	$ContenedorSalud/TiempoDeGeneracion.stop()
+	$AreaLineaFinish/TiempoDeFinalizacion.stop()
+	$HUD.show_game_win(score)

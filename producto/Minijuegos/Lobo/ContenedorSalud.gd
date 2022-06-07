@@ -11,8 +11,6 @@ func crear_salud():
 	nueva_salud.global_position = Vector2(1000,rand_range(-300,180))
 	add_child(nueva_salud)		
 
-
-
 func _on_TiempoDeGeneracion_timeout():
 	crear_salud()
 

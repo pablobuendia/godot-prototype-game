@@ -10,8 +10,9 @@ func _ready():
 	randomize()
 
 func game_over():
-	$Player.monitoring = false
-	$Player.monitorable= false
+	$Player.visible = false
+	#$Player.monitoring = false
+	#$Player.monitorable= false
 	$Player.hide()
 	$FishTimer_Left.stop()
 	$FishTimer_Right.stop()
@@ -25,8 +26,9 @@ func new_game():
 	score = 0
 	vida = 3
 	$Player.start($StartPosition.position)
-	$Player.monitoring = true
-	$Player.monitorable = true
+	$Player.visible = true
+	#$Player.monitoring = true
+	#$Player.monitorable = true
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.update_vida(vida)
@@ -40,12 +42,12 @@ func _on_StartTimer_timeout():
 	$RedTimer.start()
 	
 func _on_FishTimer_Left_timeout(): 
-	spawn_pez("FishPath_Left/FishSpawnLocation", true)
+	spawn_pez("FishPath_Left/FishSpawnLocation", true,"left") #lado izq
 
 func _on_FishTimer_Right_timeout(): 
-	spawn_pez("FishPath_Right/FishSpawnLocation", false)	
+	spawn_pez("FishPath_Right/FishSpawnLocation", false,"right")	#lado der
 	
-func spawn_pez(spawnLocation, flip_h):
+func spawn_pez(spawnLocation, flip_h,side):
 	var pez = pez_scene.instance()
 	var pezTipo = randi() % 6
 	var scaleMultiplier = ((randi() % 7) + 3) / 100.0
@@ -61,9 +63,12 @@ func spawn_pez(spawnLocation, flip_h):
 	var direction = (pez_spawn_location.rotation + PI / 2) * -1
 	
 	pez.position = pez_spawn_location.position
-	
-	var velocity = Vector2(rand_range(300, 350), 0.0) #Analizar si es lado derecho, aumentar el rango de velocidad 
-	pez.linear_velocity = velocity.rotated(direction)
+	if side == "right":
+		var velocity = Vector2(rand_range(400, 600), 0.0)
+		pez.linear_velocity = velocity.rotated(direction)
+	else:
+		var velocity = Vector2(rand_range(250,400), 0.0)
+		pez.linear_velocity = velocity.rotated(direction)
 	
 	add_child(pez)
 	
@@ -100,8 +105,9 @@ func _on_Player_win_vida():
 	$HUD.update_vida(vida)
 
 func _game_win():
-	$Player.monitoring = false
-	$Player.monitorable= false
+	#$Player.monitoring = false
+	#$Player.monitorable= false
+	$Player.visible = false
 	$Player.hide()
 	$FishTimer_Left.stop()
 	$FishTimer_Right.stop()

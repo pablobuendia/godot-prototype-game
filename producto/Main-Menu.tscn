@@ -1,10 +1,15 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Minijuegos/Lanchas/etc/LevelButton.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/img/Fondos/sea.png" type="Texture" id=2]
 [ext_resource path="res://assets/img/Fondos/mar.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/underwater tileable.png" type="Texture" id=4]
-[ext_resource path="res://assets/img/Fondos/Puerto-mar-del-plata.jpg" type="Texture" id=5]
+[ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://assets/img/Iconos/play-music.png" type="Texture" id=6]
+[ext_resource path="res://assets/fonts/kenvector_future_thin.ttf" type="DynamicFontData" id=7]
+[ext_resource path="res://assets/img/Fondos/PuertoMarDelPlata.jpg" type="Texture" id=8]
+[ext_resource path="res://assets/img/Iconos/music-off.png" type="Texture" id=9]
+[ext_resource path="res://assets/img/Iconos/credito.png" type="Texture" id=10]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
@@ -35,6 +40,31 @@ func _on_LevelButton3_on_press():
 	get_tree().change_scene(\"res://Minijuegos/Lobo/Main_Lobo.tscn\")
 "
 
+[sub_resource type="DynamicFont" id=2]
+size = 40
+outline_color = Color( 0.972549, 0.94902, 0.94902, 1 )
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 80
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 90
+font_data = ExtResource( 7 )
+
+[sub_resource type="DynamicFont" id=5]
+size = 30
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=6]
+size = 30
+font_data = ExtResource( 5 )
+
+[sub_resource type="DynamicFont" id=7]
+size = 25
+font_data = ExtResource( 5 )
+
 [node name="Main-Menu" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -45,18 +75,23 @@ script = SubResource( 1 )
 [node name="TextureRect" type="TextureRect" parent="."]
 margin_right = 1029.0
 margin_bottom = 600.0
-texture = ExtResource( 5 )
+texture = ExtResource( 8 )
 expand = true
 
 [node name="BackShadow" type="ColorRect" parent="."]
-margin_left = -1446.0
-margin_top = -1995.0
-margin_right = 2204.0
-margin_bottom = 3117.0
+anchor_left = 0.5
+anchor_top = 0.68
+anchor_right = 0.5
+anchor_bottom = 0.68
+margin_left = -1959.88
+margin_top = -2403.0
+margin_right = 1690.12
+margin_bottom = 2709.0
 focus_previous = NodePath("../Popup")
 color = Color( 0.054902, 0.054902, 0.172549, 0.423529 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
+visible = false
 margin_left = 7.0
 margin_top = 437.0
 margin_right = 262.0
@@ -92,6 +127,7 @@ margin_bottom = 116.0
 text = "Salir del juego"
 
 [node name="BtnPesca" parent="." instance=ExtResource( 1 )]
+visible = false
 margin_left = 66.1554
 margin_top = 149.194
 margin_right = 106.155
@@ -100,6 +136,7 @@ label = "PESCA"
 img = ExtResource( 3 )
 
 [node name="BtnLancha" parent="." instance=ExtResource( 1 )]
+visible = false
 margin_left = 381.113
 margin_top = 149.075
 margin_right = 421.113
@@ -108,11 +145,142 @@ label = "OBSTACULOS"
 img = ExtResource( 2 )
 
 [node name="BtnLobo" parent="." instance=ExtResource( 1 )]
+visible = false
 margin_left = 697.298
 margin_top = 150.016
 margin_right = 737.298
 margin_bottom = 190.016
 img = ExtResource( 4 )
+
+[node name="Jugar" type="Button" parent="."]
+anchor_left = 0.388788
+anchor_top = 0.608333
+anchor_right = 0.613397
+anchor_bottom = 0.753333
+margin_left = 1.88098
+margin_top = 35.0
+margin_right = 1.88098
+margin_bottom = 35.0
+custom_fonts/font = SubResource( 2 )
+text = "JUGAR"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Mardel" type="Control" parent="."]
+margin_left = 104.119
+margin_top = 30.0
+margin_right = 743.119
+margin_bottom = 341.0
+
+[node name="M" type="Label" parent="Mardel"]
+margin_left = 253.0
+margin_top = 181.0
+margin_right = 320.0
+margin_bottom = 271.0
+rect_rotation = -15.9869
+custom_fonts/font = SubResource( 3 )
+text = "m"
+
+[node name="A" type="Label" parent="Mardel"]
+margin_left = 320.0
+margin_top = 160.0
+margin_right = 377.0
+margin_bottom = 250.0
+rect_rotation = -10.8583
+custom_fonts/font = SubResource( 3 )
+text = "a"
+
+[node name="R" type="Label" parent="Mardel"]
+margin_left = 378.0
+margin_top = 150.0
+margin_right = 435.0
+margin_bottom = 240.0
+rect_rotation = -2.54619
+custom_fonts/font = SubResource( 3 )
+text = "R"
+
+[node name="D" type="Label" parent="Mardel"]
+margin_left = 430.0
+margin_top = 147.0
+margin_right = 487.0
+margin_bottom = 237.0
+rect_rotation = -1.11331
+custom_fonts/font = SubResource( 3 )
+text = "D"
+
+[node name="E" type="Label" parent="Mardel"]
+margin_left = 489.0
+margin_top = 148.0
+margin_right = 546.0
+margin_bottom = 238.0
+rect_rotation = 7.00406
+custom_fonts/font = SubResource( 3 )
+text = "E"
+
+[node name="L" type="Label" parent="Mardel"]
+margin_left = 544.0
+margin_top = 158.0
+margin_right = 622.0
+margin_bottom = 248.0
+rect_rotation = 11.1703
+custom_fonts/font = SubResource( 3 )
+text = "L"
+
+[node name="Puerto" type="Label" parent="."]
+margin_left = 342.119
+margin_top = 278.0
+margin_right = 702.119
+margin_bottom = 398.0
+custom_colors/font_color = Color( 0.94902, 0.411765, 0.0156863, 1 )
+custom_colors/font_outline_modulate = Color( 0.0470588, 0.0431373, 0.0431373, 1 )
+custom_colors/font_color_shadow = Color( 0.0823529, 0.0784314, 0.0784314, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "Puerto"
+
+[node name="Player" type="Label" parent="."]
+margin_left = 7.0
+margin_top = 534.0
+margin_right = 366.0
+margin_bottom = 597.0
+custom_fonts/font = SubResource( 5 )
+text = "Player:"
+
+[node name="LineEdit" type="LineEdit" parent="Player"]
+margin_left = 112.119
+margin_top = -8.0
+margin_right = 270.119
+margin_bottom = 48.0
+custom_fonts/font = SubResource( 6 )
+
+[node name="NuevaPartida" type="Button" parent="."]
+margin_left = 299.119
+margin_top = 536.0
+margin_right = 503.119
+margin_bottom = 573.0
+custom_fonts/font = SubResource( 7 )
+text = "Nueva partida"
+
+[node name="Music-On" type="TextureButton" parent="."]
+margin_left = 905.119
+margin_top = 538.0
+margin_right = 953.119
+margin_bottom = 586.0
+texture_normal = ExtResource( 6 )
+
+[node name="Music-Off" type="TextureButton" parent="."]
+margin_left = 969.119
+margin_top = 536.0
+margin_right = 1017.12
+margin_bottom = 584.0
+texture_normal = ExtResource( 9 )
+
+[node name="Credito" type="TextureButton" parent="."]
+margin_left = 844.119
+margin_top = 538.0
+margin_right = 892.119
+margin_bottom = 586.0
+texture_normal = ExtResource( 10 )
 
 [connection signal="pressed" from="VBoxContainer/StartGame1Button" to="." method="_on_StartGame1Button_pressed"]
 [connection signal="pressed" from="VBoxContainer/StartGame2Button" to="." method="_on_StartGame2Button_pressed"]

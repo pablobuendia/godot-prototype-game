@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/Player_Lobo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Minijuegos/Lobo/Pez_Lobo.tscn" type="PackedScene" id=2]
@@ -11,6 +11,7 @@
 [ext_resource path="res://Minijuegos/Lobo/Pantalla.gd" type="Script" id=9]
 [ext_resource path="res://assets/img/underwater tileable.png" type="Texture" id=10]
 [ext_resource path="res://Minijuegos/Lobo/ContenedorMonedas.gd" type="Script" id=11]
+[ext_resource path="res://Minijuegos/Lobo/Control.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Minijuegos/Lobo/AreaLineaFinish.gd" type="Script" id=13]
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=14]
 
@@ -118,15 +119,17 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 783, -3 )
 }
 
-[node name="Main" type="Node2D" groups=["linea", "moneda", "red", "salud"]]
+[node name="Main" type="Node2D" groups=["linea", "red", "salud"]]
 position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 pez_scene = ExtResource( 2 )
 red_scene = ExtResource( 4 )
 
-[node name="AreaLineaFinish" type="StaticBody2D" parent="."]
+[node name="AreaLineaFinish" type="Area2D" parent="."]
 position = Vector2( 56, -6 )
 scale = Vector2( 1, 1.01663 )
+monitoring = false
+monitorable = false
 script = ExtResource( 13 )
 __meta__ = {
 "_edit_group_": true
@@ -172,7 +175,7 @@ motion_mirroring = Vector2( 1024, 0 )
 script = ExtResource( 9 )
 
 [node name="Mar" type="Sprite" parent="ParallaxBackground/ParallaxLayer"]
-position = Vector2( 512, 276 )
+position = Vector2( 513, 277 )
 scale = Vector2( 1, 0.71875 )
 texture = ExtResource( 10 )
 
@@ -197,9 +200,10 @@ scale = Vector2( 0.0906918, 0.068696 )
 texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
+scale = Vector2( 0.5, 0.5 )
 collision_mask = 17
-mode = 2
-contact_monitor = true
+monitoring = false
+monitorable = false
 
 [node name="FishTimer_Left" type="Timer" parent="."]
 wait_time = 5.0
@@ -234,10 +238,6 @@ rotation = 1.57527
 
 [node name="HUD" parent="." instance=ExtResource( 7 )]
 
-[node name="Control" type="Control" parent="HUD"]
-margin_right = 40.0
-margin_bottom = 40.0
-
 [node name="RedPath" type="Path2D" parent="."]
 curve = SubResource( 7 )
 
@@ -257,7 +257,12 @@ script = ExtResource( 8 )
 [node name="TiempoDeGeneracion" type="Timer" parent="ContenedorSalud"]
 wait_time = 30.0
 
+[node name="Control" parent="." instance=ExtResource( 12 )]
+visible = false
+position = Vector2( -126, 52 )
+
 [connection signal="timeout" from="AreaLineaFinish/TiempoDeFinalizacion" to="AreaLineaFinish" method="_on_TiempoDeFinalizacion_timeout"]
+[connection signal="area_entered" from="Player" to="Player" method="_on_Player_area_entered"]
 [connection signal="body_entered" from="Player" to="Player" method="_on_Player_body_entered"]
 [connection signal="miss_vida" from="Player" to="." method="_on_Player_miss_vida"]
 [connection signal="update_score" from="Player" to="." method="_on_Player_update_score"]

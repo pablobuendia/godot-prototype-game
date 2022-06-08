@@ -3,6 +3,7 @@ extends CanvasLayer
 signal start_game
 
 func show_game_over(score):
+	_desapareceComponentes()
 	$Juego_Perdido.show()
 	$JugarDeNuevo.show()
 	$Juego_Perdido/ScoreFinish.text = str(score)
@@ -24,10 +25,10 @@ func _pause_pressed():
 		get_tree().paused = false
 
 func show_game_win(score):
+	_desapareceComponentes()
 	$Juego_Ganado.show()
 	$Juego_Ganado/ScoreFinish.text = str(score)
 	$JugarDeNuevo.show()
-
 
 
 func _on_JugarDeNuevo_pressed():
@@ -36,9 +37,16 @@ func _on_JugarDeNuevo_pressed():
 		$Juego_Ganado.hide()
 	else:
 		$Juego_Perdido.hide()
+	$ScoreLabel.show()
+	$VidaLabel.show()
+	$TextureButton.show()
 	emit_signal("start_game")
 
-
+func _desapareceComponentes():
+	$ScoreLabel.hide()
+	$VidaLabel.hide()
+	$TextureButton.hide()
+	
 func _on_Facil_pressed():
 	pass # Replace with function body.
 

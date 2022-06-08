@@ -1,3 +1,6 @@
 extends Line2D
 
-# LI
+# LINE_JOINT_SHARP = 0
+
+func _ready():
+	

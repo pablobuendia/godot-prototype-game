@@ -1,7 +1,7 @@
-extends StaticBody2D
+
+extends Area2D
 
 func _ready():
-	add_to_group("moneda")
 	$AnimatedSprite.play()
 
 func _process(delta):

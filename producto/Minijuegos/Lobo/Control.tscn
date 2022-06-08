@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://assets/img/left_button.png" type="Texture" id=1]
+[ext_resource path="res://assets/img/action_button.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/right_button.png" type="Texture" id=3]
+
+[node name="Control" type="CanvasModulate"]
+position = Vector2( -140, 60 )
+
+[node name="Left" type="TouchScreenButton" parent="."]
+position = Vector2( 170, 392 )
+scale = Vector2( 0.343915, 0.288618 )
+normal = ExtResource( 1 )
+action = "move_left"
+
+[node name="Right" type="TouchScreenButton" parent="."]
+position = Vector2( 321, 391 )
+scale = Vector2( 0.344, 0.289 )
+normal = ExtResource( 3 )
+action = "move_right"
+
+[node name="Down" type="TouchScreenButton" parent="."]
+position = Vector2( 235, 464 )
+scale = Vector2( 0.344, 0.289 )
+normal = ExtResource( 2 )
+action = "move_down"
+
+[node name="Up" type="TouchScreenButton" parent="."]
+position = Vector2( 320, 392 )
+rotation = 3.14159
+scale = Vector2( 0.344, 0.289 )
+normal = ExtResource( 2 )
+action = "move_up"

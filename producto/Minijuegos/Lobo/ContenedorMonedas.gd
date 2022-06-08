@@ -11,5 +11,7 @@ func crear_monedas():
 	nueva_moneda.global_position = Vector2(1000,rand_range(88,400))
 	add_child(nueva_moneda)		
 
+
+
 func _on_TiempoDeGeneracion_timeout():
 	crear_monedas()

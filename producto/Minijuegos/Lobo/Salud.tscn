@@ -6,7 +6,7 @@
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 30, 28.5 )
 
-[node name="Salud" type="StaticBody2D"]
+[node name="Salud" type="Area2D"]
 position = Vector2( -346, -192 )
 script = ExtResource( 2 )
 __meta__ = {

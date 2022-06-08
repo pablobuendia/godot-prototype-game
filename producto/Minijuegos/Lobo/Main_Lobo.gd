@@ -10,9 +10,9 @@ func _ready():
 	randomize()
 
 func game_over():
-	$Player.visible = false
-	#$Player.monitoring = false
-	#$Player.monitorable= false
+	$Player.monitoring = false
+	$Player.monitorable= false
+	$Control.visible = false
 	$Player.hide()
 	$FishTimer_Left.stop()
 	$FishTimer_Right.stop()
@@ -25,10 +25,10 @@ func game_over():
 func new_game():
 	score = 0
 	vida = 3
+	$Control.visible = true
 	$Player.start($StartPosition.position)
-	$Player.visible = true
-	#$Player.monitoring = true
-	#$Player.monitorable = true
+	$Player.monitoring = true
+	$Player.monitorable = true
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.update_vida(vida)
@@ -105,9 +105,9 @@ func _on_Player_win_vida():
 	$HUD.update_vida(vida)
 
 func _game_win():
-	#$Player.monitoring = false
-	#$Player.monitorable= false
-	$Player.visible = false
+	$Player.monitoring = false
+	$Player.monitorable= false
+	$Control.visible = false
 	$Player.hide()
 	$FishTimer_Left.stop()
 	$FishTimer_Right.stop()
@@ -115,4 +115,5 @@ func _game_win():
 	$ContenedorMonedas/TiempoDeGeneracion.stop()
 	$ContenedorSalud/TiempoDeGeneracion.stop()
 	$AreaLineaFinish/TiempoDeFinalizacion.stop()
+	score +=100 #Por haber llegado al fin
 	$HUD.show_game_win(score)

@@ -40,7 +40,6 @@ func _on_Player_body_entered(body):
 	vida -=1
 	emit_signal("miss_vida")
 	if body.is_in_group("red"): 
-		emit_signal("red")
 		body._desaparecer()
 
 func start(pos):

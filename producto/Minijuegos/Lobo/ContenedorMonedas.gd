@@ -3,8 +3,7 @@ extends Node2D
 var moneda = load("res://Minijuegos/Lobo/Moneda_Lobo.tscn")
 
 
-func _process(delta):
-	pass
+
 
 func crear_monedas():
 	var nueva_moneda = moneda.instance()

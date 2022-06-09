@@ -40,6 +40,7 @@ func _on_JugarDeNuevo_pressed():
 	$ScoreLabel.show()
 	$VidaLabel.show()
 	$TextureButton.show()
+	$volver.show()
 	emit_signal("start_game")
 
 func _desapareceComponentes():
@@ -57,3 +58,7 @@ func _on_Medio_pressed():
 
 func _on_Dificil_pressed():
 	pass # Replace with function body.
+
+
+func _on_volver_pressed(): #no anda
+	get_tree().change_scene("res://Mapa.gd")

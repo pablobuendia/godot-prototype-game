@@ -15,6 +15,7 @@ height = 40.0
 [node name="Pez" type="RigidBody2D"]
 position = Vector2( 1, 0 )
 collision_layer = 2
+mass = 0.09
 gravity_scale = 0.0
 contacts_reported = 1
 contact_monitor = true

@@ -1,5 +1,6 @@
 extends Node2D
 signal boton_anzuelo_pressed
+signal decrement_anzuelo
 
 var screen_size
 export(PackedScene) var anzuelo_scene
@@ -51,9 +52,12 @@ func _process(delta):
 	position=bote_pos
 	
 	if Input.is_action_just_released("Boat_rod"):
-		var anzuelo = anzuelo_scene.instance()
-		anzuelo.position = Vector2(0, 50)
-		anzuelo.gravity_scale = 2
-		anzuelo.get_child(1).visible = true
-		add_child(anzuelo)
-		emit_signal("boton_anzuelo_pressed")
+		if (GlobalVar.ANZUELOS >= 1):
+			var anzuelo = anzuelo_scene.instance()
+			anzuelo.position = Vector2(0, 50)
+			anzuelo.gravity_scale = 2
+			anzuelo.get_child(1).visible = true
+			GlobalVar.ANZUELOS -= 1
+			add_child(anzuelo)
+			emit_signal("boton_anzuelo_pressed")
+			emit_signal("decrement_anzuelo")

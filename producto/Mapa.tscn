@@ -44,16 +44,27 @@ text = "Jugar"
 flat = true
 
 [node name="Tienda" type="Button" parent="."]
-margin_left = 525.0
-margin_top = 321.0
-margin_right = 618.0
-margin_bottom = 382.0
+margin_left = 528.0
+margin_top = 360.0
+margin_right = 635.0
+margin_bottom = 421.0
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Tienda"
+flat = true
+
+[node name="Restaurante" type="Button" parent="."]
+margin_left = 797.0
+margin_top = 145.0
+margin_right = 979.0
+margin_bottom = 206.0
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Restaurante"
 flat = true
 
 [connection signal="pressed" from="Lancha" to="." method="_on_Lancha_pressed"]
 [connection signal="pressed" from="Lobo" to="." method="_on_Lobo_pressed"]
 [connection signal="pressed" from="Pesca" to="." method="_on_Pesca_pressed"]
 [connection signal="pressed" from="Tienda" to="." method="_on_Tienda_pressed"]
+[connection signal="pressed" from="Restaurante" to="." method="_on_Restaurante_pressed"]

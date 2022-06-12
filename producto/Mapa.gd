@@ -16,5 +16,8 @@ func _on_Pesca_pressed():
 
 
 func _on_Tienda_pressed():
-	pass # Replace with function body.
+	get_tree().change_scene("res://Tienda.tscn")
 	
+
+func _on_Restaurante_pressed():
+	get_tree().change_scene("res://Restaurante.tscn")

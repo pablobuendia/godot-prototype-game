@@ -14,6 +14,8 @@ func _on_Jugador_boton_anzuelo_pressed():
 	self.action = "null"
 	$AnzueloTimer.start()
 
+
+
 func _on_AnzueloTimer_timeout():
 	print("timeout")
 	self.action = "Boat_rod"

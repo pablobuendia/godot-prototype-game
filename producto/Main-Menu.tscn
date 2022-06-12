@@ -19,7 +19,8 @@ func _on_Jugar_pressed():
 
 func _on_NuevaPartida_pressed():
 	#Borrar toda la partida vieja
-	pass"
+	pass
+"
 
 [sub_resource type="DynamicFont" id=2]
 size = 40

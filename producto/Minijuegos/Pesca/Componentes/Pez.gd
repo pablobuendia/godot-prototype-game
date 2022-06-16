@@ -1,7 +1,10 @@
 extends RigidBody2D
 
 export var CURRENT_TEXTURE = 3
+<<<<<<< Updated upstream
 export var STOP = false
+=======
+>>>>>>> Stashed changes
 
 const posicionNodoCollisionShape = 0
 onready var counter = 0
@@ -29,8 +32,12 @@ func start(texture, escalaPez, flip_h, spawn_location, velocidad_pez):
 
 func _process(delta):
 	# Animacion de nado
+<<<<<<< Updated upstream
 	if STOP == false:
 		counter += 1
+=======
+	counter += 1
+>>>>>>> Stashed changes
 	if counter == animation_event_frame_1:
 		var current_sprite = get_child(CURRENT_TEXTURE)
 		current_rotation = (randi() % 5) * -1

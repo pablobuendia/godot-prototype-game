@@ -12,6 +12,8 @@ script/source = "extends Control
 
 func _ready():
 	OS.center_window()
+	if GlobalVar.load_game() == null:
+		$Player/LineEdit.show()
 
 func _on_Jugar_pressed():
 	get_tree().change_scene(\"res://Mapa.tscn\")
@@ -20,6 +22,18 @@ func _on_Jugar_pressed():
 func _on_NuevaPartida_pressed():
 	#Borrar toda la partida vieja
 	pass
+<<<<<<< Updated upstream
+=======
+
+#Preguntar si existe el archivo p
+
+
+func _on_LineEdit_text_changed(new_text):
+	$Player/LineEdit.text
+	#Document
+	pass # Replace with function body.
+#Agregar un icono de check y controlar cuando emite la señal si hay string
+>>>>>>> Stashed changes
 "
 
 [sub_resource type="DynamicFont" id=2]
@@ -155,6 +169,7 @@ custom_fonts/font = SubResource( 5 )
 text = "Player:"
 
 [node name="LineEdit" type="LineEdit" parent="Player"]
+visible = false
 margin_left = 112.119
 margin_top = -8.0
 margin_right = 270.119
@@ -191,4 +206,5 @@ margin_bottom = 586.0
 texture_normal = ExtResource( 10 )
 
 [connection signal="pressed" from="Jugar" to="." method="_on_Jugar_pressed"]
+[connection signal="text_changed" from="Player/LineEdit" to="." method="_on_LineEdit_text_changed"]
 [connection signal="pressed" from="NuevaPartida" to="." method="_on_NuevaPartida_pressed"]

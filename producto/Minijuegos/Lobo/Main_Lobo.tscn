@@ -1,7 +1,7 @@
 [gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/Player_Lobo.tscn" type="PackedScene" id=1]
-[ext_resource path="res://Minijuegos/Lobo/Pez_Lobo.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Minijuegos/Lobo/Pez.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Minijuegos/Lobo/Main_Lobo.gd" type="Script" id=3]
 [ext_resource path="res://Minijuegos/Lobo/Red.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/img/craftpix-561109-free-underwater-world-parallax-game-backgrounds/PNG/1_game_background/layers/7.png" type="Texture" id=5]
@@ -272,6 +272,8 @@ position = Vector2( -126, 52 )
 [connection signal="timeout" from="FishTimer_Right" to="." method="_on_FishTimer_Right_timeout"]
 [connection signal="timeout" from="RedTimer" to="." method="_on_RedTimer_timeout"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="start_game" from="HUD" to="." method="new_game"]
+[connection signal="start_gameDificil" from="HUD" to="." method="_on_HUD_start_gameDificil"]
+[connection signal="start_gameFacil" from="HUD" to="." method="_on_HUD_start_gameFacil"]
+[connection signal="start_gameMedio" from="HUD" to="." method="_on_HUD_start_gameMedio"]
 [connection signal="timeout" from="ContenedorMonedas/TiempoDeGeneracion" to="ContenedorMonedas" method="_on_TiempoDeGeneracion_timeout"]
 [connection signal="timeout" from="ContenedorSalud/TiempoDeGeneracion" to="ContenedorSalud" method="_on_TiempoDeGeneracion_timeout"]

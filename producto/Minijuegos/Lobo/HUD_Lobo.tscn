@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/HUD_Lobo.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -6,6 +6,12 @@
 [ext_resource path="res://assets/img/Bonus/object_05_heart.png" type="Texture" id=4]
 [ext_resource path="res://assets/img/pause.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/Iconos/volver.png" type="Texture" id=6]
+[ext_resource path="res://assets/letters/letterN.png" type="Texture" id=7]
+[ext_resource path="res://assets/letters/letterE.png" type="Texture" id=8]
+[ext_resource path="res://assets/letters/letterI.png" type="Texture" id=9]
+[ext_resource path="res://assets/letters/letterV.png" type="Texture" id=10]
+[ext_resource path="res://assets/img/Iconos/UIbg.png" type="Texture" id=11]
+[ext_resource path="res://assets/letters/letterL.png" type="Texture" id=12]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -28,12 +34,10 @@ font_data = ExtResource( 2 )
 size = 42
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=6]
-size = 52
-font_data = ExtResource( 2 )
-
 [sub_resource type="DynamicFont" id=7]
-size = 30
+size = 35
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [node name="HUD" type="CanvasLayer"]
@@ -163,46 +167,6 @@ text = "0"
 position = Vector2( -31, 26 )
 texture = ExtResource( 3 )
 
-[node name="Nivel" type="RichTextLabel" parent="."]
-visible = false
-anchor_bottom = 0.134
-margin_left = 372.0
-margin_top = 147.0
-margin_right = 631.0
-margin_bottom = 318.0
-custom_fonts/normal_font = SubResource( 6 )
-text = "    Nivel"
-
-[node name="ColorRect" type="ColorRect" parent="Nivel"]
-show_behind_parent = true
-margin_right = 268.0
-margin_bottom = 247.0
-color = Color( 0.278431, 0.772549, 0.760784, 1 )
-
-[node name="Facil" type="Button" parent="Nivel"]
-margin_left = 88.0
-margin_top = 68.0
-margin_right = 178.0
-margin_bottom = 111.0
-custom_fonts/font = SubResource( 7 )
-text = "Fácil"
-
-[node name="Medio" type="Button" parent="Nivel"]
-margin_left = 79.0
-margin_top = 124.0
-margin_right = 188.0
-margin_bottom = 167.0
-custom_fonts/font = SubResource( 7 )
-text = "Medio"
-
-[node name="Dificil" type="Button" parent="Nivel"]
-margin_left = 87.0
-margin_top = 180.0
-margin_right = 184.0
-margin_bottom = 223.0
-custom_fonts/font = SubResource( 7 )
-text = "Dificil"
-
 [node name="volver" type="TextureButton" parent="."]
 margin_left = 951.0
 margin_top = 8.0
@@ -210,10 +174,70 @@ margin_right = 999.0
 margin_bottom = 56.0
 texture_normal = ExtResource( 6 )
 
+[node name="Niveles" type="Sprite" parent="."]
+visible = false
+position = Vector2( 508, 275 )
+scale = Vector2( 1.06061, 1.05303 )
+texture = ExtResource( 11 )
+
+[node name="Letters" type="Control" parent="Niveles"]
+margin_right = 40.0
+margin_bottom = 40.0
+
+[node name="LetterN" type="Sprite" parent="Niveles/Letters"]
+position = Vector2( -98.1143, -95 )
+texture = ExtResource( 7 )
+
+[node name="LetterI" type="Sprite" parent="Niveles/Letters"]
+position = Vector2( -53.7433, -95 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 9 )
+
+[node name="LetterV" type="Sprite" parent="Niveles/Letters"]
+position = Vector2( -6.60042, -95 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 10 )
+
+[node name="LetterE" type="Sprite" parent="Niveles/Letters"]
+position = Vector2( 49.029, -95 )
+texture = ExtResource( 8 )
+
+[node name="LetterL" type="Sprite" parent="Niveles/Letters"]
+position = Vector2( 99.9432, -95 )
+scale = Vector2( 1, 1 )
+texture = ExtResource( 12 )
+
+[node name="Medio" type="Button" parent="Niveles"]
+margin_left = -58.4572
+margin_top = 11.3956
+margin_right = 66.5428
+margin_bottom = 60.3956
+custom_fonts/font = SubResource( 7 )
+text = "Medio"
+flat = true
+
+[node name="Dificil" type="Button" parent="Niveles"]
+margin_left = -49.0286
+margin_top = 65.5251
+margin_right = 61.9714
+margin_bottom = 114.525
+custom_fonts/font = SubResource( 7 )
+text = "Dificil"
+flat = true
+
+[node name="Facil" type="Button" parent="Niveles"]
+margin_left = -55.6286
+margin_top = -44.6332
+margin_right = 62.3714
+margin_bottom = 4.36684
+custom_fonts/font = SubResource( 7 )
+text = "Fácil"
+flat = true
+
 [connection signal="pressed" from="StartButton" to="." method="_on_StartButton_pressed"]
 [connection signal="pressed" from="JugarDeNuevo" to="." method="_on_JugarDeNuevo_pressed"]
 [connection signal="pressed" from="TextureButton" to="." method="_pause_pressed"]
-[connection signal="pressed" from="Nivel/Facil" to="." method="_on_Facil_pressed"]
-[connection signal="pressed" from="Nivel/Medio" to="." method="_on_Medio_pressed"]
-[connection signal="pressed" from="Nivel/Dificil" to="." method="_on_Dificil_pressed"]
 [connection signal="pressed" from="volver" to="." method="_on_volver_pressed"]
+[connection signal="pressed" from="Niveles/Medio" to="." method="_on_Medio_pressed"]
+[connection signal="pressed" from="Niveles/Dificil" to="." method="_on_Dificil_pressed"]
+[connection signal="pressed" from="Niveles/Facil" to="." method="_on_Facil_pressed"]

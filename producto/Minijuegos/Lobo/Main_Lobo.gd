@@ -125,3 +125,33 @@ func _game_win():
 	$HUD.show_game_win(score)
 	GlobalVar.player.score = score 
 	GlobalVar.save_game()
+
+
+func _on_HUD_start_gameDificil():
+	$ContenedorMonedas/TiempoDeGeneracion.wait_time = 3
+	$ContenedorSalud/TiempoDeGeneracion.wait_time = 40
+	$AreaLineaFinish/TiempoDeFinalizacion.wait_time = 100
+	$FishTimer_Left.wait_time = 2
+	$FishTimer_Right.wait_time = 9
+	$RedTimer.wait_time = 3
+	new_game()
+
+
+func _on_HUD_start_gameMedio():
+	$ContenedorMonedas/TiempoDeGeneracion.wait_time = 2
+	$ContenedorSalud/TiempoDeGeneracion.wait_time = 35
+	$AreaLineaFinish/TiempoDeFinalizacion.wait_time = 80
+	$FishTimer_Left.wait_time = 2
+	$FishTimer_Right.wait_time = 8
+	$RedTimer.wait_time = 4
+	new_game()
+
+
+func _on_HUD_start_gameFacil():
+	$ContenedorMonedas/TiempoDeGeneracion.wait_time = 1
+	$ContenedorSalud/TiempoDeGeneracion.wait_time = 30
+	$AreaLineaFinish/TiempoDeFinalizacion.wait_time = 60
+	$FishTimer_Left.wait_time = 5
+	$FishTimer_Right.wait_time = 10
+	$RedTimer.wait_time = 5
+	new_game()

@@ -1,6 +1,8 @@
 extends CanvasLayer
 
-signal start_game
+signal start_gameFacil
+signal start_gameMedio
+signal start_gameDificil
 
 func show_game_over(score):
 	_desapareceComponentes()
@@ -16,7 +18,7 @@ func update_vida(vida):
 
 func _on_StartButton_pressed():
 	$StartButton.hide()
-	emit_signal("start_game")
+	$Niveles.show()
 
 func _pause_pressed():
 	if get_tree().paused == false:
@@ -37,28 +39,34 @@ func _on_JugarDeNuevo_pressed():
 		$Juego_Ganado.hide()
 	else:
 		$Juego_Perdido.hide()
-	$ScoreLabel.show()
-	$VidaLabel.show()
-	$TextureButton.show()
 	$volver.show()
-	emit_signal("start_game")
+	$Niveles.show()
 
 func _desapareceComponentes():
 	$ScoreLabel.hide()
 	$VidaLabel.hide()
 	$TextureButton.hide()
+
+func _apareceComponentes():
+	$ScoreLabel.show()
+	$VidaLabel.show()
+	$TextureButton.show()
 	
 func _on_Facil_pressed():
-	pass # Replace with function body.
+	emit_signal("start_gameFacil")
+	$Niveles.hide()
+	_apareceComponentes()
 
 
 func _on_Medio_pressed():
-	pass # Replace with function body.
-
+	emit_signal("start_gameMedio")
+	$Niveles.hide()
+	_apareceComponentes()
 
 func _on_Dificil_pressed():
-	pass # Replace with function body.
+	emit_signal("start_gameDificil")
+	$Niveles.hide()
+	_apareceComponentes()
 
-
-func _on_volver_pressed(): #no anda
+func _on_volver_pressed(): 
 	get_tree().change_scene("res://Mapa.tscn")

@@ -61,4 +61,4 @@ func _on_Dificil_pressed():
 
 
 func _on_volver_pressed(): #no anda
-	get_tree().change_scene("res://Mapa.gd")
+	get_tree().change_scene("res://Mapa.tscn")

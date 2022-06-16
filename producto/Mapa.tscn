@@ -44,17 +44,10 @@ text = "Jugar"
 flat = true
 
 [node name="Tienda" type="Button" parent="."]
-<<<<<<< Updated upstream
 margin_left = 528.0
 margin_top = 360.0
 margin_right = 635.0
 margin_bottom = 421.0
-=======
-margin_left = 526.0
-margin_top = 357.0
-margin_right = 633.0
-margin_bottom = 418.0
->>>>>>> Stashed changes
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 1 )
 text = "Tienda"

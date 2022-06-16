@@ -4,7 +4,7 @@ func _ready():
 	pass # Replace with function body.
 
 func _on_Lancha_pressed():
-		get_tree().change_scene("res://Minijuegos/Lanchas/scenes/main.tscn")
+	get_tree().change_scene("res://Minijuegos/Lanchas/scenes/main.tscn")
 
 
 func _on_Lobo_pressed():
@@ -21,3 +21,4 @@ func _on_Tienda_pressed():
 
 func _on_Restaurante_pressed():
 	get_tree().change_scene("res://Restaurante.tscn")
+	

@@ -20,13 +20,13 @@
 [ext_resource path="res://assets/img/right_button.png" type="Texture" id=18]
 [ext_resource path="res://Minijuegos/Pesca/Button_rod.gd" type="Script" id=19]
 
-[sub_resource type="DynamicFont" id=6]
+[sub_resource type="DynamicFont" id=1]
 size = 20
 outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 14 )
 
-[sub_resource type="SpriteFrames" id=5]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 4 ), ExtResource( 1 ), ExtResource( 6 ), ExtResource( 10 ) ],
 "loop": true,
@@ -34,20 +34,20 @@ animations = [ {
 "speed": 1.45
 } ]
 
-[sub_resource type="Curve2D" id=2]
+[sub_resource type="Curve2D" id=3]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -338, 397, 0, 0, 0, 0, -338, 53 )
 }
 
-[sub_resource type="Curve2D" id=3]
+[sub_resource type="Curve2D" id=4]
 _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, 686, 53, 0, 0, 0, 0, 686, 397 )
 }
 
-[sub_resource type="DynamicFont" id=7]
+[sub_resource type="DynamicFont" id=5]
 font_data = ExtResource( 14 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=6]
 font_data = ExtResource( 14 )
 
 [node name="Pesca-Main" type="Node2D"]
@@ -89,7 +89,7 @@ margin_right = 187.0
 margin_bottom = 31.0
 rect_pivot_offset = Vector2( 32, 53 )
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "¡Has ganado!"
 fit_content_height = true
 
@@ -127,7 +127,7 @@ margin_right = 214.0
 margin_bottom = 31.0
 rect_pivot_offset = Vector2( 32, 53 )
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 1 )
 fit_content_height = true
 
 [node name="Button_left" type="TouchScreenButton" parent="."]
@@ -159,7 +159,7 @@ one_shot = true
 position = Vector2( 170.5, 188 )
 scale = Vector2( 0.767936, 0.570312 )
 z_index = -1
-frames = SubResource( 5 )
+frames = SubResource( 2 )
 frame = 1
 playing = true
 
@@ -213,7 +213,7 @@ margin_right = 159.0
 margin_bottom = 31.0
 rect_pivot_offset = Vector2( 32, 53 )
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 1 )
 fit_content_height = true
 
 [node name="Jugador" parent="." instance=ExtResource( 12 )]
@@ -231,7 +231,7 @@ wait_time = 2.0
 one_shot = true
 
 [node name="PezPathIzq" type="Path2D" parent="."]
-curve = SubResource( 2 )
+curve = SubResource( 3 )
 
 [node name="PezSpawnLocation" type="PathFollow2D" parent="PezPathIzq"]
 position = Vector2( -338, 397 )
@@ -241,7 +241,7 @@ rotation = -1.5708
 wait_time = 3.0
 
 [node name="PezPathDer" type="Path2D" parent="."]
-curve = SubResource( 3 )
+curve = SubResource( 4 )
 
 [node name="PezSpawnLocation" type="PathFollow2D" parent="PezPathDer"]
 position = Vector2( 686, 53 )
@@ -268,7 +268,7 @@ margin_left = 556.0
 margin_top = -158.0
 margin_right = 674.0
 margin_bottom = -124.0
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 5 )
 text = "Pausar"
 
 [node name="Volver" type="Button" parent="."]
@@ -277,7 +277,7 @@ margin_left = 400.0
 margin_top = -158.0
 margin_right = 551.0
 margin_bottom = -124.0
-custom_fonts/font = SubResource( 8 )
+custom_fonts/font = SubResource( 6 )
 text = "Volver al mapa"
 
 [node name="Panel" type="TextureButton" parent="."]
@@ -313,7 +313,7 @@ margin_right = 161.0
 margin_bottom = 36.0
 rect_pivot_offset = Vector2( 32, 53 )
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "x"
 fit_content_height = true
 
@@ -324,7 +324,7 @@ margin_right = 162.0
 margin_bottom = 67.0
 rect_pivot_offset = Vector2( 32, 53 )
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 1 )
 text = "x"
 fit_content_height = true
 
@@ -354,11 +354,11 @@ stream = ExtResource( 15 )
 [connection signal="boton_anzuelo_pressed" from="Jugador" to="Button_rod" method="_on_Jugador_boton_anzuelo_pressed"]
 [connection signal="decrement_anzuelo" from="Jugador" to="." method="_on_Jugador_decrement_anzuelo"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
-[connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezTimerIzq_timeout"]
 [connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezSpawnTimerIzq_timeout"]
+[connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezTimerIzq_timeout"]
 [connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezTimer_timeout"]
-[connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezTimerDer_timeout"]
 [connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezSpawnTimerDer_timeout"]
+[connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezTimerDer_timeout"]
 [connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezTimer_timeout"]
 [connection signal="finished" from="Musica_victoria" to="." method="_on_Musica_victoria_finished"]
 [connection signal="finished" from="Musica_derrota" to="." method="_on_Musica_derrota_finished"]

@@ -1,15 +1,15 @@
 extends Control
 
-var index = 0
+var index = 1
 signal dialog_terminated
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	$AnimationPlayer.play("AnchorIdle")
-	pass # Replace with function body.
+	$Panel/RichTextLabel.text = frases[0]
 
 
-var frases = ["buen dia","mi nombre es ralsei","te doy la bienvenida al puerto de mar del plata"]
+var frases = ["Bienvenido al puerto de Mar del Plata","Hoy zarparemos a mar abierto","Va a ser un viaje muy divertido!, pero hay que ser cuidadosos para salir del puerto."]
 
 
 

@@ -17,7 +17,7 @@ outline_size = 1
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 1 )
 
-[sub_resource type="SpriteFrames" id=4]
+[sub_resource type="SpriteFrames" id=2]
 animations = [ {
 "frames": [ ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 10 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 7 ), ExtResource( 4 ), ExtResource( 6 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ), ExtResource( 9 ) ],
 "loop": true,
@@ -113,7 +113,7 @@ fit_content_height = true
 [node name="Sprite" type="AnimatedSprite" parent="."]
 position = Vector2( 908, 419 )
 scale = Vector2( 0.35, 0.35 )
-frames = SubResource( 4 )
+frames = SubResource( 2 )
 frame = 22
 playing = true
 flip_h = true

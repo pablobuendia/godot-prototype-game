@@ -2,6 +2,7 @@ extends CanvasLayer
 
 
 signal ok_pressed
+signal back_menu
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -38,7 +39,6 @@ func _on_Popup_focus_exited():
 	$Popup.grab_focus()
 
 
-
-
 func _on_ButtonOK2_pressed():
-	get_tree().change_scene("res://Main-Menu.tscn")
+	emit_signal("back_menu")
+	

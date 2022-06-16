@@ -31,7 +31,11 @@ func save_game():
 func load_game():
 	var save_game = File.new()
 	if not save_game.file_exists(SAVE_PATH):
-		return # Error! No hay archivo que guardar
+		return null# Error! No hay archivo que guardar
 	save_game.open(SAVE_PATH, File.READ)
 	player = parse_json(save_game.get_line())
 	save_game.close()
+	return 1
+
+func config(): #configuracion inicial
+	pass

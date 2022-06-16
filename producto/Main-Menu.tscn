@@ -19,12 +19,12 @@ script/source = "extends Control
 
 func _ready():
 	OS.center_window()
-	if GlobalVar.load_game() == null: #si el archivo no existe
+	if GlobalVar.load_game() == null or GlobalVar.player==null: #si el archivo no existe
 		$Player/LineEdit.show()
 	else:
-		$Player/LineEdit.show()
+		$Player/LineEdit.hide()
 		$Player/LineEdit.placeholder_text = ''
-		$Player/LineEdit.text = GlobalVar.player.username
+		$Player.text += GlobalVar.player.username
 		
 
 func _on_Jugar_pressed():
@@ -35,7 +35,7 @@ func _on_Jugar_pressed():
 func _on_NuevaPartida_pressed():
 	$AdvertenciaBorrar.show()
 	if GlobalVar.load_game() != null:
-		#Como se hace para borrar el archivo? 
+		
 		pass
 
 func _on_LineEdit_text_entered(new_text):
@@ -45,8 +45,11 @@ func _on_LineEdit_text_entered(new_text):
 
 
 func _on_Si_pressed():
-	#borrar la partida, como se hace?
-	pass # Replace with function body.
+	#Poner null el diccionario
+	$AdvertenciaBorrar.show()
+	GlobalVar.player = null
+	GlobalVar.save_game()
+	_ready()
 
 
 func _on_No_pressed():

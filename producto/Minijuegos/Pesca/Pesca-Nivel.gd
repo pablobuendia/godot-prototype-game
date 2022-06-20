@@ -46,6 +46,8 @@ var cantidad_actual_2 = 0
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	randomize()
+	if (GlobalVar.player.musica):
+		$Musica_fondo.play();
 	new_game()
 
 func new_game():

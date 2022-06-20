@@ -22,7 +22,8 @@ var player = {
 	"banderaInicio":false,
 	"lancha":false,
 	"pesca":false,
-	"lobo":false
+	"lobo":false,
+	"musica": true
 }
 
 func save_game():
@@ -54,6 +55,7 @@ func config(): #configuracion inicial
 		"banderaInicio":false,
 		"lancha":false,
 		"pesca":false,
-		"lobo":false
+		"lobo":false,
+		"musica":true
 	}
 

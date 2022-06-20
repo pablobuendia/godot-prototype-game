@@ -228,7 +228,7 @@ texture = ExtResource( 11 )
 position = Vector2( -86.9878, -4.10615 )
 scale = Vector2( 0.233999, 0.921428 )
 frames = SubResource( 15 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Intro" type="Control" parent="."]
@@ -285,7 +285,7 @@ fit_content_height = true
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 5 )
-frame = 13
+frame = 29
 playing = true
 flip_h = true
 

@@ -23,7 +23,7 @@ var player = {
 	"lancha":false,
 	"pesca":false,
 	"lobo":false,
-	"musica": true
+	"musica":true
 }
 
 func save_game():

@@ -5,8 +5,11 @@ export(PackedScene) var pez_scene
 export(PackedScene) var red_scene
 var score = 0
 var vida = 3
+var index = 0
 
 func _ready():
+	if(GlobalVar.player.lobo == false):
+		$Intro/AnimationPlayer.play("AnchorIdle")
 	randomize()
 
 func game_over():
@@ -162,3 +165,19 @@ func _on_HUD_start_gameFacil():
 	$RedTimer.wait_time = 5
 	GlobalVar.LOBO_NIVEL = 0
 	new_game()
+
+
+var frases = ["Te explico cómo se juega!","Tenes que equivar todo tipo de red",
+"Cuidado con caerte al suelo! Podes perder una vida si te caes al suelo",
+"Además, tenes que recoger la mayor cantidad de monedas!",
+"Habrá una ayuda para darte una vida más!","Listo " + GlobalVar.player.username + " para jugar? ",
+"¡Mucha suerte!"]
+
+func _on_Panel_pressed():
+	if (index < frases.size()):
+		$Intro/Panel/RichTextLabel.text = frases[index]
+		index+=1
+	else:
+		$Intro.hide()
+		GlobalVar.player.lobo = true
+		$HUD/StartButton.show()

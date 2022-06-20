@@ -51,7 +51,6 @@ func _on_Lancha_pressed():
 	
 func _on_Lobo_pressed():
 	if (GlobalVar.player.lancha && GlobalVar.player.pesca):
-		GlobalVar.player.lobo = true
 		get_tree().change_scene("res://Minijuegos/Lobo/Main_Lobo.tscn")
 
 func _on_Pesca_pressed():

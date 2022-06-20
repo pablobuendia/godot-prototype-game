@@ -1,9 +1,15 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/img/Fondos/restaurante.jpg" type="Texture" id=2]
 [ext_resource path="res://Restaurante.gd" type="Script" id=3]
 [ext_resource path="res://assets/sounds/vender.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_5.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_1.png" type="Texture" id=6]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_4.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_6.png" type="Texture" id=8]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_2.png" type="Texture" id=9]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_3.png" type="Texture" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -15,6 +21,14 @@ font_data = ExtResource( 1 )
 
 [sub_resource type="DynamicFont" id=3]
 font_data = ExtResource( 1 )
+
+[sub_resource type="SpriteFrames" id=4]
+animations = [ {
+"frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ) ],
+"loop": true,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -46,7 +60,7 @@ margin_right = 936.0
 margin_bottom = 60.0
 rect_pivot_offset = Vector2( 51, 43 )
 custom_fonts/normal_font = SubResource( 1 )
-text = "Monedas: 0"
+text = "0"
 
 [node name="Vender Besugo" type="Button" parent="."]
 margin_left = 47.0
@@ -179,6 +193,13 @@ text = "Volver al mapa"
 
 [node name="Vender" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+position = Vector2( 534, 35 )
+scale = Vector2( 1.077, 0.921428 )
+frames = SubResource( 4 )
+frame = 5
+playing = true
 
 [connection signal="tree_entered" from="." to="." method="_on_Control_tree_entered"]
 [connection signal="pressed" from="Vender Besugo" to="." method="_on_Vender_Besugo_pressed"]

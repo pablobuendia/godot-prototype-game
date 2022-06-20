@@ -22,7 +22,7 @@ onready var _music_on = load(\"res://assets/img/Iconos/play-music.png\");
 func _ready():
 	OS.center_window()
 	$Player.text = \"Player: \" + GlobalVar.player.username
-	if (GlobalVar.player.musica):
+	if (GlobalVar.player.musica == true):
 		$Musica_fondo.play();
 		$Music.texture_normal = _music_on;
 	else:

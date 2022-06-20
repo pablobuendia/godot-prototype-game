@@ -70,6 +70,7 @@ scale = Vector2( 0.15, 0.15 )
 texture = ExtResource( 4 )
 
 [node name="StartButton" type="Button" parent="."]
+visible = false
 anchor_top = 0.773
 anchor_right = 0.992
 anchor_bottom = 0.853
@@ -190,12 +191,10 @@ texture = ExtResource( 7 )
 
 [node name="LetterI" type="Sprite" parent="Niveles/Letters"]
 position = Vector2( -53.7433, -95 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 9 )
 
 [node name="LetterV" type="Sprite" parent="Niveles/Letters"]
 position = Vector2( -6.60042, -95 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 10 )
 
 [node name="LetterE" type="Sprite" parent="Niveles/Letters"]
@@ -204,7 +203,6 @@ texture = ExtResource( 8 )
 
 [node name="LetterL" type="Sprite" parent="Niveles/Letters"]
 position = Vector2( 99.9432, -95 )
-scale = Vector2( 1, 1 )
 texture = ExtResource( 12 )
 
 [node name="Medio" type="Button" parent="Niveles"]

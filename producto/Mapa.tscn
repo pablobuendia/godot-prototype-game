@@ -1,15 +1,9 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://assets/img/Fondos/MAPAPRINCIPAL.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://Mapa.gd" type="Script" id=3]
 [ext_resource path="res://assets/img/Iconos/buttonLarge.png" type="Texture" id=4]
-[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_2.png" type="Texture" id=5]
-[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_1.png" type="Texture" id=6]
-[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_3.png" type="Texture" id=7]
-[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_4.png" type="Texture" id=8]
-[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_5.png" type="Texture" id=9]
-[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_6.png" type="Texture" id=10]
 [ext_resource path="res://assets/img/hook.png" type="Texture" id=11]
 [ext_resource path="res://assets/img/lobolino/lobolino_00004.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/lobolino/lobolino_00005.png" type="Texture" id=13]
@@ -27,22 +21,8 @@
 size = 25
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=2]
-size = 25
-font_data = ExtResource( 2 )
-
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 6 ), ExtResource( 5 ), ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "default",
-"speed": 5.0
-} ]
-
-[sub_resource type="DynamicFont" id=4]
-size = 25
-outline_size = 1
-outline_color = Color( 0.984314, 0.984314, 0.984314, 1 )
+[sub_resource type="DynamicFont" id=14]
+size = 35
 font_data = ExtResource( 2 )
 
 [sub_resource type="SpriteFrames" id=5]
@@ -78,10 +58,6 @@ tracks/1/keys = {
 
 [sub_resource type="DynamicFont" id=7]
 size = 50
-font_data = ExtResource( 2 )
-
-[sub_resource type="DynamicFont" id=14]
-size = 35
 font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=8]
@@ -202,7 +178,7 @@ margin_left = 523.0
 margin_top = 359.0
 margin_right = 656.0
 margin_bottom = 412.0
-custom_fonts/font = SubResource( 1 )
+custom_fonts/font = SubResource( 14 )
 custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 23 )
@@ -216,14 +192,10 @@ margin_left = 797.0
 margin_top = 145.0
 margin_right = 1004.0
 margin_bottom = 199.0
-custom_fonts/font = SubResource( 13 )
+custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 23 )
-<<<<<<< Updated upstream
-custom_fonts/font = SubResource( 2 )
-=======
->>>>>>> Stashed changes
 text = "Restaurante"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -243,13 +215,6 @@ texture = ExtResource( 11 )
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ButtonLarge"]
 position = Vector2( -86.1909, -5.89285 )
 scale = Vector2( 0.233999, 0.921428 )
-<<<<<<< Updated upstream
-frames = SubResource( 3 )
-frame = 5
-=======
-frames = SubResource( 2 )
-frame = 3
->>>>>>> Stashed changes
 playing = true
 
 [node name="Intro" type="Control" parent="."]
@@ -300,12 +265,7 @@ margin_top = 85.0
 margin_right = 464.0
 margin_bottom = 213.0
 mouse_filter = 1
-<<<<<<< Updated upstream
-custom_fonts/normal_font = SubResource( 4 )
-=======
->>>>>>> Stashed changes
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 3 )
 text = "Bienvenido al Puerto de Mar del Plata, tenés ganas de hacer un negocio GENIAL?"
 fit_content_height = true
 __meta__ = {
@@ -315,13 +275,8 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="Intro"]
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
-<<<<<<< Updated upstream
 frames = SubResource( 5 )
-frame = 26
-=======
-frames = SubResource( 4 )
-frame = 24
->>>>>>> Stashed changes
+frame = 13
 playing = true
 flip_h = true
 
@@ -349,13 +304,8 @@ margin_left = 278.0
 margin_top = 6.0
 margin_right = 328.0
 margin_bottom = 67.0
-<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 7 )
-text = "0"
-=======
-custom_fonts/font = SubResource( 6 )
 text = "000"
->>>>>>> Stashed changes
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -373,28 +323,15 @@ margin_left = 581.143
 margin_top = 6.4126
 margin_right = 766.143
 margin_bottom = 73.4126
-<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 7 )
-text = "Chaby"
-=======
-custom_fonts/font = SubResource( 6 )
->>>>>>> Stashed changes
 
 [node name="Monedas" type="Label" parent="."]
 margin_left = 95.0
 margin_top = 5.0
 margin_right = 130.0
 margin_bottom = 66.0
-<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 7 )
-text = "0"
-=======
-custom_fonts/font = SubResource( 6 )
 text = "000"
->>>>>>> Stashed changes
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Volver" type="Button" parent="."]
 margin_left = 898.0
@@ -407,33 +344,6 @@ custom_styles/pressed = ExtResource( 21 )
 custom_styles/focus = ExtResource( 21 )
 custom_styles/disabled = ExtResource( 21 )
 custom_styles/normal = ExtResource( 21 )
-<<<<<<< Updated upstream
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="VolverMenu" type="TextureButton" parent="Volver"]
-margin_left = 230.734
-margin_top = 17.9803
-margin_right = 278.734
-margin_bottom = 65.9803
-rect_scale = Vector2( -1, 1 )
-mouse_filter = 1
-texture_normal = ExtResource( 19 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="RichTextLabel" type="RichTextLabel" parent="Volver"]
-margin_left = 28.456
-margin_top = 15.6833
-margin_right = 204.456
-margin_bottom = 77.6833
-rect_scale = Vector2( 0.8, 0.8 )
-mouse_filter = 1
-custom_fonts/normal_font = SubResource( 7 )
-=======
->>>>>>> Stashed changes
 text = "Volver"
 
 [node name="Tap" type="Sprite" parent="."]

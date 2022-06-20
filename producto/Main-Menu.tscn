@@ -128,9 +128,6 @@ anchor_bottom = 1.0
 margin_left = -2.11902
 margin_right = -2.11902
 script = SubResource( 1 )
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Fondo" type="TextureRect" parent="."]
 margin_left = 1.11902
@@ -212,10 +209,10 @@ margin_left = 342.119
 margin_top = 278.0
 margin_right = 702.119
 margin_bottom = 398.0
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color = Color( 0.94902, 0.411765, 0.0156863, 1 )
 custom_colors/font_outline_modulate = Color( 0.0470588, 0.0431373, 0.0431373, 1 )
 custom_colors/font_color_shadow = Color( 0.0823529, 0.0784314, 0.0784314, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Puerto"
 
 [node name="Player" type="Label" parent="."]
@@ -276,9 +273,9 @@ margin_left = -111.0
 margin_top = -63.0
 margin_right = 120.0
 margin_bottom = 26.0
-custom_fonts/normal_font = SubResource( 6 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 6 )
 text = "¿Deseas borrar la partida?"
 
 [node name="Si" type="Button" parent="AdvertenciaBorrar"]
@@ -286,11 +283,11 @@ margin_left = -78.1516
 margin_top = 39.1875
 margin_right = -34.1516
 margin_bottom = 80.1875
-custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.227451, 0.870588, 0.843137, 1 )
 custom_colors/font_color_pressed = Color( 0.141176, 0.862745, 0.85098, 1 )
+custom_fonts/font = SubResource( 7 )
 text = "Si"
 flat = true
 
@@ -299,11 +296,11 @@ margin_left = 43.3646
 margin_top = 33.6875
 margin_right = 87.3646
 margin_bottom = 74.6875
-custom_fonts/font = SubResource( 7 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.160784, 0.729412, 0.678431, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.807843, 0.764706, 1 )
+custom_fonts/font = SubResource( 7 )
 text = "No"
 flat = true
 
@@ -318,9 +315,9 @@ margin_left = -128.0
 margin_top = -100.0
 margin_right = 128.0
 margin_bottom = 111.0
-custom_fonts/normal_font = SubResource( 8 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+custom_fonts/normal_font = SubResource( 8 )
 text = "Prototipo de videojuego con la temática de Puerto de Mar del Plata hecho por:
 
 María Josefina Oller

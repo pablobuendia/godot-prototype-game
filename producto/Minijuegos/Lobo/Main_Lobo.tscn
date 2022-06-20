@@ -1,9 +1,10 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=23 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/Player_Lobo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Minijuegos/Lobo/Pez.tscn" type="PackedScene" id=2]
 [ext_resource path="res://Minijuegos/Lobo/Main_Lobo.gd" type="Script" id=3]
 [ext_resource path="res://Minijuegos/Lobo/Red.tscn" type="PackedScene" id=4]
+[ext_resource path="res://assets/img/Fondos/7.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/Fondos/algas.png" type="Texture" id=6]
 [ext_resource path="res://Minijuegos/Lobo/HUD_Lobo.tscn" type="PackedScene" id=7]
 [ext_resource path="res://Minijuegos/Lobo/ContenedorSalud.gd" type="Script" id=8]
@@ -118,11 +119,7 @@ _data = {
 "points": PoolVector2Array( 0, 0, 0, 0, -2, 0, 0, 0, 0, 0, 783, -3 )
 }
 
-[node name="Main" type="Node2D" groups=[
-"linea",
-"red",
-"salud",
-]]
+[node name="Main" type="Node2D" groups=["linea", "red", "salud"]]
 position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 pez_scene = ExtResource( 2 )
@@ -187,6 +184,7 @@ texture = ExtResource( 10 )
 [node name="Suelo" type="Sprite" parent="ParallaxBackground/ParallaxLayer/SueloArea"]
 position = Vector2( 512, 297.5 )
 scale = Vector2( 0.533333, 0.560185 )
+texture = ExtResource( 5 )
 
 [node name="ColisionSuelo" type="CollisionShape2D" parent="ParallaxBackground/ParallaxLayer/SueloArea"]
 shape = SubResource( 5 )
@@ -203,9 +201,9 @@ texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 0.5, 0.5 )
+collision_mask = 17
 monitoring = false
 monitorable = false
-collision_mask = 17
 
 [node name="FishTimer_Left" type="Timer" parent="."]
 wait_time = 5.0

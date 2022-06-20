@@ -10,10 +10,8 @@ func _ready():
 	randomize()
 
 func game_over():
-	#$Player.monitoring = false
 	set_deferred("monitoring",false)
 	set_deferred("monitorable",false)
-	#$Player.monitorable= false
 	$Control.visible = false
 	$Player.hide()
 	$FishTimer_Left.stop()
@@ -23,6 +21,8 @@ func game_over():
 	$ContenedorSalud/TiempoDeGeneracion.stop()
 	$AreaLineaFinish/TiempoDeFinalizacion.stop()
 	$HUD.show_game_over(score)
+	GlobalVar.player.monedas = GlobalVar.player.monedas + score
+	GlobalVar.save_game()
 
 func new_game():
 	score = 0
@@ -31,8 +31,6 @@ func new_game():
 	$Player.start($StartPosition.position)
 	$Player.monitoring = true
 	$Player.monitorable = true
-	#set_deferred("monitoring",true)
-	#set_deferred("monitorable",true)
 	$StartTimer.start()
 	$HUD.update_score(score)
 	$HUD.update_vida(vida)
@@ -99,7 +97,10 @@ func _on_RedTimer_timeout():
 
 func _on_Player_miss_vida():
 	vida -=1
+	Input.vibrate_handheld(500)
 	if vida<=0:
+		set_deferred("monitoring",false)
+		set_deferred("monitorable",false)
 		game_over()
 	$HUD.update_vida(vida)
 
@@ -109,8 +110,6 @@ func _on_Player_win_vida():
 	$HUD.update_vida(vida)
 
 func _game_win():
-	#$Player.monitoring = false
-	#$Player.monitorable= false
 	set_deferred("monitoring",false)
 	set_deferred("monitorable",false)
 	$Control.hide()
@@ -121,12 +120,17 @@ func _game_win():
 	$ContenedorMonedas/TiempoDeGeneracion.stop()
 	$ContenedorSalud/TiempoDeGeneracion.stop()
 	$AreaLineaFinish/TiempoDeFinalizacion.stop()
-	score +=100 #Por haber llegado al fin
+	if (GlobalVar.LOBO_NIVEL == 0):
+		score +=GlobalVar.LOBO_FACIL #Por haber llegado al fin
+	else:
+		if(GlobalVar.LOBO_NIVEL == 1):
+			score +=GlobalVar.LOBO_MEDIO
+		else:
+			score +=GlobalVar.LOBO_DIFICIL
 	$HUD.show_game_win(score)
-	GlobalVar.player.score = score 
+	GlobalVar.player.monedas = GlobalVar.player.monedas + score
 	GlobalVar.save_game()
-
-
+	
 func _on_HUD_start_gameDificil():
 	$ContenedorMonedas/TiempoDeGeneracion.wait_time = 3
 	$ContenedorSalud/TiempoDeGeneracion.wait_time = 40
@@ -134,6 +138,7 @@ func _on_HUD_start_gameDificil():
 	$FishTimer_Left.wait_time = 2
 	$FishTimer_Right.wait_time = 9
 	$RedTimer.wait_time = 3
+	GlobalVar.LOBO_NIVEL = 2
 	new_game()
 
 
@@ -144,6 +149,7 @@ func _on_HUD_start_gameMedio():
 	$FishTimer_Left.wait_time = 2
 	$FishTimer_Right.wait_time = 8
 	$RedTimer.wait_time = 4
+	GlobalVar.LOBO_NIVEL = 1
 	new_game()
 
 
@@ -154,4 +160,5 @@ func _on_HUD_start_gameFacil():
 	$FishTimer_Left.wait_time = 5
 	$FishTimer_Right.wait_time = 10
 	$RedTimer.wait_time = 5
+	GlobalVar.LOBO_NIVEL = 0
 	new_game()

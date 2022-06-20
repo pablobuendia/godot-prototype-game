@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/Moneda_Lobo.gd" type="Script" id=1]
-[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_5.png" type="Texture" id=2]
-[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_6.png" type="Texture" id=3]
-[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_3.png" type="Texture" id=4]
-[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_1.png" type="Texture" id=5]
-[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_2.png" type="Texture" id=6]
-[ext_resource path="res://assets/img/Monedas/Gold/gold_coin_round_star_4.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_5.png" type="Texture" id=2]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_6.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_3.png" type="Texture" id=4]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_1.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_2.png" type="Texture" id=6]
+[ext_resource path="res://assets/img/Monedas/gold_coin_round_star_4.png" type="Texture" id=7]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {

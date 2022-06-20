@@ -22,7 +22,7 @@ func comprar_pez(tipoPez, boton):
 		GlobalVar.player.cantidad_peces[tipoPez] -= 1
 		GlobalVar.player.monedas += GlobalVar.PRECIOS_PECES[tipoPez]
 		$Monedas.text = str("Monedas: ", GlobalVar.player.monedas)
-		boton.text = str("$", GlobalVar.PRECIOS_PECES[tipoPez], ", Restantes: ", GlobalVar.CANTIDAD_PECES[tipoPez])
+		boton.text = str("$", GlobalVar.PRECIOS_PECES[tipoPez], ", Restantes: ", GlobalVar.player.cantidad_peces[tipoPez])
 
 
 func _on_Vender_Besugo_pressed():

@@ -3,28 +3,31 @@ extends Node2D
 var index = 0
 
 func _ready():
-	$ButtonLarge/Anzuelos.text = str(GlobalVar.ANZUELOS) #No sabemos si va así
-	$ButtonLarge/Monedas.text = str(GlobalVar.MONEDAS)
-	#como activar una sola vez? no, cada vez que entre al mapa
-	$Intro.show()
-	$Intro/AnimationPlayer.play("AnchorIdle")
+	$Anzuelos.text = str(GlobalVar.player.anzuelos) 
+	$Monedas.text = str(GlobalVar.player.monedas)
+	$NamePlayer.text = GlobalVar.player.username
+	if(GlobalVar.player.banderaInicio == false): #Ya jugó antes?
+		$Intro.show()
+		$Intro/AnimationPlayer.play("AnchorIdle")
+	if(GlobalVar.player.lancha==true):
+		$Tap/AnimationTap.play("pesca")
 
 func _on_Lancha_pressed():
 	get_tree().change_scene("res://Minijuegos/Lanchas/scenes/main.tscn")
-
-
+	GlobalVar.player.lancha = true
+	$Tap.hide()
+	
 func _on_Lobo_pressed():
 	get_tree().change_scene("res://Minijuegos/Lobo/Main_Lobo.tscn")
 
-
 func _on_Pesca_pressed():
 	get_tree().change_scene("res://Minijuegos/Pesca/Pesca-Main.tscn")
-
-
+	GlobalVar.player.pesca = true
+	$Tap.hide()
+	
 func _on_Tienda_pressed():
 	get_tree().change_scene("res://Tienda.tscn")
 	
-
 func _on_Restaurante_pressed():
 	get_tree().change_scene("res://Restaurante.tscn")
 	
@@ -39,3 +42,8 @@ func _on_Panel_pressed():
 		index+=1
 	else:
 		$Intro.hide()
+		$Tap/AnimationTap.play("play")
+
+
+func _on_VolverMenu_pressed():
+	get_tree().change_scene("res://Main-Menu.tscn")

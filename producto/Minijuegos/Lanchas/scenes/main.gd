@@ -55,5 +55,5 @@ func _on_Control_dialog_terminated():
 
 
 func _on_GameOverUI_back_menu():
-	GlobalVar.MONEDAS = GlobalVar.MONEDAS + score / 10
+	GlobalVar.player.monedas = GlobalVar.player.monedas + score / 10
 	get_tree().change_scene("res://Mapa.tscn")

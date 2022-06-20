@@ -18,7 +18,6 @@
 [ext_resource path="res://assets/img/lobolino/lobolino_00000.png" type="Texture" id=16]
 [ext_resource path="res://assets/img/lobolino/lobolino_00002.png" type="Texture" id=17]
 [ext_resource path="res://assets/img/lobolino/lobolino_00003.png" type="Texture" id=18]
-[ext_resource path="res://assets/img/Iconos/volver.png" type="Texture" id=19]
 [ext_resource path="res://assets/img/Iconos/tapLeft.png" type="Texture" id=20]
 [ext_resource path="res://assets/graphic_resources/MapaButtonStyle.tres" type="StyleBox" id=21]
 [ext_resource path="res://assets/graphic_resources/MapaJugarStyle.tres" type="StyleBox" id=22]
@@ -79,6 +78,10 @@ tracks/1/keys = {
 
 [sub_resource type="DynamicFont" id=7]
 size = 50
+font_data = ExtResource( 2 )
+
+[sub_resource type="DynamicFont" id=14]
+size = 35
 font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=8]
@@ -157,10 +160,10 @@ margin_left = 101.0
 margin_top = 393.0
 margin_right = 222.0
 margin_bottom = 448.0
+custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
-custom_fonts/font = SubResource( 1 )
 text = "Jugar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -171,10 +174,10 @@ margin_left = 310.0
 margin_top = 471.0
 margin_right = 441.0
 margin_bottom = 532.0
+custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
-custom_fonts/font = SubResource( 1 )
 text = "Jugar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -185,10 +188,10 @@ margin_left = 630.0
 margin_top = 277.0
 margin_right = 756.0
 margin_bottom = 333.0
+custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
-custom_fonts/font = SubResource( 1 )
 text = "Jugar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -199,10 +202,10 @@ margin_left = 523.0
 margin_top = 359.0
 margin_right = 656.0
 margin_bottom = 412.0
+custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 23 )
-custom_fonts/font = SubResource( 1 )
 text = "Tienda"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -213,10 +216,14 @@ margin_left = 797.0
 margin_top = 145.0
 margin_right = 1004.0
 margin_bottom = 199.0
+custom_fonts/font = SubResource( 13 )
 custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 23 )
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 2 )
+=======
+>>>>>>> Stashed changes
 text = "Restaurante"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -229,15 +236,20 @@ texture = ExtResource( 4 )
 
 [node name="Fishingrod" type="Sprite" parent="ButtonLarge"]
 modulate = Color( 0.219608, 0.219608, 0.219608, 1 )
-position = Vector2( -54.2549, -7.41791 )
+position = Vector2( -50.7434, -7.41791 )
 scale = Vector2( 0.0236473, 0.0980693 )
 texture = ExtResource( 11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ButtonLarge"]
 position = Vector2( -86.1909, -5.89285 )
 scale = Vector2( 0.233999, 0.921428 )
+<<<<<<< Updated upstream
 frames = SubResource( 3 )
 frame = 5
+=======
+frames = SubResource( 2 )
+frame = 3
+>>>>>>> Stashed changes
 playing = true
 
 [node name="Intro" type="Control" parent="."]
@@ -288,8 +300,12 @@ margin_top = 85.0
 margin_right = 464.0
 margin_bottom = 213.0
 mouse_filter = 1
+<<<<<<< Updated upstream
 custom_fonts/normal_font = SubResource( 4 )
+=======
+>>>>>>> Stashed changes
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 3 )
 text = "Bienvenido al Puerto de Mar del Plata, tenés ganas de hacer un negocio GENIAL?"
 fit_content_height = true
 __meta__ = {
@@ -299,8 +315,13 @@ __meta__ = {
 [node name="Sprite" type="AnimatedSprite" parent="Intro"]
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
+<<<<<<< Updated upstream
 frames = SubResource( 5 )
 frame = 26
+=======
+frames = SubResource( 4 )
+frame = 24
+>>>>>>> Stashed changes
 playing = true
 flip_h = true
 
@@ -324,55 +345,69 @@ method_call_mode = 1
 anims/AnchorIdle = SubResource( 6 )
 
 [node name="Anzuelos" type="Label" parent="."]
-margin_left = 266.0
+margin_left = 278.0
 margin_top = 6.0
-margin_right = 316.0
+margin_right = 328.0
 margin_bottom = 67.0
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 7 )
 text = "0"
+=======
+custom_fonts/font = SubResource( 6 )
+text = "000"
+>>>>>>> Stashed changes
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Player" type="Label" parent="."]
-margin_left = 366.647
+margin_left = 396.647
 margin_top = 4.4126
-margin_right = 569.647
+margin_right = 599.647
 margin_bottom = 71.4126
 custom_fonts/font = SubResource( 7 )
 text = "Player:"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="NamePlayer" type="Label" parent="."]
-margin_left = 559.143
+margin_left = 581.143
 margin_top = 6.4126
-margin_right = 744.143
+margin_right = 766.143
 margin_bottom = 73.4126
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 7 )
 text = "Chaby"
+=======
+custom_fonts/font = SubResource( 6 )
+>>>>>>> Stashed changes
 
 [node name="Monedas" type="Label" parent="."]
 margin_left = 95.0
 margin_top = 5.0
 margin_right = 130.0
 margin_bottom = 66.0
+<<<<<<< Updated upstream
 custom_fonts/font = SubResource( 7 )
 text = "0"
+=======
+custom_fonts/font = SubResource( 6 )
+text = "000"
+>>>>>>> Stashed changes
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Volver" type="Button" parent="."]
-margin_left = 792.0
-margin_right = 1027.0
-margin_bottom = 86.0
+margin_left = 898.0
+margin_top = 12.0
+margin_right = 1019.0
+margin_bottom = 66.0
+custom_fonts/font = SubResource( 14 )
 custom_styles/hover = ExtResource( 21 )
 custom_styles/pressed = ExtResource( 21 )
 custom_styles/focus = ExtResource( 21 )
 custom_styles/disabled = ExtResource( 21 )
 custom_styles/normal = ExtResource( 21 )
+<<<<<<< Updated upstream
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -397,11 +432,9 @@ margin_bottom = 77.6833
 rect_scale = Vector2( 0.8, 0.8 )
 mouse_filter = 1
 custom_fonts/normal_font = SubResource( 7 )
+=======
+>>>>>>> Stashed changes
 text = "Volver"
-fit_content_height = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tap" type="Sprite" parent="."]
 position = Vector2( 170, 250 )

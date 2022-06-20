@@ -140,6 +140,7 @@ __meta__ = {
 
 [node name="PopupSuccess" type="Popup" parent="."]
 pause_mode = 2
+visible = true
 margin_right = 40.0
 margin_bottom = 40.0
 __meta__ = {
@@ -163,7 +164,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="PopupSuccess"]
+[node name="Title" type="Label" parent="PopupSuccess"]
 margin_left = 17.3569
 margin_top = 22.4167
 margin_right = 670.357

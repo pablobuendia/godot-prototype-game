@@ -1,35 +1,33 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://assets/img/Iconos/UIbg.png" type="Texture" id=1]
-[ext_resource path="res://assets/letters/letterM.png" type="Texture" id=2]
-[ext_resource path="res://assets/letters/letterD.png" type="Texture" id=3]
-[ext_resource path="res://assets/letters/letterL.png" type="Texture" id=4]
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/img/Iconos/play-music.png" type="Texture" id=6]
-[ext_resource path="res://assets/fonts/kenvector_future_thin.ttf" type="DynamicFontData" id=7]
 [ext_resource path="res://assets/img/Fondos/PuertoMarDelPlata.jpg" type="Texture" id=8]
 [ext_resource path="res://assets/img/Iconos/music-off.png" type="Texture" id=9]
 [ext_resource path="res://assets/img/Iconos/credito.png" type="Texture" id=10]
-[ext_resource path="res://assets/letters/letterR.png" type="Texture" id=11]
-[ext_resource path="res://assets/letters/letterE.png" type="Texture" id=12]
-[ext_resource path="res://assets/letters/letterA.png" type="Texture" id=13]
 
 [sub_resource type="GDScript" id=1]
 script/source = "extends Control
 
 func _ready():
 	OS.center_window()
-	$Player.text = \"Player: \" + GlobalVar.player.username
-		
+	if (GlobalVar.load_game() == null || GlobalVar.player==null): #si el archivo no existe
+		GlobalVar.config();
+		$LineEdit.show()
+	else:
+		get_tree().change_scene(\"res://Main-Menu.tscn\");
 
-func _on_Jugar_pressed():
-	if GlobalVar.player.username != null: #solo se puede jugar si fue creado el player, no funciona me parece
-		get_tree().change_scene(\"res://Mapa.tscn\")
+func _on_Continuar_pressed():
+	if ($LineEdit.text != null && $LineEdit.text != ''):
+		print(GlobalVar.player);
+		GlobalVar.player.username = $LineEdit.text;
+		GlobalVar.save_game();
+		get_tree().change_scene(\"res://Main-Menu.tscn\")
+	else:
+		$AdvertenciaBorrar.show();
+	
 
-func _on_NuevaPartida_pressed():
-	$AdvertenciaBorrar.show()
-	#if GlobalVar.load_game() != null:
-	#	pass
 
 func _on_LineEdit_text_entered(new_text):
 	#controlar si anda en el celular!!!!!!
@@ -43,23 +41,14 @@ func _on_Si_pressed():
 	$AdvertenciaBorrar.show()
 	GlobalVar.player = null
 	GlobalVar.save_game()
-	get_tree().change_scene(\"res://Login.tscn\");
+	_ready()
+	pass
 
 
 func _on_No_pressed():
 	#no hace nada, vuelve al menú
 	$AdvertenciaBorrar.hide()
 
-
-func _on_Credito_pressed():
-	$CartelCredito.show()
-
-func _on_VolverCredito_pressed():
-	$CartelCredito.hide()
-
-
-func _on_Salir_pressed():
-	get_tree().quit()
 "
 
 [sub_resource type="DynamicFont" id=2]
@@ -68,37 +57,29 @@ outline_color = Color( 0.972549, 0.94902, 0.94902, 1 )
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 90
-font_data = ExtResource( 7 )
+size = 50
+font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=4]
-size = 30
+size = 28
 font_data = ExtResource( 5 )
 
 [sub_resource type="DynamicFont" id=5]
 size = 25
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=10]
-size = 25
-font_data = ExtResource( 5 )
-
 [sub_resource type="DynamicFont" id=6]
-size = 25
-font_data = ExtResource( 5 )
-
-[sub_resource type="DynamicFont" id=7]
 size = 20
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=8]
+[sub_resource type="DynamicFont" id=7]
 outline_color = Color( 0.0196078, 0.0196078, 0.0196078, 1 )
 font_data = ExtResource( 5 )
 
-[sub_resource type="DynamicFont" id=9]
+[sub_resource type="DynamicFont" id=8]
 font_data = ExtResource( 5 )
 
-[node name="Main-Menu" type="Control"]
+[node name="Login" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = -2.11902
@@ -115,120 +96,59 @@ margin_right = 1030.12
 margin_bottom = 601.0
 texture = ExtResource( 8 )
 expand = true
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="SombraFondo" type="ColorRect" parent="Fondo"]
-modulate = Color( 0, 0, 0, 0.596078 )
-margin_left = 1.11902
-margin_top = 1.0
-margin_right = 1029.12
-margin_bottom = 600.0
+modulate = Color( 0, 0, 0, 0.780392 )
+margin_right = 1028.0
+margin_bottom = 599.0
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Jugar" type="Button" parent="."]
-anchor_left = 0.388788
-anchor_top = 0.608333
-anchor_right = 0.613397
-anchor_bottom = 0.753333
+[node name="Continuar" type="Button" parent="."]
+anchor_left = 0.345724
+anchor_top = 0.482341
+anchor_right = 0.678732
+anchor_bottom = 0.627341
 margin_left = 1.88098
 margin_top = 35.0
 margin_right = 1.88098
 margin_bottom = 35.0
 custom_fonts/font = SubResource( 2 )
-text = "JUGAR"
+text = "CONTINUAR"
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
-[node name="Mardel" type="Control" parent="."]
-margin_left = 100.0
-margin_top = 39.0
-margin_right = 736.0
-margin_bottom = 353.0
-__meta__ = {
-"_edit_use_anchors_": false
-}
-
-[node name="LetterM" type="Sprite" parent="Mardel"]
-position = Vector2( 232, 215 )
-scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 2 )
-
-[node name="LetterA" type="Sprite" parent="Mardel"]
-position = Vector2( 318, 215 )
-scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 13 )
-
-[node name="LetterR" type="Sprite" parent="Mardel"]
-position = Vector2( 400, 215 )
-scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 11 )
-
-[node name="LetterD" type="Sprite" parent="Mardel"]
-position = Vector2( 474, 215 )
-scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 3 )
-
-[node name="LetterE" type="Sprite" parent="Mardel"]
-position = Vector2( 541, 215 )
-scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 12 )
-
-[node name="LetterL" type="Sprite" parent="Mardel"]
-position = Vector2( 616, 215 )
-scale = Vector2( 1.25, 1.25 )
-texture = ExtResource( 4 )
-
-[node name="Puerto" type="Label" parent="."]
-margin_left = 342.119
-margin_top = 278.0
-margin_right = 702.119
-margin_bottom = 398.0
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color = Color( 0.94902, 0.411765, 0.0156863, 1 )
-custom_colors/font_outline_modulate = Color( 0.0470588, 0.0431373, 0.0431373, 1 )
-custom_colors/font_color_shadow = Color( 0.0823529, 0.0784314, 0.0784314, 1 )
-text = "Puerto"
-
 [node name="Player" type="Label" parent="."]
-margin_left = 31.0
-margin_top = 534.0
-margin_right = 366.0
-margin_bottom = 597.0
-custom_fonts/font = SubResource( 4 )
-text = "Player:"
-
-[node name="NuevaPartida" type="Button" parent="."]
-margin_left = 362.0
-margin_top = 524.0
-margin_right = 675.0
-margin_bottom = 578.0
-custom_fonts/font = SubResource( 5 )
-text = "Nueva partida"
+margin_left = 95.1945
+margin_top = 108.147
+margin_right = 962.195
+margin_bottom = 171.147
+custom_fonts/font = SubResource( 3 )
+text = "Ingrese su nombre para empezar"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Salir" type="Button" parent="."]
-margin_left = 884.0
-margin_top = 467.0
-margin_right = 1002.0
-margin_bottom = 522.0
-custom_fonts/font = SubResource( 10 )
-text = "SALIR"
+[node name="LineEdit" type="LineEdit" parent="."]
+margin_left = 280.52
+margin_top = 227.405
+margin_right = 777.52
+margin_bottom = 283.405
+custom_fonts/font = SubResource( 4 )
+placeholder_text = "Escriba su nombre"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Music" type="TextureButton" parent="."]
 margin_left = 954.119
-margin_top = 537.0
+margin_top = 538.0
 margin_right = 1002.12
-margin_bottom = 585.0
+margin_bottom = 586.0
 texture_normal = ExtResource( 6 )
 texture_pressed = ExtResource( 9 )
 
@@ -250,17 +170,21 @@ margin_left = -111.0
 margin_top = -63.0
 margin_right = 120.0
 margin_bottom = 26.0
-custom_fonts/normal_font = SubResource( 6 )
+custom_fonts/normal_font = SubResource( 5 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-text = "¿Deseas borrar la partida?"
+text = "Nombre de usuario invalido"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Si" type="Button" parent="AdvertenciaBorrar"]
+visible = false
 margin_left = -78.1516
 margin_top = 39.1875
 margin_right = -34.1516
 margin_bottom = 80.1875
-custom_fonts/font = SubResource( 7 )
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.227451, 0.870588, 0.843137, 1 )
@@ -269,16 +193,16 @@ text = "Si"
 flat = true
 
 [node name="No" type="Button" parent="AdvertenciaBorrar"]
-margin_left = 43.3646
-margin_top = 33.6875
-margin_right = 87.3646
-margin_bottom = 74.6875
-custom_fonts/font = SubResource( 7 )
+margin_left = -20.2774
+margin_top = 35.4199
+margin_right = 23.7226
+margin_bottom = 76.4199
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.160784, 0.729412, 0.678431, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.807843, 0.764706, 1 )
-text = "No"
+text = "OK"
 flat = true
 
 [node name="CartelCredito" type="Sprite" parent="."]
@@ -292,7 +216,7 @@ margin_left = -128.0
 margin_top = -100.0
 margin_right = 128.0
 margin_bottom = 111.0
-custom_fonts/normal_font = SubResource( 8 )
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
 text = "Prototipo de videojuego con la temática de Puerto de Mar del Plata hecho por:
@@ -313,12 +237,11 @@ margin_left = -164.5
 margin_top = -132.0
 margin_right = -99.5
 margin_bottom = -106.0
-custom_fonts/font = SubResource( 9 )
+custom_fonts/font = SubResource( 8 )
 text = "Volver"
 
-[connection signal="pressed" from="Jugar" to="." method="_on_Jugar_pressed"]
-[connection signal="pressed" from="NuevaPartida" to="." method="_on_NuevaPartida_pressed"]
-[connection signal="pressed" from="Salir" to="." method="_on_Salir_pressed"]
+[connection signal="pressed" from="Continuar" to="." method="_on_Continuar_pressed"]
+[connection signal="text_entered" from="LineEdit" to="." method="_on_LineEdit_text_entered"]
 [connection signal="pressed" from="Credito" to="." method="_on_Credito_pressed"]
 [connection signal="pressed" from="AdvertenciaBorrar/Si" to="." method="_on_Si_pressed"]
 [connection signal="pressed" from="AdvertenciaBorrar/No" to="." method="_on_No_pressed"]

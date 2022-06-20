@@ -1,14 +1,14 @@
 extends Control
 
 func redraw_cantidades():
-	$"Vender Besugo/Precio Besugo".text = str("$", GlobalVar.PRECIOS_PECES[0], ", Restantes: ", GlobalVar.CANTIDAD_PECES[0])
-	$"Vender Besugo Rojo/Precio Besugo Rojo".text = str("$", GlobalVar.PRECIOS_PECES[1], ", Restantes: ", GlobalVar.CANTIDAD_PECES[1])
-	$"Vender Bonito/Precio Bonito".text = str("$", GlobalVar.PRECIOS_PECES[2], ", Restantes: ", GlobalVar.CANTIDAD_PECES[2])
-	$"Vender Caballa/Precio Caballa".text = str("$", GlobalVar.PRECIOS_PECES[3], ", Restantes: ", GlobalVar.CANTIDAD_PECES[3])
-	$"Vender Limon/Precio Limon".text = str("$", GlobalVar.PRECIOS_PECES[4], ", Restantes: ", GlobalVar.CANTIDAD_PECES[4])
-	$"Vender Mero/Precio Mero".text = str("$", GlobalVar.PRECIOS_PECES[5], ", Restantes: ", GlobalVar.CANTIDAD_PECES[5])
+	$"Vender Besugo/Precio Besugo".text = str("$", GlobalVar.PRECIOS_PECES[0], ", Restantes: ", GlobalVar.player.cantidad_peces[0])
+	$"Vender Besugo Rojo/Precio Besugo Rojo".text = str("$", GlobalVar.PRECIOS_PECES[1], ", Restantes: ", GlobalVar.player.cantidad_peces[1])
+	$"Vender Bonito/Precio Bonito".text = str("$", GlobalVar.PRECIOS_PECES[2], ", Restantes: ", GlobalVar.player.cantidad_peces[2])
+	$"Vender Caballa/Precio Caballa".text = str("$", GlobalVar.PRECIOS_PECES[3], ", Restantes: ", GlobalVar.player.cantidad_peces[3])
+	$"Vender Limon/Precio Limon".text = str("$", GlobalVar.PRECIOS_PECES[4], ", Restantes: ", GlobalVar.player.cantidad_peces[4])
+	$"Vender Mero/Precio Mero".text = str("$", GlobalVar.PRECIOS_PECES[5], ", Restantes: ", GlobalVar.player.cantidad_peces[5])
 	
-	$Monedas.text = str("Monedas: ", GlobalVar.MONEDAS)
+	$Monedas.text = str("Monedas: ", GlobalVar.player.monedas)
 
 
 func _ready():
@@ -18,10 +18,10 @@ func _on_Control_tree_entered():
 	redraw_cantidades()
 
 func comprar_pez(tipoPez, boton):
-	if GlobalVar.CANTIDAD_PECES[tipoPez] >= 1:
-		GlobalVar.CANTIDAD_PECES[tipoPez] -= 1
-		GlobalVar.MONEDAS += GlobalVar.PRECIOS_PECES[tipoPez]
-		$Monedas.text = str("Monedas: ", GlobalVar.MONEDAS)
+	if GlobalVar.player.cantidad_peces[tipoPez] >= 1:
+		GlobalVar.player.cantidad_peces[tipoPez] -= 1
+		GlobalVar.player.monedas += GlobalVar.PRECIOS_PECES[tipoPez]
+		$Monedas.text = str("Monedas: ", GlobalVar.player.monedas)
 		boton.text = str("$", GlobalVar.PRECIOS_PECES[tipoPez], ", Restantes: ", GlobalVar.CANTIDAD_PECES[tipoPez])
 
 

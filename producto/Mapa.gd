@@ -7,23 +7,39 @@ func _ready():
 	$Monedas.text = str(GlobalVar.player.monedas)
 	$NamePlayer.text = GlobalVar.player.username
 	if(GlobalVar.player.banderaInicio == false): #Ya jugó antes?
+		frases = frases_intro;
+		load_frases();
+		$Tap/AnimationTap.play("Lanchas")
 		$Intro.show()
 		$Intro/AnimationPlayer.play("AnchorIdle")
 	if(GlobalVar.player.lancha==true):
-		$Tap/AnimationTap.play("pesca")
+		if (GlobalVar.player.pesca==false):
+			frases = frases_post_lancha;
+			$Intro.show()
+			$Intro/AnimationPlayer.play("AnchorIdle")
+			$Tap/AnimationTap.play("pesca")
+		else:
+			frases = frases_post_pesca;
+			$Intro.show()
+			$Intro/AnimationPlayer.play("AnchorIdle")
+			$Tap/AnimationTap.play("Lobos")
+		load_frases();
 
 func _on_Lancha_pressed():
-	get_tree().change_scene("res://Minijuegos/Lanchas/scenes/main.tscn")
-	GlobalVar.player.lancha = true
 	$Tap.hide()
+	get_tree().change_scene("res://Minijuegos/Lanchas/scenes/main.tscn")
+	GlobalVar.player.banderaInicio = true
+	#GlobalVar.player.lancha = true
 	
 func _on_Lobo_pressed():
-	get_tree().change_scene("res://Minijuegos/Lobo/Main_Lobo.tscn")
+	if (GlobalVar.player.lancha && GlobalVar.player.pesca):
+		get_tree().change_scene("res://Minijuegos/Lobo/Main_Lobo.tscn")
 
 func _on_Pesca_pressed():
-	get_tree().change_scene("res://Minijuegos/Pesca/Pesca-Main.tscn")
-	GlobalVar.player.pesca = true
-	$Tap.hide()
+	if (GlobalVar.player.lancha):
+		$Tap.hide()
+		get_tree().change_scene("res://Minijuegos/Pesca/Pesca-Main.tscn")
+	#GlobalVar.player.pesca = true
 	
 func _on_Tienda_pressed():
 	get_tree().change_scene("res://Tienda.tscn")
@@ -31,10 +47,21 @@ func _on_Tienda_pressed():
 func _on_Restaurante_pressed():
 	get_tree().change_scene("res://Restaurante.tscn")
 	
-var frases = ["¿Cómo ganar monedas?",
+var frases = [];
+
+var frases_intro = ["¿Cómo ganar monedas?",
 "¡Andá a pescar para que los vendas al restaurante!",
 "Pero primero!!! Tenés que recorrer en el barco para pescar!",
-"¡Mucha suerte!"]
+"¡Mucha suerte!"];
+
+var frases_post_lancha = ["Estupendo! has logrado llegar a mar profundo en el barco.",
+"Ahora es tu turno de pescar"];
+
+var frases_post_pesca = ["Esa es una buena cantidad de pescado!",
+"Puedes venderlos en el restaurante",
+"Recuerda tambien comprar anzuelos en la tienda!", 
+"OH NO!!","Un lobo marino se ha ido demasiado lejos del puerto!",
+"Puedes ayudarlo a volver?"];
 
 func _on_Panel_pressed():
 	if (index < frases.size()):
@@ -42,8 +69,10 @@ func _on_Panel_pressed():
 		index+=1
 	else:
 		$Intro.hide()
-		$Tap/AnimationTap.play("play")
 
+func _on_Volver_pressed():
+	get_tree().change_scene("res://Main-Menu.tscn");
 
-func _on_VolverMenu_pressed():
-	get_tree().change_scene("res://Main-Menu.tscn")
+func load_frases():
+	if (frases.size()>0):
+		$Intro/Panel/RichTextLabel.text = frases[0];

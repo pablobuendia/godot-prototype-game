@@ -11,20 +11,20 @@ var LOBO_MEDIO = 150
 var LOBO_DIFICIL = 200
 
 var player = {
-		"username":"",
-		"monedas":0,
-		"coleccionable_1":false,
-		"precio_coleccionable_1":3000,
-		"coleccionable_2":false,
-		"precio_coleccionable_2":10000,
-		"cantidad_peces":[0,0,0,0,0,0],
-		"anzuelos":50,
-		"banderaInicio":false,
-		"lancha":false,
-		"pesca":false,
-		"lobo":false
-	}
-	
+	"username":"",
+	"monedas":0,
+	"coleccionable_1":false,
+	"precio_coleccionable_1":3000,
+	"coleccionable_2":false,
+	"precio_coleccionable_2":10000,
+	"cantidad_peces":[0,0,0,0,0,0],
+	"anzuelos":50,
+	"banderaInicio":false,
+	"lancha":false,
+	"pesca":false,
+	"lobo":false
+}
+
 func save_game():
 	var save_game = File.new()
 	save_game.open(SAVE_PATH, File.WRITE)
@@ -42,7 +42,7 @@ func load_game():
 	return 1
 
 func config(): #configuracion inicial
-	var player = {
+	player = {
 		"username":"",
 		"monedas":0,
 		"coleccionable_1":false,

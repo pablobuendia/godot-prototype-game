@@ -12,7 +12,7 @@
 [ext_resource path="res://Minijuegos/Lanchas/Ship.tscn" type="PackedScene" id=12]
 [ext_resource path="res://Minijuegos/Lanchas/etc/DialogUI.tscn" type="PackedScene" id=13]
 
-[sub_resource type="Animation" id=9]
+[sub_resource type="Animation" id=1]
 resource_name = "SeaWaves"
 length = 2.0
 loop = true
@@ -37,16 +37,16 @@ height = 12.7344
 radius = 6.89392
 height = 12.7344
 
-[sub_resource type="RectangleShape2D" id=5]
+[sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 198.143, 2282.39 )
+
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 87.6999, 447.385 )
 
 [sub_resource type="RectangleShape2D" id=6]
 extents = Vector2( 87.6999, 447.385 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 87.6999, 447.385 )
-
-[sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 638.018, 104.094 )
 
 [node name="Main" type="Node2D"]
@@ -71,7 +71,7 @@ texture = ExtResource( 9 )
 polygon = PoolVector2Array( -78.7779, -314.431, 132.209, -146.396, 126.679, -135.937, 56.8733, -171.996, -12.4218, -228.474, -39.1978, -166.744, -33.5741, -111.558, -39.5722, -109.974, -45.2613, -165.802, -28.9099, -224.849, -140.578, -311.223, -217.666, -173.891, -159.529, -140.794, -97.6512, -201.318, -86.1129, -195.216, -152.44, -115.862, -210.13, -107.072, -221.352, -60.0797, -213.016, -13.9884, -157.325, -19.7127, -157.415, -12.9226, -190.526, -7.54705, -186.47, 28.3186, -209.179, 34.5229, -208.41, 2.64464, -258.465, 15.1255, -269.296, 44.7276, -285.902, 69.9978, -250.533, 64.5718, -234.836, 77.054, -233.174, 101.785, -223.249, 118.29, -206.91, 126.149, -179.045, 128.48, -163.543, 154.683, -190.303, 191.125, -215.004, 212.768, -286.624, 216.564, -214.423, 212.954, -206.56, 232.007, -263.519, 254.831, -264.241, 275.047, -193.485, 265.661, -205.853, 232.584, -168.215, 259.885, -87.3507, 185.518, -101.069, 155.194, -114.2, 164.891, -132.751, 129.176, -122.729, 126.314, -102.513, 133.534, -84.4627, 176.854, 10.1198, 45.4496, 98.9262, -30.3607, 238.324, -93.9184, 658.555, -358.302, 652.126, 316.652, -118.094, 315.746, -633.815, 320.115, -631.516, -753.074, -60.0137, -779.032, 667.012, -796.064, 657.996, -355.76, 549.322, -289.733, 403.399, -634.34 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="MapMesh"]
-anims/SeaWaves = SubResource( 9 )
+anims/SeaWaves = SubResource( 1 )
 
 [node name="EntityGenerator" type="Node2D" parent="."]
 script = ExtResource( 6 )
@@ -186,7 +186,7 @@ margin_bottom = 317.755
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMarAbierto"]
 position = Vector2( -2484.02, -1090.1 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
 [node name="Lobos" type="Node2D" parent="."]
 
@@ -239,19 +239,19 @@ collision_layer = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionLimits"]
 position = Vector2( -524.872, 16.0844 )
-shape = SubResource( 6 )
+shape = SubResource( 5 )
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="CollisionLimits"]
 position = Vector2( 616.958, 32.8824 )
-shape = SubResource( 7 )
+shape = SubResource( 6 )
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="CollisionLimits"]
 position = Vector2( 46.5002, 419.675 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="CollisionLimits"]
 position = Vector2( 45.4183, -421.526 )
-shape = SubResource( 8 )
+shape = SubResource( 7 )
 
 [connection signal="body_entered" from="Boat/Area2D" to="Boat" method="_on_Area2D_body_entered"]
 [connection signal="body_exited" from="Boat/Area2D" to="Boat" method="_on_Area2D_body_exited"]

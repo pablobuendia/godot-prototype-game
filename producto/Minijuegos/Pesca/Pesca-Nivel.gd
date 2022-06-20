@@ -78,7 +78,9 @@ func new_game():
 	$FondoMar.play()
 
 func _process(delta):
-	pass
+	if (Input.is_action_just_pressed("move_up")):
+		set_puntaje(tipo_pez_objetivo_1-3);
+		set_puntaje(tipo_pez_objetivo_2-3);
 	
 func set_puntaje(tipo_pez_atrapado):
 	$AtraparPez.play()
@@ -100,16 +102,17 @@ func set_puntaje(tipo_pez_atrapado):
 		if cantidad_actual_1 >= cantidad_objetivo_1 && cantidad_actual_2 >= cantidad_objetivo_2:
 			agregar_peces_atrapados()
 			FIN_JUEGO = true
-			$info_victoria.visible = true
+			#$info_victoria.visible = true
+			$GameOverUI.show_sucess("Has ganado!"," Todos los peces atrapados!","");
 			$Musica_fondo.stop()
 			$Musica_victoria.play()
 
 func agregar_peces_atrapados():
-	GlobalVar.CANTIDAD_PECES[tipo_pez_objetivo_1 - 3] += peces_atrapados[tipo_pez_objetivo_1 - 3]
-	GlobalVar.CANTIDAD_PECES[tipo_pez_objetivo_2 - 3] += peces_atrapados[tipo_pez_objetivo_2 - 3]
+	GlobalVar.player.cantidad_peces[tipo_pez_objetivo_1 - 3] += peces_atrapados[tipo_pez_objetivo_1 - 3]
+	GlobalVar.player.cantidad_peces[tipo_pez_objetivo_2 - 3] += peces_atrapados[tipo_pez_objetivo_2 - 3]
 	
 func redraw_vidas():
-	$Info_vidas/Vidas_label.text = str("Anzuelos = ", GlobalVar.ANZUELOS)
+	$Info_vidas/Vidas_label.text = str("Anzuelos = ", GlobalVar.player.anzuelos)
 
 func _on_Musica_victoria_finished():
 	get_tree().paused = true
@@ -207,3 +210,10 @@ func _on_Volver_pressed():
 
 func _on_Jugador_decrement_anzuelo():
 	redraw_vidas()
+
+
+func _on_GameOverUI_back_menu():
+	GlobalVar.player.pesca = true;
+	GlobalVar.save_game();
+	get_tree().paused = false;
+	get_tree().change_scene("res://Mapa.tscn");

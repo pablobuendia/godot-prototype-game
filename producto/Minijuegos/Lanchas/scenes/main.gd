@@ -42,7 +42,8 @@ func _process(delta):
 			get_node("UI/HealthBarBG").hide()
 			get_tree().paused = true
 			score = (player.health*1.0/player.base_health)*500
-			get_node("GameOverUI").show_sucess(score)
+			GlobalVar.player.lancha = true
+			get_node("GameOverUI").show_sucess("Llegaste al final!","Final Score: ", score)
 
 
 func _on_GameOverUI_ok_pressed():
@@ -56,4 +57,6 @@ func _on_Control_dialog_terminated():
 
 func _on_GameOverUI_back_menu():
 	GlobalVar.player.monedas = GlobalVar.player.monedas + score / 10
+	GlobalVar.save_game();
+	get_tree().paused = false
 	get_tree().change_scene("res://Mapa.tscn")

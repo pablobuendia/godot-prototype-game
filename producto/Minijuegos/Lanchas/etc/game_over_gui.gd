@@ -22,11 +22,12 @@ func show_death(score):
 #func _process(delta):
 #	pass
 
-func show_sucess(score):
+func show_sucess(title, message, score):
 	$BackShadow.show()
 	$PopupSuccess.popup_exclusive = true
 	$PopupSuccess.popup_centered($PopupSuccess/ColorRect.get_rect().size)
-	$PopupSuccess/Label2.text = "Final Score: "+str(score)
+	$PopupSuccess/Title.text = title; 
+	$PopupSuccess/Label2.text = message+str(score)
 
 
 func _on_ButtonOK_pressed():

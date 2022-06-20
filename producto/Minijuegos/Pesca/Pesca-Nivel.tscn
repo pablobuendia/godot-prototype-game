@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://assets/img/Fondos/water2.png" type="Texture" id=1]
 [ext_resource path="res://assets/img/Fondos/sky2.jpg" type="Texture" id=2]
@@ -19,6 +19,7 @@
 [ext_resource path="res://assets/img/action_button.png" type="Texture" id=17]
 [ext_resource path="res://assets/img/right_button.png" type="Texture" id=18]
 [ext_resource path="res://Minijuegos/Pesca/Button_rod.gd" type="Script" id=19]
+[ext_resource path="res://Minijuegos/Lanchas/etc/game_over_gui.tscn" type="PackedScene" id=20]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -160,7 +161,6 @@ position = Vector2( 170.5, 188 )
 scale = Vector2( 0.767936, 0.570312 )
 z_index = -1
 frames = SubResource( 2 )
-frame = 1
 playing = true
 
 [node name="FondoMarino1" type="Sprite" parent="FondoMar"]
@@ -349,6 +349,8 @@ STOP = true
 [node name="AtraparPez" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource( 15 )
 
+[node name="GameOverUI" parent="." instance=ExtResource( 20 )]
+
 [connection signal="pressed" from="Button_left" to="." method="_on_Button_left_pressed"]
 [connection signal="timeout" from="Button_rod/AnzueloTimer" to="Button_rod" method="_on_AnzueloTimer_timeout"]
 [connection signal="boton_anzuelo_pressed" from="Jugador" to="Button_rod" method="_on_Jugador_boton_anzuelo_pressed"]
@@ -364,3 +366,4 @@ stream = ExtResource( 15 )
 [connection signal="finished" from="Musica_derrota" to="." method="_on_Musica_derrota_finished"]
 [connection signal="pressed" from="Pausar" to="." method="_on_Pausar_pressed"]
 [connection signal="pressed" from="Volver" to="." method="_on_Volver_pressed"]
+[connection signal="back_menu" from="GameOverUI" to="." method="_on_GameOverUI_back_menu"]

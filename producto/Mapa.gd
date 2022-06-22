@@ -28,7 +28,7 @@ func _ready():
 				$Intro/AnimationPlayer.play("AnchorIdle")
 				$Tap/AnimationTap.play("Lobos")
 		load_frases();
-	if(GlobalVar.player.monedas >= 500):
+	if(GlobalVar.player.monedas >= 980):
 		frases = frases_colecciones;
 		$Intro.show()
 		$Intro/AnimationPlayer.play("AnchorIdle")
@@ -46,6 +46,8 @@ func _ready():
 		$Intro/AnimationPlayer.play("AnchorIdle")
 		#Iria la animationPlayer de tienda
 		load_frases();
+		
+		
 func _on_Lancha_pressed():
 	$Button_click.play()
 	$Tap.hide()

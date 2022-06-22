@@ -35,16 +35,22 @@ animations = [ {
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 524, 312 )
+position = Vector2( 520, 308 )
 scale = Vector2( 0.2, 0.2 )
 texture = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
-margin_right = 1022.0
-margin_bottom = 592.0
-color = Color( 0.054902, 0.054902, 0.172549, 0.423529 )
+margin_right = 1024.0
+margin_bottom = 600.0
+color = Color( 0.054902, 0.14902, 0.172549, 0.854902 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Titulo" type="RichTextLabel" parent="."]
 margin_left = 45.0
@@ -222,7 +228,6 @@ stream = ExtResource( 4 )
 position = Vector2( 534, 35 )
 scale = Vector2( 1.077, 0.921428 )
 frames = SubResource( 4 )
-frame = 3
 playing = true
 
 [connection signal="tree_entered" from="." to="." method="_on_Control_tree_entered"]

@@ -32,6 +32,7 @@ func show_sucess(title, message, score):
 
 func _on_ButtonOK_pressed():
 	hide()
+	$Button_click.play()
 	emit_signal("ok_pressed")
 
 
@@ -41,5 +42,6 @@ func _on_Popup_focus_exited():
 
 
 func _on_ButtonOK2_pressed():
+	$Button_click.play()
 	emit_signal("back_menu")
 	

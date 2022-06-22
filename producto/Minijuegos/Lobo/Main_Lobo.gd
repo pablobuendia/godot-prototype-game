@@ -8,6 +8,9 @@ var vida = 3
 var index = 0
 
 func _ready():
+	OS.center_window()
+	if (GlobalVar.player.musica):
+		$Musica_fondo.play();
 	if(GlobalVar.player.lobo == false):
 		$Intro/AnimationPlayer.play("AnchorIdle")
 	randomize()

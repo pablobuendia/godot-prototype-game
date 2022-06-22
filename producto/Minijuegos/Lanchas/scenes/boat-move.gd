@@ -3,12 +3,13 @@ extends KinematicBody2D
 export var speed = 10
 
 export var mar_abierto = false
-export var base_health = 200
-export (float) var health = base_health
+
 export var base_inv_time = 1.5
 
 onready var camera = $Camera2D
 
+var base_health = GlobalVar.SALUD_BASE_BOTE
+var health = base_health
 var touch_direction = Vector2.ZERO
 var dragging=false
 var offset
@@ -20,8 +21,11 @@ var inv_time = -1
 
 var colliding = false
 
+var death = false
+
 var pos = Vector2()
 func _ready():
+	death = false
 	health_bar = get_parent().get_node("UI/HealthBar")
 	health_bar_length = health_bar.get_rect().size.x
 
@@ -71,15 +75,19 @@ func _physics_process(delta):
 func collide():
 	health-= 40
 	if health > 0:
+		get_parent().get_node("Hit_Sound").play()
 		health_bar.set_size(Vector2((health*1.0 / base_health)*health_bar_length,health_bar.get_rect().size.y))
 		inv_time = base_inv_time
 	else:
-		print("Hit! You lose!")
-		get_parent().get_node("UI/Score").hide()
-		get_parent().get_node("UI/HealthBar").hide()
-		get_parent().get_node("UI/HealthBarBG").hide()
-		get_tree().paused = true
-		get_parent().get_node("GameOverUI").show_death(-1)
+		if (!death):
+			print("Hit! You lose!")
+			get_parent().get_node("Death_Sound").play()
+			get_parent().get_node("UI/Score").hide()
+			get_parent().get_node("UI/HealthBar").hide()
+			get_parent().get_node("UI/HealthBarBG").hide()
+			get_tree().paused = true
+			get_parent().get_node("GameOverUI").show_death(0)
+			death = true
 
 
 func _on_Area2D_body_entered(body):
@@ -90,8 +98,8 @@ func _on_Area2D_body_entered(body):
 func _on_AreaMarAbierto_body_entered(body):
 	if (!body.is_in_group("scenary") && !mar_abierto):
 		mar_abierto = true
-		remove_child(camera)
-		get_parent().add_child(camera)
+		#remove_child(camera)
+		#get_parent().add_child(camera)
 		camera.position = position
 		camera.rotation_degrees = 270
 		

@@ -3,16 +3,19 @@ extends Node2D
 var index = 0
 
 func _ready():
+	index = 0
+	if (GlobalVar.player.musica):
+		$Musica_fondo.play()
 	$Anzuelos.text = str(GlobalVar.player.anzuelos) 
 	$Monedas.text = str(GlobalVar.player.monedas)
 	$NamePlayer.text = GlobalVar.player.username
-	if(GlobalVar.player.banderaInicio == false): #Ya jugó antes?
+	if(GlobalVar.player.lancha == false): #Ya jugó antes?
 		frases = frases_intro;
 		load_frases();
 		$Tap/AnimationTap.play("Lanchas")
 		$Intro.show()
 		$Intro/AnimationPlayer.play("AnchorIdle")
-	if(GlobalVar.player.lancha==true):
+	else:
 		if (GlobalVar.player.pesca==false):
 			frases = frases_post_lancha;
 			$Intro.show()
@@ -44,25 +47,30 @@ func _ready():
 		#Iria la animationPlayer de tienda
 		load_frases();
 func _on_Lancha_pressed():
+	$Button_click.play()
 	$Tap.hide()
-	get_tree().change_scene("res://Minijuegos/Lanchas/scenes/main.tscn")
 	GlobalVar.player.banderaInicio = true
+	get_tree().change_scene("res://Minijuegos/Lanchas/scenes/Lanchas-Main.tscn")
 	#GlobalVar.player.lancha = true
 	
 func _on_Lobo_pressed():
+	$Button_click.play()
 	if (GlobalVar.player.lancha && GlobalVar.player.pesca):
 		get_tree().change_scene("res://Minijuegos/Lobo/Main_Lobo.tscn")
 
 func _on_Pesca_pressed():
+	$Button_click.play()
 	if (GlobalVar.player.lancha):
 		$Tap.hide()
 		get_tree().change_scene("res://Minijuegos/Pesca/Pesca-Main.tscn")
 	#GlobalVar.player.pesca = true
 	
 func _on_Tienda_pressed():
+	$Button_click.play()
 	get_tree().change_scene("res://Tienda.tscn")
 	
 func _on_Restaurante_pressed():
+	$Button_click.play()
 	get_tree().change_scene("res://Restaurante.tscn")
 	
 var frases = [];
@@ -101,6 +109,7 @@ func _on_Panel_pressed():
 		$Intro.hide()
 
 func _on_Volver_pressed():
+	$Button_click.play()
 	get_tree().change_scene("res://Main-Menu.tscn");
 
 func load_frases():

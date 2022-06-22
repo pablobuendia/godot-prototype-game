@@ -11,6 +11,10 @@ var LOBO_MEDIO = 150
 var LOBO_DIFICIL = 200
 var PRECIO_COLECCIONABLE_1 = 3000
 var PRECIO_COLECCIONABLE_2 = 10000
+var SALUD_BASE_BOTE = 200.0
+var PRECIO_MEJORA_BARCO_1 = 300
+var PRECIO_MEJORA_BARCO_2 = 500
+
 
 var player = {
 	"username":"",
@@ -23,7 +27,10 @@ var player = {
 	"lancha":false,
 	"pesca":false,
 	"lobo":false,
-	"musica":true
+	"musica":true,
+	"pinturas" : [0,0,0,0],
+	"mejora_barco_1":false,
+	"mejora_barco_2":false
 }
 
 func save_game():
@@ -56,6 +63,9 @@ func config(): #configuracion inicial
 		"lancha":false,
 		"pesca":false,
 		"lobo":false,
-		"musica":true
+		"musica":true,
+		"pinturas" : [0,0,0,0],
+		"mejora_barco_1":false,
+		"mejora_barco_2":false
 	}
 

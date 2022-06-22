@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://assets/img/Fondos/MAPAPRINCIPAL.png" type="Texture" id=1]
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
@@ -18,20 +18,23 @@
 [ext_resource path="res://assets/img/lobolino/lobolino_00000.png" type="Texture" id=16]
 [ext_resource path="res://assets/img/lobolino/lobolino_00002.png" type="Texture" id=17]
 [ext_resource path="res://assets/img/lobolino/lobolino_00003.png" type="Texture" id=18]
+[ext_resource path="res://assets/sounds/POL-on-the-beach-short.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/img/Iconos/tapLeft.png" type="Texture" id=20]
+[ext_resource path="res://Musica_fondo.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/graphic_resources/MapaJugarStyle.tres" type="StyleBox" id=22]
 [ext_resource path="res://assets/graphic_resources/MapaOtrosStyle.tres" type="StyleBox" id=23]
+[ext_resource path="res://assets/sounds/downloaded/button_click.wav" type="AudioStream" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
 font_data = ExtResource( 2 )
 
-[sub_resource type="DynamicFont" id=14]
+[sub_resource type="DynamicFont" id=2]
 size = 20
 outline_color = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
 font_data = ExtResource( 2 )
 
-[sub_resource type="SpriteFrames" id=15]
+[sub_resource type="SpriteFrames" id=3]
 animations = [ {
 "frames": [ ExtResource( 6 ), ExtResource( 9 ), ExtResource( 10 ), ExtResource( 7 ), ExtResource( 5 ), ExtResource( 8 ) ],
 "loop": true,
@@ -39,7 +42,7 @@ animations = [ {
 "speed": 5.0
 } ]
 
-[sub_resource type="DynamicFont" id=16]
+[sub_resource type="DynamicFont" id=4]
 size = 25
 font_data = ExtResource( 2 )
 
@@ -76,6 +79,8 @@ tracks/1/keys = {
 
 [sub_resource type="DynamicFont" id=7]
 size = 50
+outline_size = 2
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=8]
@@ -154,10 +159,10 @@ margin_left = 130.0
 margin_top = 422.0
 margin_right = 220.0
 margin_bottom = 452.0
-custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
+custom_fonts/font = SubResource( 1 )
 text = "Jugar"
 
 [node name="Lobo" type="Button" parent="."]
@@ -165,10 +170,10 @@ margin_left = 325.0
 margin_top = 479.0
 margin_right = 409.0
 margin_bottom = 509.0
-custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
+custom_fonts/font = SubResource( 1 )
 text = "Jugar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -179,10 +184,10 @@ margin_left = 647.0
 margin_top = 303.0
 margin_right = 736.0
 margin_bottom = 333.0
-custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
+custom_fonts/font = SubResource( 1 )
 text = "Jugar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -193,10 +198,10 @@ margin_left = 546.0
 margin_top = 380.0
 margin_right = 648.0
 margin_bottom = 413.0
-custom_fonts/font = SubResource( 14 )
 custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 23 )
+custom_fonts/font = SubResource( 2 )
 text = "Tienda"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -207,10 +212,10 @@ margin_left = 864.0
 margin_top = 160.0
 margin_right = 1004.0
 margin_bottom = 197.0
-custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 23 )
+custom_fonts/font = SubResource( 1 )
 text = "Restaurante"
 
 [node name="ButtonLarge" type="Sprite" parent="."]
@@ -220,15 +225,15 @@ texture = ExtResource( 4 )
 
 [node name="Fishingrod" type="Sprite" parent="ButtonLarge"]
 modulate = Color( 0.219608, 0.219608, 0.219608, 1 )
-position = Vector2( -50.7434, -7.41791 )
+position = Vector2( -43.9822, -7.41791 )
 scale = Vector2( 0.0236473, 0.0980693 )
 texture = ExtResource( 11 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="ButtonLarge"]
 position = Vector2( -86.9878, -4.10615 )
 scale = Vector2( 0.233999, 0.921428 )
-frames = SubResource( 15 )
-frame = 1
+frames = SubResource( 3 )
+frame = 5
 playing = true
 
 [node name="Intro" type="Control" parent="."]
@@ -276,16 +281,19 @@ margin_top = 85.0
 margin_right = 464.0
 margin_bottom = 213.0
 mouse_filter = 1
+custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 16 )
 text = "Bienvenido al Puerto de Mar del Plata, tenés ganas de hacer un negocio GENIAL?"
 fit_content_height = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Sprite" type="AnimatedSprite" parent="Intro"]
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 5 )
-frame = 29
+frame = 21
 playing = true
 flip_h = true
 
@@ -309,54 +317,63 @@ method_call_mode = 1
 anims/AnchorIdle = SubResource( 6 )
 
 [node name="Anzuelos" type="Label" parent="."]
-margin_left = 278.0
+margin_left = 314.0
 margin_top = 6.0
-margin_right = 328.0
+margin_right = 454.0
 margin_bottom = 67.0
 custom_fonts/font = SubResource( 7 )
-text = "000"
+text = "1000"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Player" type="Label" parent="."]
-margin_left = 396.647
-margin_top = 4.4126
-margin_right = 599.647
-margin_bottom = 71.4126
+margin_left = 481.647
+margin_top = 6.4126
+margin_right = 684.647
+margin_bottom = 73.4126
 custom_fonts/font = SubResource( 7 )
 text = "Player:"
 
 [node name="NamePlayer" type="Label" parent="."]
-margin_left = 581.143
+margin_left = 670.143
 margin_top = 6.4126
-margin_right = 766.143
+margin_right = 855.143
 margin_bottom = 73.4126
 custom_fonts/font = SubResource( 7 )
+text = "player"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Monedas" type="Label" parent="."]
-margin_left = 95.0
-margin_top = 5.0
-margin_right = 130.0
-margin_bottom = 66.0
+margin_left = 83.0
+margin_top = 7.0
+margin_right = 188.0
+margin_bottom = 68.0
 custom_fonts/font = SubResource( 7 )
-text = "000"
+text = "1000"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Volver" type="Button" parent="."]
 margin_left = 877.0
 margin_top = 9.0
 margin_right = 998.0
 margin_bottom = 63.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color_focus = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 14 )
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
+custom_fonts/font = SubResource( 2 )
+custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
+custom_colors/font_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
 text = "Volver"
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Tap" type="Sprite" parent="."]
 position = Vector2( 170, 250 )
@@ -372,6 +389,13 @@ anims/Lobos = SubResource( 9 )
 anims/RESET = SubResource( 10 )
 anims/pesca = SubResource( 11 )
 
+[node name="Musica_fondo" parent="." instance=ExtResource( 21 )]
+stream = ExtResource( 19 )
+
+[node name="Button_click" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -10.0
+
 [connection signal="pressed" from="Lancha" to="." method="_on_Lancha_pressed"]
 [connection signal="pressed" from="Lobo" to="." method="_on_Lobo_pressed"]
 [connection signal="pressed" from="Pesca" to="." method="_on_Pesca_pressed"]
@@ -379,3 +403,4 @@ anims/pesca = SubResource( 11 )
 [connection signal="pressed" from="Restaurante" to="." method="_on_Restaurante_pressed"]
 [connection signal="pressed" from="Intro/Panel" to="." method="_on_Panel_pressed"]
 [connection signal="pressed" from="Volver" to="." method="_on_Volver_pressed"]
+[connection signal="just_faded_out" from="Musica_fondo" to="." method="_on_Musica_fondo_just_faded_out"]

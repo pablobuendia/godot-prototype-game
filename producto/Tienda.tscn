@@ -1,9 +1,13 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Tienda.gd" type="Script" id=2]
 [ext_resource path="res://assets/img/Fondos/restaurante.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/sounds/comprar.wav" type="AudioStream" id=4]
+[ext_resource path="res://assets/img/Recuerdos/lobo_azul.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Recuerdos/mediaval.png" type="Texture" id=6]
+[ext_resource path="res://assets/img/Recuerdos/velero.png" type="Texture" id=7]
+[ext_resource path="res://assets/img/Recuerdos/lobo_rosa.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -48,10 +52,10 @@ custom_fonts/normal_font = SubResource( 1 )
 text = "Tienda"
 
 [node name="Monedas" type="RichTextLabel" parent="."]
-margin_left = 547.0
-margin_top = 23.0
-margin_right = 916.0
-margin_bottom = 66.0
+margin_left = 339.0
+margin_top = 18.0
+margin_right = 708.0
+margin_bottom = 61.0
 rect_pivot_offset = Vector2( 51, 43 )
 custom_fonts/normal_font = SubResource( 1 )
 text = "Monedas: 0"
@@ -77,38 +81,90 @@ custom_fonts/normal_font = SubResource( 3 )
 text = "$"
 
 [node name="Comprar Coleccionable1" type="Button" parent="."]
-margin_left = 50.0
-margin_top = 192.0
-margin_right = 443.0
-margin_bottom = 253.0
+margin_left = 48.0
+margin_top = 266.0
+margin_right = 200.0
+margin_bottom = 327.0
 rect_pivot_offset = Vector2( 133, 61 )
 custom_fonts/font = SubResource( 2 )
-text = "Comprar Coleccionable1"
+text = "Comprar"
 flat = true
 align = 0
 
 [node name="Precio Coleccionable" type="RichTextLabel" parent="Comprar Coleccionable1"]
 margin_left = 416.0
 margin_top = 13.0
-margin_right = 893.0
+margin_right = 562.0
+margin_bottom = 56.0
+rect_pivot_offset = Vector2( 51, 43 )
+custom_fonts/normal_font = SubResource( 3 )
+text = "$"
+
+[node name="LoboAzul" type="Sprite" parent="Comprar Coleccionable1"]
+position = Vector2( 241.6, 10.55 )
+scale = Vector2( 0.22, 0.22 )
+texture = ExtResource( 5 )
+
+[node name="Comprar Coleccionable4" type="Button" parent="."]
+margin_left = 574.0
+margin_top = 207.0
+margin_right = 726.0
+margin_bottom = 268.0
+rect_pivot_offset = Vector2( 133, 61 )
+custom_fonts/font = SubResource( 2 )
+text = "Comprar"
+flat = true
+align = 0
+
+[node name="Precio Coleccionable" type="RichTextLabel" parent="Comprar Coleccionable4"]
+margin_left = 311.0
+margin_top = 13.0
+margin_right = 788.0
+margin_bottom = 56.0
+rect_pivot_offset = Vector2( 51, 43 )
+custom_fonts/normal_font = SubResource( 3 )
+text = "$"
+
+[node name="Velero" type="Sprite" parent="Comprar Coleccionable4"]
+position = Vector2( 233, -8 )
+scale = Vector2( 0.322425, 0.22 )
+texture = ExtResource( 7 )
+
+[node name="Comprar Coleccionable5" type="Button" parent="."]
+margin_left = 574.0
+margin_top = 368.0
+margin_right = 726.0
+margin_bottom = 429.0
+rect_pivot_offset = Vector2( 133, 61 )
+custom_fonts/font = SubResource( 2 )
+text = "Comprar"
+flat = true
+align = 0
+
+[node name="Mediaval" type="Sprite" parent="Comprar Coleccionable5"]
+position = Vector2( 236, -6 )
+scale = Vector2( 0.295315, 0.280886 )
+texture = ExtResource( 6 )
+
+[node name="Precio Coleccionable" type="RichTextLabel" parent="Comprar Coleccionable5"]
+margin_left = 311.0
+margin_top = 13.0
+margin_right = 788.0
 margin_bottom = 56.0
 rect_pivot_offset = Vector2( 51, 43 )
 custom_fonts/normal_font = SubResource( 3 )
 text = "$"
 
 [node name="Comprar Coleccionable2" type="Button" parent="."]
-margin_left = 49.0
-margin_top = 243.0
-margin_right = 442.0
-margin_bottom = 304.0
+margin_left = 48.0
+margin_top = 366.0
+margin_right = 203.0
+margin_bottom = 427.0
 rect_pivot_offset = Vector2( 133, 61 )
 custom_fonts/font = SubResource( 2 )
-text = "Comprar Coleccionable2"
+text = "Comprar "
 flat = true
 align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Precio Coleccionable" type="RichTextLabel" parent="Comprar Coleccionable2"]
 margin_left = 416.0
@@ -119,24 +175,26 @@ rect_pivot_offset = Vector2( 51, 43 )
 custom_fonts/normal_font = SubResource( 3 )
 text = "$"
 
+[node name="LoboRosa" type="Sprite" parent="Comprar Coleccionable2"]
+position = Vector2( 247.11, 15.805 )
+scale = Vector2( 0.220442, 0.22804 )
+texture = ExtResource( 8 )
+
 [node name="Comprar Coleccionable3" type="Button" parent="."]
-margin_left = 51.5227
-margin_top = 301.863
-margin_right = 444.523
-margin_bottom = 362.863
+margin_left = 47.0
+margin_top = 186.0
+margin_right = 441.0
+margin_bottom = 247.0
 rect_pivot_offset = Vector2( 133, 61 )
 custom_fonts/font = SubResource( 4 )
 text = "Comprar Mejora Barco 1"
 flat = true
 align = 0
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Precio Coleccionable" type="RichTextLabel" parent="Comprar Coleccionable3"]
 margin_left = 416.0
 margin_top = 13.0
-margin_right = 893.0
+margin_right = 538.0
 margin_bottom = 56.0
 rect_pivot_offset = Vector2( 51, 43 )
 custom_fonts/normal_font = SubResource( 3 )
@@ -156,6 +214,8 @@ stream = ExtResource( 4 )
 
 [connection signal="pressed" from="Comprar Anzuelos x10" to="." method="_on_Comprar_Anzuelos_x10_pressed"]
 [connection signal="pressed" from="Comprar Coleccionable1" to="." method="_on_Comprar_Coleccionable1_pressed"]
+[connection signal="pressed" from="Comprar Coleccionable4" to="." method="_on_Comprar_Coleccionable1_pressed"]
+[connection signal="pressed" from="Comprar Coleccionable5" to="." method="_on_Comprar_Coleccionable1_pressed"]
 [connection signal="pressed" from="Comprar Coleccionable2" to="." method="_on_Comprar_Coleccionable2_pressed"]
 [connection signal="pressed" from="Comprar Coleccionable3" to="." method="_on_Comprar_Coleccionable3_pressed"]
 [connection signal="pressed" from="Volver" to="." method="_on_Volver_pressed"]

@@ -162,11 +162,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 
-[node name="Main" type="Node2D" groups=[
-"linea",
-"red",
-"salud",
-]]
+[node name="Main" type="Node2D" groups=["linea", "red", "salud"]]
 position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 pez_scene = ExtResource( 2 )
@@ -248,9 +244,9 @@ texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 0.5, 0.5 )
+collision_mask = 17
 monitoring = false
 monitorable = false
-collision_mask = 17
 
 [node name="FishTimer_Left" type="Timer" parent="."]
 wait_time = 5.0
@@ -353,8 +349,8 @@ margin_top = 85.0
 margin_right = 464.0
 margin_bottom = 213.0
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
 text = "Gracias por aceptar ayudar a nuestro amigo lobo marino! "
 fit_content_height = true
 
@@ -362,7 +358,7 @@ fit_content_height = true
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 10 )
-frame = 20
+frame = 23
 playing = true
 flip_h = true
 

@@ -228,6 +228,7 @@ stream = ExtResource( 4 )
 position = Vector2( 534, 35 )
 scale = Vector2( 1.077, 0.921428 )
 frames = SubResource( 4 )
+frame = 2
 playing = true
 
 [connection signal="tree_entered" from="." to="." method="_on_Control_tree_entered"]

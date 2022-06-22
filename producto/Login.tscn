@@ -128,9 +128,9 @@ margin_left = -111.0
 margin_top = -63.0
 margin_right = 120.0
 margin_bottom = 26.0
-custom_fonts/normal_font = SubResource( 5 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 5 )
 text = "Nombre de usuario invalido"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -142,11 +142,11 @@ margin_left = -78.1516
 margin_top = 39.1875
 margin_right = -34.1516
 margin_bottom = 80.1875
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.227451, 0.870588, 0.843137, 1 )
 custom_colors/font_color_pressed = Color( 0.141176, 0.862745, 0.85098, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "Si"
 flat = true
 
@@ -155,11 +155,11 @@ margin_left = -20.2774
 margin_top = 35.4199
 margin_right = 23.7226
 margin_bottom = 76.4199
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.160784, 0.729412, 0.678431, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.807843, 0.764706, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "OK"
 flat = true
 
@@ -174,9 +174,9 @@ margin_left = -128.0
 margin_top = -100.0
 margin_right = 128.0
 margin_bottom = 111.0
-custom_fonts/normal_font = SubResource( 7 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
+custom_fonts/normal_font = SubResource( 7 )
 text = "Prototipo de videojuego con la temática de Puerto de Mar del Plata hecho por:
 
 María Josefina Oller

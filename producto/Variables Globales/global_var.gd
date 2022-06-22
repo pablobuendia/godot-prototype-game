@@ -6,11 +6,13 @@ var PRECIO_ANZUELO = 3
 var NOMBRES_PECES = ["Besugo", "Besugo Rojo", "Bonito", "Caballa", "Limon", "Mero"]
 var PRECIOS_PECES = [20, 30, 40, 45, 50, 60]
 var LOBO_NIVEL = 0 #0 facil,1 medio y 2 dificil, es para sumarle una cierta cantidad de monedas
-var LOBO_FACIL = 100
-var LOBO_MEDIO = 150
-var LOBO_DIFICIL = 200
-var PRECIO_COLECCIONABLE_1 = 3000
-var PRECIO_COLECCIONABLE_2 = 10000
+var LOBO_FACIL = 10
+var LOBO_MEDIO = 20
+var LOBO_DIFICIL = 30
+var PRECIO_COLECCIONABLE_LOBO_AZUL = 980
+var PRECIO_COLECCIONABLE_LOBO_ROSA = 980
+var PRECIO_COLECCIONABLE_BARCO = 1500
+var PRECIO_COLECCIONABLE_VELERO = 2000
 var SALUD_BASE_BOTE = 200.0
 var PRECIO_MEJORA_BARCO_1 = 300
 var PRECIO_MEJORA_BARCO_2 = 500
@@ -19,8 +21,10 @@ var PRECIO_MEJORA_BARCO_2 = 500
 var player = {
 	"username":"",
 	"monedas":0,
-	"coleccionable_1":false,
-	"coleccionable_2":false,
+	"coleccionable_lobo_azul":false,
+	"coleccionable_lobo_rosa":false,
+	"coleccionable_barco":false,
+	"coleccionable_velero":false,
 	"cantidad_peces":[0,0,0,0,0,0],
 	"anzuelos":50,
 	"banderaInicio":false,
@@ -53,10 +57,10 @@ func config(): #configuracion inicial
 	player = {
 		"username":"",
 		"monedas":0,
-		"coleccionable_1":false,
-		"precio_coleccionable_1":3000,
-		"coleccionable_2":false,
-		"precio_coleccionable_2":10000,
+		"coleccionable_lobo_azul":false,
+		"coleccionable_lobo_rosa":false,
+		"coleccionable_barco":false,
+		"coleccionable_velero":false,
 		"cantidad_peces":[0,0,0,0,0,0],
 		"anzuelos":50,
 		"banderaInicio":false,

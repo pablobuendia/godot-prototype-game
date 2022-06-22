@@ -139,11 +139,11 @@ func _game_win():
 	
 func _on_HUD_start_gameDificil():
 	$ContenedorMonedas/TiempoDeGeneracion.wait_time = 3
-	$ContenedorSalud/TiempoDeGeneracion.wait_time = 40
-	$AreaLineaFinish/TiempoDeFinalizacion.wait_time = 100
+	$ContenedorSalud/TiempoDeGeneracion.wait_time = 35
+	$AreaLineaFinish/TiempoDeFinalizacion.wait_time = 70
 	$FishTimer_Left.wait_time = 2
 	$FishTimer_Right.wait_time = 9
-	$RedTimer.wait_time = 3
+	$RedTimer.wait_time = 2
 	GlobalVar.LOBO_NIVEL = 2
 	new_game()
 
@@ -151,10 +151,10 @@ func _on_HUD_start_gameDificil():
 func _on_HUD_start_gameMedio():
 	$ContenedorMonedas/TiempoDeGeneracion.wait_time = 2
 	$ContenedorSalud/TiempoDeGeneracion.wait_time = 35
-	$AreaLineaFinish/TiempoDeFinalizacion.wait_time = 80
+	$AreaLineaFinish/TiempoDeFinalizacion.wait_time = 65
 	$FishTimer_Left.wait_time = 2
 	$FishTimer_Right.wait_time = 8
-	$RedTimer.wait_time = 4
+	$RedTimer.wait_time = 3
 	GlobalVar.LOBO_NIVEL = 1
 	new_game()
 

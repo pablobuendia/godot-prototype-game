@@ -203,7 +203,7 @@ __meta__ = {
 position = Vector2( 743.977, 226.324 )
 scale = Vector2( 0.669989, 0.669989 )
 frames = SubResource( 11 )
-frame = 21
+frame = 4
 playing = true
 flip_h = true
 

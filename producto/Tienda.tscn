@@ -230,7 +230,6 @@ stream = ExtResource( 4 )
 position = Vector2( 297, 35 )
 scale = Vector2( 1.077, 0.921428 )
 frames = SubResource( 6 )
-frame = 5
 playing = true
 
 [connection signal="pressed" from="Comprar Anzuelos x10" to="." method="_on_Comprar_Anzuelos_x10_pressed"]

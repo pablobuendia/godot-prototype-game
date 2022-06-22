@@ -4,6 +4,9 @@ signal start_gameFacil
 signal start_gameMedio
 signal start_gameDificil
 
+onready var pause = load("res://assets/img/Iconos/pausa.png");
+onready var play = load("res://assets/img/Iconos/play.png");
+
 func show_game_over(score):
 	_desapareceComponentes()
 	$Juego_Perdido.show()
@@ -22,8 +25,10 @@ func _on_StartButton_pressed():
 
 func _pause_pressed():
 	if get_tree().paused == false:
+		$TextureButton.texture_normal = play
 		get_tree().paused = true
 	else:
+		$TextureButton.texture_normal = pause
 		get_tree().paused = false
 
 func show_game_win(score):
@@ -69,4 +74,4 @@ func _on_Dificil_pressed():
 	_apareceComponentes()
 
 func _on_volver_pressed(): 
-	get_tree().change_scene("res://Mapa.tscn")
+		get_tree().change_scene("res://Mapa.tscn")

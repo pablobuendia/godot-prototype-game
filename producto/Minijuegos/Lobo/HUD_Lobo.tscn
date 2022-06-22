@@ -1,10 +1,10 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/HUD_Lobo.gd" type="Script" id=1]
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=2]
 [ext_resource path="res://assets/img/Monedas/gold_coin_round_star_1.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/Bonus/object_05_heart.png" type="Texture" id=4]
-[ext_resource path="res://assets/img/pause.png" type="Texture" id=5]
+[ext_resource path="res://assets/img/Iconos/pausa.png" type="Texture" id=5]
 [ext_resource path="res://assets/img/Iconos/volver.png" type="Texture" id=6]
 [ext_resource path="res://assets/letters/letterN.png" type="Texture" id=7]
 [ext_resource path="res://assets/letters/letterE.png" type="Texture" id=8]
@@ -12,6 +12,7 @@
 [ext_resource path="res://assets/letters/letterV.png" type="Texture" id=10]
 [ext_resource path="res://assets/img/Iconos/UIbg.png" type="Texture" id=11]
 [ext_resource path="res://assets/letters/letterL.png" type="Texture" id=12]
+[ext_resource path="res://assets/graphic_resources/MapaJugarStyle.tres" type="StyleBox" id=13]
 
 [sub_resource type="DynamicFont" id=1]
 size = 55
@@ -22,7 +23,9 @@ size = 55
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 25
+size = 30
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 2 )
 
 [sub_resource type="DynamicFont" id=4]
@@ -74,12 +77,13 @@ visible = false
 anchor_top = 0.773
 anchor_right = 0.992
 anchor_bottom = 0.853
-margin_left = 384.0
-margin_top = -23.8
-margin_right = -375.808
+margin_left = 389.0
+margin_top = -7.79999
+margin_right = -426.808
 margin_bottom = 12.2
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
+custom_styles/normal = ExtResource( 13 )
 text = "Jugar"
 
 [node name="JugarDeNuevo" type="Button" parent="."]
@@ -97,9 +101,11 @@ __meta__ = {
 
 [node name="TextureButton" type="TextureButton" parent="."]
 pause_mode = 2
-margin_left = 136.0
-margin_right = 186.0
-margin_bottom = 50.0
+visible = false
+margin_left = 149.0
+margin_top = 7.0
+margin_right = 199.0
+margin_bottom = 57.0
 texture_normal = ExtResource( 5 )
 
 [node name="Juego_Ganado" type="RichTextLabel" parent="."]

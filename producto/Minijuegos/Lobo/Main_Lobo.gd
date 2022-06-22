@@ -29,6 +29,7 @@ func game_over():
 	$HUD.show_game_over(score)
 	GlobalVar.player.monedas = GlobalVar.player.monedas + score
 	GlobalVar.save_game()
+	$Musica_Juego_Perdido.play()
 
 func new_game():
 	score = 0
@@ -83,6 +84,7 @@ func spawn_pez(spawnLocation, flip_h,side):
 func _on_Player_update_score():
 	score +=1
 	$HUD.update_score(score)
+	$Golpe_Moneda.play()
 
 
 func _on_RedTimer_timeout():
@@ -102,6 +104,7 @@ func _on_RedTimer_timeout():
 	add_child(red)
 
 func _on_Player_miss_vida():
+	$Golpe_Moneda.play()
 	vida -=1
 	Input.vibrate_handheld(500)
 	if vida<=0:
@@ -136,6 +139,7 @@ func _game_win():
 	$HUD.show_game_win(score)
 	GlobalVar.player.monedas = GlobalVar.player.monedas + score
 	GlobalVar.save_game()
+	$Musica_Juego_Ganado.play()
 	
 func _on_HUD_start_gameDificil():
 	$ContenedorMonedas/TiempoDeGeneracion.wait_time = 3

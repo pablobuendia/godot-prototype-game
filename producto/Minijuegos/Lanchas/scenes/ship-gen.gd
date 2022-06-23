@@ -19,7 +19,7 @@ func _ready():
 
 func _process(delta):
 	time += delta
-	if time > time_to_next && get_parent().get_node("Boat").mar_abierto:
+	if time > time_to_next && get_parent().mar_abierto:
 		time  = 0
 		time_to_next = rng.randf_range(min_time, max_time)
 		

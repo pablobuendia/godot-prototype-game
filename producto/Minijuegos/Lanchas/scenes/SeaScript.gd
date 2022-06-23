@@ -13,5 +13,5 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if get_parent().get_node("Boat").mar_abierto:
+	if get_parent().mar_abierto:
 		$AnimationPlayer.play("SeaWaves")

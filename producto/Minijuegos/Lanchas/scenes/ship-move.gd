@@ -5,6 +5,8 @@ var vel_dir = Vector2(0,1)
 export var horizontal = 0
 export var size = 1 
 
+var in_screen = false
+
 func _ready():
 	$sprite.scale = $sprite.scale*size
 	$col.scale = $col.scale*size
@@ -26,3 +28,15 @@ func init(scale,pos,horiz):
 	$sprite.scale = $sprite.scale*scale
 	$col.scale = $col.scale*scale
 	speed_mult = (4/scale)
+
+
+func _on_VisibilityNotifier2D_screen_entered():
+	in_screen = true
+
+
+
+
+func _on_VisibilityNotifier2D_screen_exited():
+	if (in_screen):
+		in_screen = false
+		queue_free()

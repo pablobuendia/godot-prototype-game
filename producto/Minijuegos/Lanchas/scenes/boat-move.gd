@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 export var speed = 10
 
-export var mar_abierto = false
+
 
 export var base_inv_time = 1.5
 
@@ -41,7 +41,7 @@ func _process(delta):
 	else:
 		if Input.is_action_pressed("ui_left"):
 			pos.x = -1
-	if (!mar_abierto):
+	if (!get_parent().mar_abierto):
 		position = Vector2(position.x-1.5,position.y)
 
 func _input(event):
@@ -54,7 +54,7 @@ func _input(event):
 		if event is InputEventScreenDrag:
 			if (event.position != null and offset != null and position != null):
 				var res = (event.position-offset-position)*speed*1
-				if (mar_abierto):
+				if (get_parent().mar_abierto):
 					move_and_slide(res)
 				else:
 					move_and_slide(Vector2(0,res.y))
@@ -91,18 +91,9 @@ func collide():
 
 
 func _on_Area2D_body_entered(body):
-	if body.is_in_group("enemy") || body.is_in_group("scenary"):
+	if body.is_in_group("enemy") || (body.is_in_group("scenary") && !get_parent().mar_abierto):
 		colliding = true
 
-
-func _on_AreaMarAbierto_body_entered(body):
-	if (!body.is_in_group("scenary") && !mar_abierto):
-		mar_abierto = true
-		#remove_child(camera)
-		#get_parent().add_child(camera)
-		camera.position = position
-		camera.rotation_degrees = 270
-		
 
 
 func _on_Area2D_body_exited(body):

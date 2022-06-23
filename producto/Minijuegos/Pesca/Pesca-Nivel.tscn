@@ -161,6 +161,7 @@ position = Vector2( 170.5, 188 )
 scale = Vector2( 0.767936, 0.570312 )
 z_index = -1
 frames = SubResource( 2 )
+frame = 1
 playing = true
 
 [node name="FondoMarino1" type="Sprite" parent="FondoMar"]
@@ -355,12 +356,12 @@ stream = ExtResource( 15 )
 [connection signal="boton_anzuelo_pressed" from="Jugador" to="Button_rod" method="_on_Jugador_boton_anzuelo_pressed"]
 [connection signal="decrement_anzuelo" from="Jugador" to="." method="_on_Jugador_decrement_anzuelo"]
 [connection signal="timeout" from="StartTimer" to="." method="_on_StartTimer_timeout"]
+[connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezSpawnTimerIzq_timeout"]
 [connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezTimerIzq_timeout"]
 [connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezTimer_timeout"]
-[connection signal="timeout" from="PezPathIzq/PezSpawnTimerIzq" to="." method="_on_PezSpawnTimerIzq_timeout"]
+[connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezSpawnTimerDer_timeout"]
 [connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezTimerDer_timeout"]
 [connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezTimer_timeout"]
-[connection signal="timeout" from="PezPathDer/PezSpawnTimerDer" to="." method="_on_PezSpawnTimerDer_timeout"]
 [connection signal="finished" from="Musica_victoria" to="." method="_on_Musica_victoria_finished"]
 [connection signal="finished" from="Musica_derrota" to="." method="_on_Musica_derrota_finished"]
 [connection signal="pressed" from="Pausar" to="." method="_on_Pausar_pressed"]

@@ -171,12 +171,12 @@ func elegirEscala():
 	return ((randi() % 4) + 6) / 100.0
 
 func elegirEscalaEspecial():
-	return ((randi() % 2) + 4) / 100.0
+	return ((randi() % 3) + 5) / 100.0
 
 func elegirVelocidad(pez_spawn_location, tipo_elegido):
 	var velocidadPez = Vector2(rand_range(150, 250), 0.0)
 	if (tipo_elegido == tipo_pez_objetivo_1 || tipo_elegido == tipo_pez_objetivo_2):
-		 velocidadPez = Vector2(rand_range(250, 350), 0.0)
+		 velocidadPez = Vector2(rand_range(215, 310), 0.0)
 		
 	var direccionPez = (pez_spawn_location.rotation + PI / 2) * -1
 	return velocidadPez.rotated(direccionPez)

@@ -360,7 +360,7 @@ fit_content_height = true
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 10 )
-frame = 33
+frame = 12
 playing = true
 flip_h = true
 

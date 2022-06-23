@@ -8,13 +8,13 @@
 position = Vector2( -140, 60 )
 
 [node name="Left" type="TouchScreenButton" parent="."]
-position = Vector2( 170, 392 )
+position = Vector2( 915, 392 )
 scale = Vector2( 0.343915, 0.288618 )
 normal = ExtResource( 1 )
 action = "move_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2( 321, 391 )
+position = Vector2( 1050, 392 )
 scale = Vector2( 0.344, 0.289 )
 normal = ExtResource( 3 )
 action = "move_right"

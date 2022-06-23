@@ -8,26 +8,26 @@
 position = Vector2( -140, 60 )
 
 [node name="Left" type="TouchScreenButton" parent="."]
-position = Vector2( 915, 392 )
-scale = Vector2( 0.343915, 0.288618 )
+position = Vector2( 823, 344.031 )
+scale = Vector2( 0.6, 0.5 )
 normal = ExtResource( 1 )
 action = "move_left"
 
 [node name="Right" type="TouchScreenButton" parent="."]
-position = Vector2( 1050, 392 )
-scale = Vector2( 0.344, 0.289 )
+position = Vector2( 978, 344.826 )
+scale = Vector2( 0.6, 0.5 )
 normal = ExtResource( 3 )
 action = "move_right"
 
 [node name="Down" type="TouchScreenButton" parent="."]
-position = Vector2( 235, 464 )
-scale = Vector2( 0.344, 0.289 )
+position = Vector2( 273.681, 408.501 )
+scale = Vector2( 0.371702, 0.424628 )
 normal = ExtResource( 2 )
 action = "move_down"
 
 [node name="Up" type="TouchScreenButton" parent="."]
-position = Vector2( 320, 392 )
+position = Vector2( 392.993, 384.913 )
 rotation = 3.14159
-scale = Vector2( 0.344, 0.289 )
+scale = Vector2( 0.6, 0.692835 )
 normal = ExtResource( 2 )
 action = "move_up"

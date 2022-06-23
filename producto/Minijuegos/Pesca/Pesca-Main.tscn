@@ -2,7 +2,7 @@
 
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://assets/img/Fondos/fondo-intro-pesca.jpg" type="Texture" id=2]
-[ext_resource path="res://Minijuegos/Lanchas/assets/fc96e3af6cdbeb035e72df54427fb01c.png" type="Texture" id=3]
+[ext_resource path="res://assets/img/ancla.png" type="Texture" id=3]
 [ext_resource path="res://assets/img/lobolino/lobolino_00001.png" type="Texture" id=4]
 [ext_resource path="res://Minijuegos/Pesca/Pesca-Main.gd" type="Script" id=5]
 [ext_resource path="res://assets/img/lobolino/lobolino_00002.png" type="Texture" id=6]
@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/img/lobolino/lobolino_00004.png" type="Texture" id=8]
 [ext_resource path="res://assets/img/lobolino/lobolino_00005.png" type="Texture" id=9]
 [ext_resource path="res://assets/img/lobolino/lobolino_00003.png" type="Texture" id=10]
+
 
 [sub_resource type="DynamicFont" id=1]
 size = 30

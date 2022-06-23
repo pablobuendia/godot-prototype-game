@@ -13,7 +13,7 @@
 [ext_resource path="res://assets/img/hook.png" type="Texture" id=11]
 [ext_resource path="res://assets/img/lobolino/lobolino_00004.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/lobolino/lobolino_00005.png" type="Texture" id=13]
-[ext_resource path="res://Minijuegos/Lanchas/assets/fc96e3af6cdbeb035e72df54427fb01c.png" type="Texture" id=14]
+[ext_resource path="res://assets/img/ancla.png" type="Texture" id=14]
 [ext_resource path="res://assets/img/lobolino/lobolino_00001.png" type="Texture" id=15]
 [ext_resource path="res://assets/img/lobolino/lobolino_00000.png" type="Texture" id=16]
 [ext_resource path="res://assets/img/lobolino/lobolino_00002.png" type="Texture" id=17]
@@ -23,7 +23,7 @@
 [ext_resource path="res://Musica_fondo.tscn" type="PackedScene" id=21]
 [ext_resource path="res://assets/graphic_resources/MapaJugarStyle.tres" type="StyleBox" id=22]
 [ext_resource path="res://assets/graphic_resources/MapaOtrosStyle.tres" type="StyleBox" id=23]
-[ext_resource path="res://assets/sounds/downloaded/button_click.wav" type="AudioStream" id=24]
+[ext_resource path="res://assets/sounds/button_click.wav" type="AudioStream" id=24]
 
 [sub_resource type="DynamicFont" id=1]
 size = 20
@@ -155,25 +155,25 @@ scale = Vector2( 0.928572, 0.830688 )
 texture = ExtResource( 1 )
 
 [node name="Lancha" type="Button" parent="."]
-margin_left = 130.0
-margin_top = 422.0
-margin_right = 220.0
+margin_left = 124.0
+margin_top = 404.0
+margin_right = 207.0
 margin_bottom = 452.0
-custom_fonts/font = SubResource( 1 )
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
+custom_fonts/font = SubResource( 1 )
 text = "Jugar"
 
 [node name="Lobo" type="Button" parent="."]
 margin_left = 325.0
-margin_top = 479.0
+margin_top = 465.0
 margin_right = 409.0
-margin_bottom = 509.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 512.0
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
+custom_fonts/font = SubResource( 1 )
 text = "Jugar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -183,11 +183,11 @@ __meta__ = {
 margin_left = 647.0
 margin_top = 303.0
 margin_right = 736.0
-margin_bottom = 333.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 347.0
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
+custom_fonts/font = SubResource( 1 )
 text = "Jugar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -195,27 +195,27 @@ __meta__ = {
 
 [node name="Tienda" type="Button" parent="."]
 margin_left = 546.0
-margin_top = 380.0
+margin_top = 374.0
 margin_right = 648.0
-margin_bottom = 413.0
-custom_fonts/font = SubResource( 2 )
+margin_bottom = 421.0
 custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 23 )
+custom_fonts/font = SubResource( 2 )
 text = "Tienda"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="Restaurante" type="Button" parent="."]
-margin_left = 864.0
+margin_left = 846.0
 margin_top = 160.0
 margin_right = 1004.0
-margin_bottom = 197.0
-custom_fonts/font = SubResource( 1 )
+margin_bottom = 212.0
 custom_styles/hover = ExtResource( 23 )
 custom_styles/pressed = ExtResource( 23 )
 custom_styles/normal = ExtResource( 23 )
+custom_fonts/font = SubResource( 1 )
 text = "Restaurante"
 
 [node name="ButtonLarge" type="Sprite" parent="."]
@@ -233,13 +233,17 @@ texture = ExtResource( 11 )
 position = Vector2( -86.9878, -4.10615 )
 scale = Vector2( 0.233999, 0.921428 )
 frames = SubResource( 3 )
-frame = 2
+frame = 1
 playing = true
 
 [node name="Intro" type="Control" parent="."]
-margin_top = 1.0
-margin_right = 40.0
-margin_bottom = 41.0
+margin_left = -9.0
+margin_top = -6.0
+margin_right = 31.0
+margin_bottom = 34.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Panel" type="TextureButton" parent="Intro"]
 margin_left = 394.0
@@ -252,7 +256,7 @@ stretch_mode = 1
 [node name="ColorRect" type="ColorRect" parent="Intro/Panel"]
 margin_left = 92.0
 margin_top = 59.0
-margin_right = 640.0
+margin_right = 631.0
 margin_bottom = 244.0
 color = Color( 0.32549, 0.705882, 0.909804, 1 )
 __meta__ = {
@@ -281,8 +285,8 @@ margin_top = 85.0
 margin_right = 464.0
 margin_bottom = 213.0
 mouse_filter = 1
-custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_fonts/normal_font = SubResource( 4 )
+custom_colors/default_color = Color( 0, 0, 0, 1 )
 text = "Bienvenido al Puerto de Mar del Plata, tenés ganas de hacer un negocio GENIAL?"
 fit_content_height = true
 __meta__ = {
@@ -293,7 +297,7 @@ __meta__ = {
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 5 )
-frame = 18
+frame = 23
 playing = true
 flip_h = true
 
@@ -359,14 +363,10 @@ margin_left = 902.0
 margin_top = 9.0
 margin_right = 1003.0
 margin_bottom = 63.0
-custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
-custom_colors/font_color = Color( 0, 0, 0, 1 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
-custom_colors/font_color_pressed = Color( 0, 0, 0, 1 )
-custom_fonts/font = SubResource( 2 )
 custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
+custom_fonts/font = SubResource( 2 )
 text = "Volver"
 __meta__ = {
 "_edit_use_anchors_": false

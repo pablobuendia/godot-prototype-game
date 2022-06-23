@@ -21,6 +21,7 @@ func _ready():
 	OS.center_window()
 	if (GlobalVar.player.musica):
 		$Musica_fondo.play()
+	$Cloud.position = Vector2(878.952,-877.416)
 	get_tree().paused = true
 	progress_bar.hide()
 	progress_bar2.hide()

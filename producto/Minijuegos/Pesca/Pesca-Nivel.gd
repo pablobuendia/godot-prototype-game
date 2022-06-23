@@ -143,8 +143,9 @@ func spawn_pez(spawnLocation, flip_h):
 	var tipo_elegido = elegirSprite()
 	var escala_elegida = elegirEscala()
 	if (tipo_elegido == tipo_pez_objetivo_1 || tipo_elegido == tipo_pez_objetivo_2):
-		escala_elegida = elegirEscalaEspecial()
-
+		#escala_elegida = elegirEscalaEspecial()
+		pass
+		
 	nuevo_pez.start(tipo_elegido, escala_elegida, flip_h, pez_spawn_location.position, elegirVelocidad(pez_spawn_location, tipo_elegido))	
 	add_child(nuevo_pez)
 

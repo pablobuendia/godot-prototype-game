@@ -4,11 +4,11 @@
 [ext_resource path="res://Minijuegos/Lanchas/scenes/ship-move.gd" type="Script" id=2]
 [ext_resource path="res://assets/img/LoboTop1.png" type="Texture" id=3]
 
-[sub_resource type="CapsuleShape2D" id=2]
-radius = 35.6746
-height = 0.0
+[sub_resource type="CapsuleShape2D" id=1]
+radius = 18.7175
+height = 34.1059
 
-[sub_resource type="Animation" id=3]
+[sub_resource type="Animation" id=2]
 length = 2.0
 loop = true
 tracks/0/type = "value"
@@ -16,7 +16,7 @@ tracks/0/path = NodePath("sprite:position:x")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
-tracks/0/enabled = false
+tracks/0/enabled = true
 tracks/0/keys = {
 "times": PoolRealArray( 0, 0.5, 1, 1.5, 2 ),
 "transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
@@ -52,18 +52,26 @@ tracks/2/keys = {
 "enemy",
 ]]
 collision_layer = 2
-collision_mask = 3
+gravity_scale = 0.0
 script = ExtResource( 2 )
 
 [node name="sprite" type="Sprite" parent="."]
-position = Vector2( 0, 1.12822 )
 scale = Vector2( 0.316791, 0.316791 )
 texture = ExtResource( 3 )
 flip_h = true
 
 [node name="col" type="CollisionShape2D" parent="."]
-shape = SubResource( 2 )
+position = Vector2( 5, -5 )
+rotation = 0.764454
+shape = SubResource( 1 )
+
+[node name="VisibilityNotifier2D" type="VisibilityNotifier2D" parent="."]
+position = Vector2( -1.47323, -0.561229 )
+scale = Vector2( 3.88332, 3.49748 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 autoplay = "Swing"
-anims/Swing = SubResource( 3 )
+anims/Swing = SubResource( 2 )
+
+[connection signal="screen_entered" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_entered"]
+[connection signal="screen_exited" from="VisibilityNotifier2D" to="." method="_on_VisibilityNotifier2D_screen_exited"]

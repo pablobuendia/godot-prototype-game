@@ -9,7 +9,7 @@ func _ready():
 	$Panel/RichTextLabel.text = frases[0]
 
 
-var frases = ["Bienvenido al puerto de Mar del Plata","Hoy zarparemos a mar abierto","Va a ser un viaje muy divertido!, pero hay que ser cuidadosos para salir del puerto."]
+var frases = ["Bienvenido al puerto de Mar del Plata!","Hoy zarparemos a mar abierto","Va a ser un viaje muy divertido!, pero hay que ser cuidadosos para salir del puerto.","En tu viaje encontraras lobos marinos, trata de no golpearlos","Si encuentras algun anzuelo se libre de recogerlo","Tambien se dice por ahi que si encuentras los 4 cuadros ocultos recibiras una recompensa :)"]
 
 
 

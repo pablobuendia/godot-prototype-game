@@ -93,6 +93,11 @@ func collide():
 func _on_Area2D_body_entered(body):
 	if body.is_in_group("enemy") || (body.is_in_group("scenary") && !get_parent().mar_abierto):
 		colliding = true
+	if body.is_in_group("hook"):
+		body.queue_free()
+		GlobalVar.player.anzuelos +=3
+		GlobalVar.save_game()
+		get_parent().get_node("Popup").notify(body.position,"+3 Anzuelos")
 
 
 

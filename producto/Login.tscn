@@ -1,6 +1,8 @@
-[gd_scene load_steps=12 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://assets/img/Iconos/UIbg.png" type="Texture" id=1]
+[ext_resource path="res://assets/graphic_resources/MapaOtrosStyle.tres" type="StyleBox" id=2]
+[ext_resource path="res://assets/graphic_resources/MapaJugarStyle.tres" type="StyleBox" id=3]
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=5]
 [ext_resource path="res://assets/img/Fondos/PuertoMarDelPlata.jpg" type="Texture" id=8]
 
@@ -59,6 +61,9 @@ anchor_bottom = 1.0
 margin_left = -2.11902
 margin_right = -2.11902
 script = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="Fondo" type="TextureRect" parent="."]
 margin_left = 1.11902
@@ -87,6 +92,10 @@ margin_left = 1.88098
 margin_top = 35.0
 margin_right = 1.88098
 margin_bottom = 35.0
+custom_styles/hover = ExtResource( 3 )
+custom_styles/pressed = ExtResource( 3 )
+custom_styles/disabled = ExtResource( 3 )
+custom_styles/normal = ExtResource( 3 )
 custom_fonts/font = SubResource( 2 )
 text = "CONTINUAR"
 __meta__ = {
@@ -111,6 +120,9 @@ margin_left = 280.52
 margin_top = 227.405
 margin_right = 777.52
 margin_bottom = 283.405
+custom_styles/read_only = ExtResource( 2 )
+custom_styles/focus = ExtResource( 2 )
+custom_styles/normal = ExtResource( 2 )
 custom_fonts/font = SubResource( 4 )
 placeholder_text = "Escriba su nombre"
 __meta__ = {
@@ -128,9 +140,9 @@ margin_left = -111.0
 margin_top = -63.0
 margin_right = 120.0
 margin_bottom = 26.0
+custom_fonts/normal_font = SubResource( 5 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 5 )
 text = "Nombre de usuario invalido"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -142,11 +154,11 @@ margin_left = -78.1516
 margin_top = 39.1875
 margin_right = -34.1516
 margin_bottom = 80.1875
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.227451, 0.870588, 0.843137, 1 )
 custom_colors/font_color_pressed = Color( 0.141176, 0.862745, 0.85098, 1 )
-custom_fonts/font = SubResource( 6 )
 text = "Si"
 flat = true
 
@@ -155,11 +167,11 @@ margin_left = -20.2774
 margin_top = 35.4199
 margin_right = 23.7226
 margin_bottom = 76.4199
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color_disabled = Color( 0, 0, 0, 1 )
 custom_colors/font_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_hover = Color( 0.160784, 0.729412, 0.678431, 1 )
 custom_colors/font_color_pressed = Color( 0.133333, 0.807843, 0.764706, 1 )
-custom_fonts/font = SubResource( 6 )
 text = "OK"
 flat = true
 
@@ -174,9 +186,9 @@ margin_left = -128.0
 margin_top = -100.0
 margin_right = 128.0
 margin_bottom = 111.0
+custom_fonts/normal_font = SubResource( 7 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0.0666667, 0.0666667, 0.0666667, 1 )
-custom_fonts/normal_font = SubResource( 7 )
 text = "Prototipo de videojuego con la temática de Puerto de Mar del Plata hecho por:
 
 María Josefina Oller

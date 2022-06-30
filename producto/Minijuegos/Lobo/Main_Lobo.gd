@@ -12,7 +12,10 @@ func _ready():
 	if (GlobalVar.player.musica):
 		$Musica_fondo.play();
 	if(GlobalVar.player.lobo == false):
+		$Intro.show()
 		$Intro/AnimationPlayer.play("AnchorIdle")
+	else:
+		$HUD/StartButton.show()
 	randomize()
 
 func game_over():
@@ -110,15 +113,19 @@ func _on_Player_miss_vida():
 		set_deferred("monitoring",false)
 		set_deferred("monitorable",false)
 		game_over()
-	$Vida.start()
-	while ($Vida.start(true)):
-		set_deferred("monitoring",false)
-		set_deferred("monitorable",false)
-		print("Entro")
-		pass
-	print("salio")
-	set_deferred("monitoring",true)
-	set_deferred("monitorable",true)
+	else:
+		var t = Timer.new()
+		t.set_wait_time(3)
+		t.set_one_shot(true)
+		self.add_child(t)
+		t.start()
+		$Player/AnimatedSprite.stop()
+		$Player/Sprite.show()
+		$Player.global_position = Vector2 (252,250)
+		yield(t, "timeout")
+		$Player/Sprite.hide()
+		$Player/AnimatedSprite.play()
+		t.queue_free()
 	$HUD.update_vida(vida)
 
 
@@ -197,3 +204,4 @@ func _on_Panel_pressed():
 		$Intro.hide()
 		GlobalVar.player.lobo = true
 		$HUD/StartButton.show()
+		GlobalVar.save_game()

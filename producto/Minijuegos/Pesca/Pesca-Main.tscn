@@ -11,7 +11,6 @@
 [ext_resource path="res://assets/img/lobolino/lobolino_00005.png" type="Texture" id=9]
 [ext_resource path="res://assets/img/lobolino/lobolino_00003.png" type="Texture" id=10]
 
-
 [sub_resource type="DynamicFont" id=1]
 size = 30
 outline_size = 1
@@ -108,7 +107,7 @@ margin_right = 441.0
 margin_bottom = 202.0
 mouse_filter = 1
 custom_fonts/normal_font = SubResource( 1 )
-text = "Bienvenido al Puerto de Mar del Plata, hoy te tengo preparada una expedicion muy divertida!"
+text = "Hoy te tengo preparada una expedicion muy divertida!"
 fit_content_height = true
 __meta__ = {
 "_edit_use_anchors_": false
@@ -118,7 +117,7 @@ __meta__ = {
 position = Vector2( 908, 419 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 2 )
-frame = 16
+frame = 34
 playing = true
 flip_h = true
 

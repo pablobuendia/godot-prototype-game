@@ -189,9 +189,6 @@ custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
 text = "Jugar"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tienda" type="Button" parent="."]
 margin_left = 546.0
@@ -233,10 +230,11 @@ texture = ExtResource( 11 )
 position = Vector2( -86.9878, -4.10615 )
 scale = Vector2( 0.233999, 0.921428 )
 frames = SubResource( 3 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Intro" type="Control" parent="."]
+visible = false
 margin_left = -9.0
 margin_top = -6.0
 margin_right = 31.0
@@ -297,7 +295,7 @@ __meta__ = {
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 5 )
-frame = 20
+frame = 18
 playing = true
 flip_h = true
 
@@ -368,9 +366,6 @@ custom_styles/hover = ExtResource( 22 )
 custom_styles/pressed = ExtResource( 22 )
 custom_styles/normal = ExtResource( 22 )
 text = "Volver"
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="Tap" type="Sprite" parent="."]
 position = Vector2( 170, 250 )

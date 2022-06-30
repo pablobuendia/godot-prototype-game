@@ -264,10 +264,6 @@ wait_time = 5.0
 wait_time = 2.0
 one_shot = true
 
-[node name="Vida" type="Timer" parent="."]
-wait_time = 10.0
-one_shot = true
-
 [node name="StartPosition" type="Position2D" parent="."]
 position = Vector2( 252, 250 )
 
@@ -313,6 +309,7 @@ visible = false
 position = Vector2( -126, 52 )
 
 [node name="Intro" type="Control" parent="."]
+visible = false
 margin_top = 1.0
 margin_right = 40.0
 margin_bottom = 41.0
@@ -366,7 +363,7 @@ fit_content_height = true
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 10 )
-frame = 17
+frame = 16
 playing = true
 flip_h = true
 

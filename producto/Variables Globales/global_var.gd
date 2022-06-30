@@ -15,7 +15,6 @@ var PRECIO_COLECCIONABLE_BARCO = 1500
 var PRECIO_COLECCIONABLE_VELERO = 2000
 var SALUD_BASE_BOTE = 200.0
 var PRECIO_MEJORA_BARCO_1 = 300
-var PRECIO_MEJORA_BARCO_2 = 500
 
 
 var player = {
@@ -33,8 +32,7 @@ var player = {
 	"lobo":false,
 	"musica":true,
 	"pinturas" : [0,0,0,0],
-	"mejora_barco_1":false,
-	"mejora_barco_2":false
+	"mejora_barco_1":false
 }
 
 func save_game():
@@ -69,7 +67,6 @@ func config(): #configuracion inicial
 		"lobo":false,
 		"musica":true,
 		"pinturas" : [0,0,0,0],
-		"mejora_barco_1":false,
-		"mejora_barco_2":false
+		"mejora_barco_1":false
 	}
 

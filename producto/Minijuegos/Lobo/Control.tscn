@@ -20,14 +20,14 @@ normal = ExtResource( 3 )
 action = "move_right"
 
 [node name="Down" type="TouchScreenButton" parent="."]
-position = Vector2( 273.681, 408.501 )
-scale = Vector2( 0.371702, 0.424628 )
+position = Vector2( 252, 420 )
+scale = Vector2( 0.6, 0.5 )
 normal = ExtResource( 2 )
 action = "move_down"
 
 [node name="Up" type="TouchScreenButton" parent="."]
-position = Vector2( 392.993, 384.913 )
+position = Vector2( 400, 384.913 )
 rotation = 3.14159
-scale = Vector2( 0.6, 0.692835 )
+scale = Vector2( 0.6, 0.5 )
 normal = ExtResource( 2 )
 action = "move_up"

@@ -177,9 +177,7 @@ tracks/1/keys = {
 [node name="Main" type="Node2D"]
 script = ExtResource( 1 )
 
-[node name="MapMesh" type="StaticBody2D" parent="." groups=[
-"scenary",
-]]
+[node name="MapMesh" type="StaticBody2D" parent="." groups=["scenary"]]
 position = Vector2( -316.212, -1179.77 )
 rotation = -2.25464
 scale = Vector2( 6.57007, 6.57007 )
@@ -214,9 +212,7 @@ position = Vector2( 1500, -1200 )
 rotation = 4.58559e-06
 current = true
 
-[node name="Boat" type="KinematicBody2D" parent="." groups=[
-"player",
-]]
+[node name="Boat" type="KinematicBody2D" parent="." groups=["player"]]
 position = Vector2( 1500, -1200 )
 rotation = 1.5708
 collision_mask = 31
@@ -249,8 +245,8 @@ margin_top = 575.462
 margin_right = 571.364
 margin_bottom = 676.465
 rect_rotation = -89.9999
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.968627, 0.941176, 0.941176, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "Integridad Lancha"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -283,8 +279,8 @@ margin_top = 556.419
 margin_right = 1423.5
 margin_bottom = 657.422
 rect_rotation = -89.9999
-custom_fonts/font = ExtResource( 6 )
 custom_colors/font_color = Color( 0.968627, 0.941176, 0.941176, 1 )
+custom_fonts/font = ExtResource( 6 )
 text = "Progreso Viaje"
 __meta__ = {
 "_edit_use_anchors_": false

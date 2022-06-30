@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://assets/fonts/Xolonium-Regular.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://Tienda.gd" type="Script" id=2]
@@ -14,6 +14,8 @@
 [ext_resource path="res://assets/img/Monedas/gold_coin_round_star_1.png" type="Texture" id=12]
 [ext_resource path="res://assets/img/Monedas/gold_coin_round_star_4.png" type="Texture" id=13]
 [ext_resource path="res://assets/img/Monedas/gold_coin_round_star_6.png" type="Texture" id=14]
+[ext_resource path="res://assets/graphic_resources/MapaJugarStyle.tres" type="StyleBox" id=15]
+[ext_resource path="res://assets/img/Iconos/UIbg.png" type="Texture" id=16]
 
 [sub_resource type="DynamicFont" id=1]
 size = 30
@@ -41,6 +43,18 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="DynamicFont" id=7]
+size = 35
+outline_size = 1
+outline_color = Color( 0, 0, 0, 1 )
+font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=8]
+size = 28
+outline_size = 1
+outline_color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
+font_data = ExtResource( 1 )
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -230,7 +244,34 @@ stream = ExtResource( 4 )
 position = Vector2( 297, 35 )
 scale = Vector2( 1.077, 0.921428 )
 frames = SubResource( 6 )
+frame = 4
 playing = true
+
+[node name="Coleccionable" type="Sprite" parent="."]
+visible = false
+position = Vector2( 488.5, 250.5 )
+scale = Vector2( 0.912881, 0.867424 )
+texture = ExtResource( 16 )
+
+[node name="OK" type="Button" parent="Coleccionable"]
+margin_left = -65.178
+margin_top = 32.8559
+margin_right = 65.822
+margin_bottom = 89.8559
+custom_fonts/font = SubResource( 7 )
+custom_styles/normal = ExtResource( 15 )
+text = "¡OK!"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="Coleccionable"]
+margin_left = -114.473
+margin_top = -65.1354
+margin_right = 111.527
+margin_bottom = -17.1354
+custom_colors/selection_color = Color( 0, 0, 0, 1 )
+custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 8 )
+text = "¡Ya compraste!"
 
 [connection signal="pressed" from="Comprar Anzuelos x10" to="." method="_on_Comprar_Anzuelos_x10_pressed"]
 [connection signal="pressed" from="Comprar Lobo Azul" to="." method="_on_Comprar_Lobo_Azul_pressed"]
@@ -239,3 +280,4 @@ playing = true
 [connection signal="pressed" from="Comprar Lobo Rosa" to="." method="_on_Comprar_Lobo_Rosa_pressed"]
 [connection signal="pressed" from="Comprar Mejora Barco 1" to="." method="_on_Comprar_Mejora_Barco_1_pressed"]
 [connection signal="pressed" from="Volver" to="." method="_on_Volver_pressed"]
+[connection signal="pressed" from="Coleccionable/OK" to="." method="_on_OK_pressed"]

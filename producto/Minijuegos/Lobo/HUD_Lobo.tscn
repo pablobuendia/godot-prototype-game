@@ -81,13 +81,13 @@ margin_left = 389.0
 margin_top = -7.79999
 margin_right = -426.808
 margin_bottom = 12.2
+custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 custom_styles/hover = ExtResource( 13 )
 custom_styles/pressed = ExtResource( 13 )
 custom_styles/focus = ExtResource( 13 )
 custom_styles/disabled = ExtResource( 13 )
 custom_styles/normal = ExtResource( 13 )
-custom_fonts/font = SubResource( 3 )
-custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
 text = "Jugar"
 __meta__ = {
 "_edit_use_anchors_": false
@@ -99,8 +99,8 @@ anchor_left = 0.352539
 anchor_top = 0.625
 anchor_right = 0.636719
 anchor_bottom = 0.713333
-custom_fonts/font = SubResource( 3 )
 custom_colors/font_color_hover = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
 text = "Jugar de nuevo"
 __meta__ = {
 "_edit_use_anchors_": true
@@ -121,11 +121,11 @@ margin_left = 356.0
 margin_top = 153.0
 margin_right = 687.0
 margin_bottom = 383.0
-custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0.0156863, 0.00784314, 0.00784314, 1 )
 custom_colors/font_color_selected = Color( 0.0352941, 0.00784314, 0.00784314, 1 )
 custom_colors/font_color_shadow = Color( 0.054902, 0.0117647, 0.0117647, 1 )
+custom_fonts/normal_font = SubResource( 4 )
 text = "Ganaste!"
 
 [node name="ColorRect" type="ColorRect" parent="Juego_Ganado"]
@@ -154,11 +154,11 @@ margin_left = 356.0
 margin_top = 153.0
 margin_right = 687.0
 margin_bottom = 383.0
-custom_fonts/normal_font = SubResource( 4 )
 custom_colors/default_color = Color( 1, 1, 1, 1 )
 custom_colors/selection_color = Color( 0.0156863, 0.00784314, 0.00784314, 1 )
 custom_colors/font_color_selected = Color( 0.0352941, 0.00784314, 0.00784314, 1 )
 custom_colors/font_color_shadow = Color( 0.054902, 0.0117647, 0.0117647, 1 )
+custom_fonts/normal_font = SubResource( 4 )
 text = "Perdiste :("
 
 [node name="ColorRect" type="ColorRect" parent="Juego_Perdido"]

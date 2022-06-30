@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Minijuegos/Lobo/Player_Lobo.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Minijuegos/Lobo/Pez.tscn" type="PackedScene" id=2]
@@ -23,6 +23,8 @@
 [ext_resource path="res://assets/img/lobolino/lobolino_00002.png" type="Texture" id=21]
 [ext_resource path="res://assets/sounds/victory.wav" type="AudioStream" id=22]
 [ext_resource path="res://assets/sounds/game_over.wav" type="AudioStream" id=23]
+[ext_resource path="res://assets/sounds/Hit damage 1.wav" type="AudioStream" id=24]
+[ext_resource path="res://assets/sounds/golpe.wav" type="AudioStream" id=25]
 
 [sub_resource type="DynamicFont" id=1]
 size = 25
@@ -163,11 +165,7 @@ tracks/1/keys = {
 "times": PoolRealArray( 0, 0.5, 1 )
 }
 
-[node name="Main" type="Node2D" groups=[
-"linea",
-"red",
-"salud",
-]]
+[node name="Main" type="Node2D" groups=["linea", "red", "salud"]]
 position = Vector2( 1, 0 )
 script = ExtResource( 3 )
 pez_scene = ExtResource( 2 )
@@ -249,9 +247,9 @@ texture = ExtResource( 6 )
 
 [node name="Player" parent="." instance=ExtResource( 1 )]
 scale = Vector2( 0.5, 0.5 )
+collision_mask = 17
 monitoring = false
 monitorable = false
-collision_mask = 17
 
 [node name="FishTimer_Left" type="Timer" parent="."]
 wait_time = 5.0
@@ -264,6 +262,10 @@ wait_time = 5.0
 
 [node name="StartTimer" type="Timer" parent="."]
 wait_time = 2.0
+one_shot = true
+
+[node name="Vida" type="Timer" parent="."]
+wait_time = 10.0
 one_shot = true
 
 [node name="StartPosition" type="Position2D" parent="."]
@@ -355,8 +357,8 @@ margin_top = 85.0
 margin_right = 464.0
 margin_bottom = 213.0
 mouse_filter = 1
-custom_fonts/normal_font = SubResource( 9 )
 custom_colors/default_color = Color( 0, 0, 0, 1 )
+custom_fonts/normal_font = SubResource( 9 )
 text = "Gracias por aceptar ayudar a nuestro amigo lobo marino! "
 fit_content_height = true
 
@@ -364,7 +366,7 @@ fit_content_height = true
 position = Vector2( 947, 480 )
 scale = Vector2( 0.35, 0.35 )
 frames = SubResource( 10 )
-frame = 16
+frame = 17
 playing = true
 flip_h = true
 
@@ -399,6 +401,12 @@ stream = ExtResource( 23 )
 stream = ExtResource( 22 )
 
 [node name="Golpe_Moneda" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource( 25 )
+
+[node name="Hit_Sound" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 24 )
+volume_db = -10.0
+pitch_scale = 1.5
 
 [connection signal="timeout" from="AreaLineaFinish/TiempoDeFinalizacion" to="AreaLineaFinish" method="_on_TiempoDeFinalizacion_timeout"]
 [connection signal="area_entered" from="Player" to="Player" method="_on_Player_area_entered"]

@@ -23,6 +23,7 @@ func _on_Comprar_Anzuelos_x10_pressed():
 		$Monedas.text = str(GlobalVar.player.monedas)
 		$"Comprar Anzuelos x10/Precio Anzuelo".text = str("$", GlobalVar.PRECIO_ANZUELO, ", Restantes: ", GlobalVar.player.anzuelos)
 		$Comprar.play()
+		GlobalVar.save_game()
 
 func _on_Volver_pressed():
 	get_tree().change_scene("res://Mapa.tscn")
@@ -34,6 +35,11 @@ func _on_Comprar_Mejora_Barco_1_pressed():
 		GlobalVar.SALUD_BASE_BOTE += 100
 		$Monedas.text = str(GlobalVar.player.monedas)
 		$Comprar.play()
+		GlobalVar.save_game()
+	else:
+		if (GlobalVar.player.mejora_barco_1):
+			$Coleccionable.show()
+
 
 
 func _on_Comprar_Lobo_Azul_pressed():
@@ -42,6 +48,11 @@ func _on_Comprar_Lobo_Azul_pressed():
 		GlobalVar.player.monedas -= GlobalVar.PRECIO_COLECCIONABLE_LOBO_AZUL
 		$Monedas.text = str(GlobalVar.player.monedas)
 		$Comprar.play()
+		GlobalVar.save_game()
+	else:
+		if (GlobalVar.player.coleccionable_lobo_azul):
+			$Coleccionable.show()
+
 
 
 func _on_Comprar_Velero_pressed():
@@ -50,6 +61,11 @@ func _on_Comprar_Velero_pressed():
 		GlobalVar.player.monedas -= GlobalVar.PRECIO_COLECCIONABLE_VELERO
 		$Monedas.text = str(GlobalVar.player.monedas)
 		$Comprar.play()
+		GlobalVar.save_game()
+	else:
+		if (GlobalVar.player.coleccionable_lobo_velero):
+			$Coleccionable.show()
+
 
 
 
@@ -59,7 +75,11 @@ func _on_Comprar_Barco_pressed():
 		GlobalVar.player.monedas -= GlobalVar.PRECIO_COLECCIONABLE_BARCO
 		$Monedas.text = str(GlobalVar.player.monedas)
 		$Comprar.play()
-
+		GlobalVar.save_game()
+	else:
+		if (GlobalVar.player.coleccionable_barco):
+			$Coleccionable.show()
+	
 
 func _on_Comprar_Lobo_Rosa_pressed():
 	if GlobalVar.player.monedas > GlobalVar.PRECIO_COLECCIONABLE_LOBO_ROSA && GlobalVar.player.coleccionable_lobo_rosa == false:
@@ -67,3 +87,11 @@ func _on_Comprar_Lobo_Rosa_pressed():
 		GlobalVar.player.monedas -= GlobalVar.PRECIO_COLECCIONABLE_LOBO_ROSA
 		$Monedas.text = str(GlobalVar.player.monedas)
 		$Comprar.play()
+		GlobalVar.save_game()
+	else:
+		if (GlobalVar.player.coleccionable_lobo_rosa):
+			$Coleccionable.show()
+
+
+func _on_OK_pressed():
+	$Coleccionable.hide()

@@ -33,7 +33,6 @@ func _ready():
 					frases = frases_colecciones;
 					$Intro.show()
 					$Intro/AnimationPlayer.play("AnchorIdle")
-					#Iria la animationPlayer de tienda
 				if(GlobalVar.player.monedas <= 50 && GlobalVar.player.banderaInicio == true):
 					frases = frases_lobo_monedas
 					$Intro.show()
@@ -44,20 +43,19 @@ func _ready():
 					frases = frases_lobo_anzuelos
 					$Intro.show()
 					$Intro/AnimationPlayer.play("AnchorIdle")
-					#Iria la animationPlayer de tienda
 	load_frases();
 	
 
 func _on_Lancha_pressed():
 	$Button_click.play()
 	$Tap.hide()
-	GlobalVar.player.banderaInicio = true
 	get_tree().change_scene("res://Minijuegos/Lanchas/scenes/Lanchas-Main.tscn")
-	#GlobalVar.player.lancha = true
+	GlobalVar.player.lancha = true
+	GlobalVar.save_game()
+	
 	
 func _on_Lobo_pressed():
 	$Button_click.play()
-	#if (GlobalVar.player.lancha && GlobalVar.player.pesca):
 	get_tree().change_scene("res://Minijuegos/Lobo/Main_Lobo.tscn")
 
 func _on_Pesca_pressed():
@@ -65,7 +63,8 @@ func _on_Pesca_pressed():
 	if (GlobalVar.player.lancha):
 		$Tap.hide()
 		get_tree().change_scene("res://Minijuegos/Pesca/Pesca-Main.tscn")
-	#GlobalVar.player.pesca = true
+	GlobalVar.player.pesca = true
+	GlobalVar.save_game()
 	
 func _on_Tienda_pressed():
 	$Button_click.play()

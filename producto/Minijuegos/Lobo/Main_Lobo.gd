@@ -104,17 +104,26 @@ func _on_RedTimer_timeout():
 	add_child(red)
 
 func _on_Player_miss_vida():
-	$Golpe_Moneda.play()
+	$Hit_Sound.play()
 	vida -=1
-	Input.vibrate_handheld(500)
 	if vida<=0:
 		set_deferred("monitoring",false)
 		set_deferred("monitorable",false)
 		game_over()
+	$Vida.start()
+	while ($Vida.start(true)):
+		set_deferred("monitoring",false)
+		set_deferred("monitorable",false)
+		print("Entro")
+		pass
+	print("salio")
+	set_deferred("monitoring",true)
+	set_deferred("monitorable",true)
 	$HUD.update_vida(vida)
 
 
 func _on_Player_win_vida():
+	$Golpe_Moneda.play()
 	vida +=1
 	$HUD.update_vida(vida)
 

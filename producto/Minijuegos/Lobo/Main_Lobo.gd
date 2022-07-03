@@ -109,6 +109,7 @@ func _on_RedTimer_timeout():
 func _on_Player_miss_vida():
 	$Hit_Sound.play()
 	vida -=1
+	$HUD.update_vida(vida)
 	if vida<=0:
 		set_deferred("monitoring",false)
 		set_deferred("monitorable",false)
@@ -126,7 +127,7 @@ func _on_Player_miss_vida():
 		$Player/Sprite.hide()
 		$Player/AnimatedSprite.play()
 		t.queue_free()
-	$HUD.update_vida(vida)
+	
 
 
 func _on_Player_win_vida():

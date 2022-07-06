@@ -244,7 +244,7 @@ stream = ExtResource( 4 )
 position = Vector2( 297, 35 )
 scale = Vector2( 1.077, 0.921428 )
 frames = SubResource( 6 )
-frame = 4
+frame = 2
 playing = true
 
 [node name="Coleccionable" type="Sprite" parent="."]
@@ -258,8 +258,8 @@ margin_left = -65.178
 margin_top = 32.8559
 margin_right = 65.822
 margin_bottom = 89.8559
-custom_fonts/font = SubResource( 7 )
 custom_styles/normal = ExtResource( 15 )
+custom_fonts/font = SubResource( 7 )
 text = "¡OK!"
 
 [node name="RichTextLabel" type="RichTextLabel" parent="Coleccionable"]
@@ -267,10 +267,10 @@ margin_left = -114.473
 margin_top = -65.1354
 margin_right = 111.527
 margin_bottom = -17.1354
+custom_fonts/normal_font = SubResource( 8 )
 custom_colors/selection_color = Color( 0, 0, 0, 1 )
 custom_colors/font_color_selected = Color( 0, 0, 0, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
-custom_fonts/normal_font = SubResource( 8 )
 text = "¡Ya compraste!"
 
 [connection signal="pressed" from="Comprar Anzuelos x10" to="." method="_on_Comprar_Anzuelos_x10_pressed"]

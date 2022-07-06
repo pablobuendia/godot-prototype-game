@@ -13,26 +13,19 @@ font_data = ExtResource( 2 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "AnchorIdle"
+length = 1.5
 loop = true
-tracks/0/type = "bezier"
-tracks/0/path = NodePath("TextureRect:rect_position:x")
+tracks/0/type = "value"
+tracks/0/path = NodePath("TextureRect:rect_position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"points": PoolRealArray( 812.159, -0.25, 0, 0.25, 0, 812.159, -0.25, 0, 0.25, 0, 812.159, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
-}
-tracks/1/type = "bezier"
-tracks/1/path = NodePath("TextureRect:rect_position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/keys = {
-"points": PoolRealArray( 512.936, -0.25, 0, 0.25, 0, 522.936, -0.25, 0, 0.25, 0, 512.936, -0.25, 0, 0.25, 0 ),
-"times": PoolRealArray( 0, 0.5, 1 )
+"times": PoolRealArray( 0, 0.5, 1.5 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 427.159, 169.133 ), Vector2( 427.159, 140 ), Vector2( 427.159, 169.133 ) ]
 }
 
 [node name="Control" type="Control"]
@@ -85,8 +78,8 @@ __meta__ = {
 [node name="RichTextLabel" type="RichTextLabel" parent="Panel"]
 margin_left = 30.0
 margin_top = 29.0
-margin_right = 444.0
-margin_bottom = 206.0
+margin_right = 409.0
+margin_bottom = 217.0
 mouse_filter = 1
 custom_fonts/normal_font = SubResource( 1 )
 text = "Bienvenido al Puerto de Mar del Plata, hoy te tengo preparada una expedicion muy divertida!"
@@ -95,24 +88,30 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 881.763, 454.197 )
-scale = Vector2( 0.438721, 0.438721 )
+[node name="Sprite" type="TextureRect" parent="Panel"]
+margin_left = 397.241
+margin_top = 20.0
+margin_right = 605.241
+margin_bottom = 207.0
 texture = ExtResource( 1 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
-[node name="TextureRect" type="TextureRect" parent="."]
+[node name="TextureRect" type="TextureRect" parent="Panel"]
 pause_mode = 2
-margin_left = 812.159
-margin_top = 513.133
-margin_right = 852.159
-margin_bottom = 553.133
+margin_left = 427.159
+margin_top = 152.319
+margin_right = 467.159
+margin_bottom = 192.319
 texture = ExtResource( 4 )
 expand = true
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Panel"]
 pause_mode = 2
 method_call_mode = 1
 anims/AnchorIdle = SubResource( 2 )

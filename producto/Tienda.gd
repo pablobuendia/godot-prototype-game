@@ -63,7 +63,7 @@ func _on_Comprar_Velero_pressed():
 		$Comprar.play()
 		GlobalVar.save_game()
 	else:
-		if (GlobalVar.player.coleccionable_lobo_velero):
+		if (GlobalVar.player.coleccionable_velero):
 			$Coleccionable.show()
 
 

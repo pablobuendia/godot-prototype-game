@@ -76,7 +76,7 @@ func collide():
 	health-= 40
 	if health > 0:
 		get_parent().get_node("Hit_Sound").play()
-		health_bar.set_size(Vector2((health*1.0 / base_health)*health_bar_length,health_bar.get_rect().size.y))
+		health_bar.value = (health*1.0 / base_health)*100
 		inv_time = base_inv_time
 	else:
 		if (!death):
@@ -85,6 +85,9 @@ func collide():
 			get_parent().get_node("UI/Score").hide()
 			get_parent().get_node("UI/HealthBar").hide()
 			get_parent().get_node("UI/HealthBarBG").hide()
+			get_parent().get_node("UI/ProgressBar").hide()
+			get_parent().get_node("UI/ProgressBarBG").hide()
+			get_parent().get_node("UI/Score2").hide()
 			get_tree().paused = true
 			get_parent().get_node("GameOverUI").show_death(0)
 			death = true

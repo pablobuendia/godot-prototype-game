@@ -5,7 +5,7 @@ signal dialog_terminated
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	$AnimationPlayer.play("AnchorIdle")
+	$Panel/AnimationPlayer.play("AnchorIdle")
 	$Panel/RichTextLabel.text = frases[0]
 
 

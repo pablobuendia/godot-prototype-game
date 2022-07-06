@@ -39,6 +39,7 @@ func comprar_pez(tipoPez, boton):
 		$Monedas.text = str("Monedas: ", GlobalVar.player.monedas)
 		boton.text = str("$", GlobalVar.PRECIOS_PECES[tipoPez], ",	 Restantes: ", GlobalVar.player.cantidad_peces[tipoPez])
 		$Vender.play()
+		GlobalVar.save_game()
 
 
 func _on_Vender_Besugo_pressed():

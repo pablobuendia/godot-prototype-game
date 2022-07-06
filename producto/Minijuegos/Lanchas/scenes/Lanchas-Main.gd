@@ -28,6 +28,7 @@ func _ready():
 	label_progress.hide()
 	collision_limits.hide()
 	load_pinturas()
+	$UI/DialogUI.show()
 	
 func _process(delta):
 	if (mar_abierto):
@@ -41,11 +42,14 @@ func _process(delta):
 			cleaned = true
 		time += delta
 		if (time < completion_time):
-			progress_bar.set_size(Vector2((time*1.0/completion_time)*progress_bar_base_length,progress_bar.get_rect().size.y))
+			progress_bar.value = (time*1.0/completion_time)*100
 		else:
 			get_node("UI/Score").hide()
 			get_node("UI/HealthBar").hide()
 			get_node("UI/HealthBarBG").hide()
+			progress_bar.hide()
+			progress_bar2.hide()
+			label_progress.hide()
 			get_tree().paused = true
 			score = (player.health*1.0/player.base_health)*500
 			GlobalVar.player.lancha = true
